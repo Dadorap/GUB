@@ -1,5 +1,4 @@
 using DataAccessLayer.Models;
-using GUB.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
