@@ -31,3 +31,8 @@ body {
 }
 
 
+@media (max-height: 1000px) {
+    .hide-on-small-height {
+        display: none !important;
+    }
+}
