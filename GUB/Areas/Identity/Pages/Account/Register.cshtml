@@ -6,7 +6,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<div class="row">
+<div class="row border  p-3 rounded bg-white">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Create a new account.</h2>
@@ -28,6 +28,7 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="row mb-3">
+                <h5>Choose a roll</h5>
                 <div class="col">
                     <input asp-for="Input.UserRole" type="radio" value="Admin" />
                     <label asp-for="Input.UserRole">Administrator</label> <br />
@@ -37,40 +38,17 @@
                     <label asp-for="Input.UserRole">Cashier</label> <br />
                 </div>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-outline-success text-dark fw-bold">Register</button>
         </form>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+    <div class="col-md-4 col-md-offset-2 align-content-center justify-content-center">
         <section>
             <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
-                                article
-                                about setting up this ASP.NET application to support logging in via external services
-                            </a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
+
         </section>
+    </div>
+    <div class="col-md-4">
+        <img class="rounded w-100 h-100" src="~/images/register-img.png" alt="Alternate Text"  />
     </div>
 </div>
 
