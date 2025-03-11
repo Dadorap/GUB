@@ -83,7 +83,17 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <!-- Show login partial when user is logged in -->
+                <partial name="_LoginPartial" />
+            }
+            else
+            {
+                <!-- Show Sign In button when user is not logged in -->
+                <a class="btn-getstarted" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+            }
+
 
 
         </div>
