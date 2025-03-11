@@ -162,7 +162,7 @@
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
             </div>
         </div>
-       
+
     </footer>
 
     <!-- Scroll Top -->
@@ -171,6 +171,22 @@
     <!-- Preloader -->
     <div id="preloader"></div>
 
+
+    <!-- jQuery must be loaded first -->
+    @* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> *@
+
+    @* <!-- Load jQuery Validation --> *@
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script> *@
+
+    @* <!-- Load jQuery Validation Unobtrusive --> *@
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script> *@
+
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
+
     <!-- Vendor JS Files -->
     <script src="~/vendor/php-email-form/validate.js"></script>
     <script src="~/vendor/aos/aos.js"></script>
@@ -178,15 +194,12 @@
     <script src="~/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
 
+   
 
-    @* <script src="~/js/jquery.min.js"></script> *@
-    @* <script src="~/js/popper.js"></script> *@
-    @* <script src="~/js/bootstrap.min.js"></script> *@
-    @* <script src="~/js/main.js"></script> *@
 
     <!-- Main JS File -->
     <script src="~/js/main.js"></script>
-    @RenderSection("Scripts", required: false) 
+    @RenderSection("Scripts", required: false)
 
 
 </body>
