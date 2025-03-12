@@ -77,16 +77,21 @@
                              <li><a href="#">Dropdown 1</a></li> 
                          </ul> 
                     </li> -->
-                    @if (!User.Identity.IsAuthenticated || User.IsInRole("Admin"))
-                    {
-                        <!-- Do nothing (hide the link) -->
-                    }
-                    else
+                    @if (User.IsInRole("Cashier"))
                     {
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-page="/Customer">Customers</a>
                         </li>
+                    }                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a  asp-area="Identity" asp-page="/Account/Register">Register</a>
+
+                        </li>
                     }
+
+
+           
 
                 </ul>
 
