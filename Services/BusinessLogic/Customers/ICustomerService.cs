@@ -1,8 +1,8 @@
-﻿using GUB.ViewModel.Customers;
+﻿using DataAccessLayer.Models;
 
 namespace Services.BusinessLogic.Customers;
 
 public interface ICustomerService
 {
-    List<CustomerViewModel> GetSuppliers(string sortColumn, string sortOrder);
+    List<Customer> GetCustomers(string sortColumn, string sortOrder);
 }

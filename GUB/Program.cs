@@ -1,6 +1,7 @@
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Services.BusinessLogic.Customers;
 
 namespace GUB
 {
@@ -22,6 +23,7 @@ namespace GUB
             builder.Services.AddRazorPages();
 
             builder.Services.AddTransient<DataInitializer>();
+            builder.Services.AddTransient<ICustomerService, CustomerService>();
 
             var app = builder.Build();
 

@@ -1,5 +1,4 @@
 ﻿using DataAccessLayer.Models;
-using GUB.ViewModel.Customers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,7 +18,7 @@ namespace Services.BusinessLogic.Customers
             _bankAppDataContext = bankAppDataContext;
         }
 
-        public List<CustomerViewModel> GetSuppliers(string sortColumn, string sortOrder)
+        public List<Customer> GetCustomers(string sortColumn, string sortOrder)
         {
             var query = _bankAppDataContext.Customers.AsQueryable();
 
@@ -58,16 +57,8 @@ namespace Services.BusinessLogic.Customers
                     query = query.OrderBy(s => s.Streetaddress);
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.Streetaddress);
-
-            return query.Select(s => new CustomerViewModel
-            {
-                FirstName = s.Givenname,
-                LastName = s.Surname,
-                Country = s.Country,
-                City = s.City,
-                PhoneNumber = s.Telephonenumber,
-                Address = s.Streetaddress
-            }).ToList();
+            
+            return query.ToList();
         }
     }
 }
