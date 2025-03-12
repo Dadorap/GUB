@@ -41,39 +41,6 @@
                 </a>
             </th>
 
-            <th scope="col">
-                Address
-                <a asp-page="/Customer"
-                   asp-route-sortColumn="Address"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
-                    <i class="fa-solid fa-angle-up"></i>
-
-                </a>
-                <a asp-page="/Customer"
-                   asp-route-sortColumn="Address"
-                   asp-route-sortOrder="desc"
-                   style="text-decoration:none">
-                    <i class="fa-solid fa-angle-down"></i>
-                </a>
-            </th>
-
-            <th scope="col">
-                City
-                <a asp-page="/Customer"
-                   asp-route-sortColumn="City"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
-                    <i class="fa-solid fa-angle-up"></i>
-
-                </a>
-                <a asp-page="/Customer"
-                   asp-route-sortColumn="City"
-                   asp-route-sortOrder="desc"
-                   style="text-decoration:none">
-                    <i class="fa-solid fa-angle-down"></i>
-                </a>
-            </th>
 
             <th scope="col">
                 Country
@@ -92,24 +59,9 @@
                 </a>
             </th>
 
-            <th scope="col">
-                Phone Number
-                <a asp-page="/Customer"
-                   asp-route-sortColumn="Phone Number"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
-                    <i class="fa-solid fa-angle-up"></i>
 
-                </a>
-                <a asp-page="/Customer"
-                   asp-route-sortColumn="Phone Number"
-                   asp-route-sortOrder="desc"
-                   style="text-decoration:none">
-                    <i class="fa-solid fa-angle-down"></i>
-                </a>
-            </th>
 
-            <th></th>
+            <th>Details</th>
         </tr>
     </thead>
     <tbody>
@@ -120,13 +72,10 @@
                 <td>@c.Id</td>
                 <td>@c.FirstName</td>
                 <td>@c.LastName</td>
-                <td>@c.Address</td>
-                <td>@c.City</td>
                 <td>@c.Country</td>
-                <td>@c.PhoneNumber</td>
 
 
-                <td><a asp-page="/Supplier" asp-route-id="@c.Id" class="btn btn-primary">View</a></td>
+                <td><a asp-page="/Customer" asp-route-id="@c.Id" class="btn btn-primary">View</a></td>
             </tr>
         }
     </tbody>
