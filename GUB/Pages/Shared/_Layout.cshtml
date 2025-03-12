@@ -57,13 +57,13 @@
             <a asp-page="/Index" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <img src="~/img/TTBlogo.png" alt="TTB logo" />
+                <img src="~/img/TTBlogo.png" alt="TTB logo" class="img-fluid" style="max-width: 200px;">
                 <h1 class="sitename">TTB </h1>
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    @* <li><a href="index.html" class="active">Home<br></a></li> *@
+                    <li><a asp-area="" asp-page="/Index" class="active">Home<br></a></li>
                     @* <li><a href="about.html">About</a></li> *@
                     @* <li><a href="courses.html">Courses</a></li> *@
                     @* <li><a href="trainers.html">Trainers</a></li> *@
@@ -77,7 +77,7 @@
                     @*         <li><a href="#">Dropdown 3</a></li> *@
                     @*         <li><a href="#">Dropdown 4</a></li> *@
                     @*     </ul> *@
-                    @* </li> *@
+                    </li>
                     @* <li><a href="contact.html">Contact</a></li> *@
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -148,28 +148,14 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-4 col-md-12 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-                    <form action="forms/newsletter.php" method="post" class="php-email-form">
-                        <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-                    </form>
-                </div>
+
 
             </div>
         </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">GPU</strong> <span>All Rights Reserved</span></p>
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Titan Trust Bank</strong> <span>All Rights Reserved</span></p>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
             </div>
         </div>
 
@@ -182,14 +168,7 @@
     <div id="preloader"></div>
 
 
-    <!-- jQuery must be loaded first -->
-    @* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> *@
 
-    @* <!-- Load jQuery Validation --> *@
-    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script> *@
-
-    @* <!-- Load jQuery Validation Unobtrusive --> *@
-    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script> *@
 
 
     <script src="~/js/jquery.min.js"></script>
@@ -204,7 +183,7 @@
     <script src="~/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
 
-   
+
 
 
     <!-- Main JS File -->
