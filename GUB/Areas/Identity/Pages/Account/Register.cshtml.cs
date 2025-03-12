@@ -3,6 +3,7 @@
 #nullable disable
 
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ using System.Text.Encodings.Web;
 
 namespace GUB.Areas.Identity.Pages.Account
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]   
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
