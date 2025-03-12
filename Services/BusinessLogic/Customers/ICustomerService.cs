@@ -1,8 +1,9 @@
 ﻿using DataAccessLayer.Models;
+using DataAccessLayer.DTOs;
 
 namespace Services.BusinessLogic.Customers;
 
 public interface ICustomerService
 {
-    List<Customer> GetCustomers(string sortColumn, string sortOrder);
+    List<CustomerDTO> GetCustomers(string sortColumn, string sortOrder);
 }

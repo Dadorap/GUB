@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.DTOs;
+using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Services.BusinessLogic.Customers
             _bankAppDataContext = bankAppDataContext;
         }
 
-        public List<Customer> GetCustomers(string sortColumn, string sortOrder)
+        public List<CustomerDTO> GetCustomers(string sortColumn, string sortOrder)
         {
             var query = _bankAppDataContext.Customers.AsQueryable();
 
@@ -57,8 +58,17 @@ namespace Services.BusinessLogic.Customers
                     query = query.OrderBy(s => s.Streetaddress);
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.Streetaddress);
-            
-            return query.ToList();
+
+            return query.Select(s => new CustomerDTO
+            {
+                Id = s.CustomerId,  // Antag att Customer har en Id-egenskap
+                FirstName = s.Givenname,
+                LastName = s.Surname,
+                Country = s.Country,
+                City = s.City,
+                PhoneNumber = s.Telephonenumber,
+                Address = s.Streetaddress
+            }).ToList();
         }
     }
 }

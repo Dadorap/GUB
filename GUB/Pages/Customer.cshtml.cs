@@ -24,13 +24,13 @@ namespace GUB.Pages
             Customers = _customerService.GetCustomers(sortColumn, sortOrder)
                 .Select(s => new CustomerViewModel
                 {
-                    Id = s.CustomerId,  
-                    FirstName = s.Givenname,
-                    LastName = s.Surname,
+                    Id = s.Id,  
+                    FirstName = s.FirstName,
+                    LastName = s.LastName,
                     Country = s.Country,
                     City = s.City,
-                    PhoneNumber = s.Telephonenumber,
-                    Address = s.Streetaddress
+                    PhoneNumber = s.PhoneNumber,
+                    Address = s.Address
                 }).ToList();
         }
     }
