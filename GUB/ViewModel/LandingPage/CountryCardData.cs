@@ -20,11 +20,13 @@ namespace GUB.ViewModel.LandingPage
                 return _cardsInfoService.GetCountryList("Sweden").Select(c => new LandingPageCardViewModel
                 {
                     Country = c.Country,
-                    Accounts = c.Accounts,
+                    Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " "),
                     Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
-                .Replace(",", " ")
-                .Replace(".", ","),
-                    Transactions = c.Transactions
+                    .Replace(",", " ")
+                    .Replace(".", ","),
+                    Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " ")
                 }).ToList();
             }
             else if (country == "Finland")
@@ -32,11 +34,13 @@ namespace GUB.ViewModel.LandingPage
                 return _cardsInfoService.GetCountryList("Finland").Select(c => new LandingPageCardViewModel
                 {
                     Country = c.Country,
-                    Accounts = c.Accounts,
+                    Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " "),
                     Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                     .Replace(",", " ")
                     .Replace(".", ","),
-                    Transactions = c.Transactions
+                    Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " ")
                 }).ToList();
             }
             else if (country == "Denmark")
@@ -44,11 +48,13 @@ namespace GUB.ViewModel.LandingPage
                 return _cardsInfoService.GetCountryList("Denmark").Select(c => new LandingPageCardViewModel
                 {
                     Country = c.Country,
-                    Accounts = c.Accounts,
+                    Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " "),
                     Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                     .Replace(",", " ")
                     .Replace(".", ","),
-                    Transactions = c.Transactions
+                    Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " ")
                 }).ToList();
             }
             else
@@ -56,11 +62,13 @@ namespace GUB.ViewModel.LandingPage
                 return _cardsInfoService.GetCountryList("Norway").Select(c => new LandingPageCardViewModel
                 {
                     Country = c.Country,
-                    Accounts = c.Accounts,
+                    Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " "),
                     Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                     .Replace(",", " ")
                     .Replace(".", ","),
-                    Transactions = c.Transactions
+                    Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                    .Replace(",", " ")
                 }).ToList();
             }
         }
