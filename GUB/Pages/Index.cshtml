@@ -1,7 +1,13 @@
 ﻿@page
+@using Newtonsoft.Json.Linq
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var client = new HttpClient();
+    var response = await client.GetStringAsync("https://zenquotes.io/api/random");
+    var json = JArray.Parse(response);
+    var quote = json[0]["q"].ToString();
+    var author = json[0]["a"].ToString();
 }
 
 
@@ -15,8 +21,12 @@
                 <div class="container">
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
-                            <h1>Events</h1>
-                            <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+                            <h1>Greater Unity Bank</h1>
+                            <p class="mb-0 p-3 border-start border-primary fs-5 fst-italic text-muted">
+                                "@quote"
+                                <span class="d-block text-end fw-bold text-dark">- @author</span>
+                            </p>
+
                         </div>
                     </div>
                 </div>

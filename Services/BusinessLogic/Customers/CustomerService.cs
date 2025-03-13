@@ -61,7 +61,7 @@ namespace Services.BusinessLogic.Customers
 
             return query.Select(s => new CustomerDTO
             {
-                Id = s.CustomerId,  // Antag att Customer har en Id-egenskap
+                Id = s.CustomerId,
                 FirstName = s.Givenname,
                 LastName = s.Surname,
                 Country = s.Country,
