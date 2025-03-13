@@ -4,5 +4,5 @@ namespace Services.BusinessLogic.LandingPage;
 
 public interface ICardsInfoService
 {
-    List<CountryDTO> GetCountryList();
+    List<CountryDTO> GetCountryList(string country);
 }

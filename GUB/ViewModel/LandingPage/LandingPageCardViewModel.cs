@@ -3,7 +3,7 @@
 public class LandingPageCardViewModel
 {
     public string Country { get; set; }
-    public int TotalAccounts { get; set; }
-    public decimal TotalBalance { get; set; }
-    public int TotalTransactions { get; set; }
+    public int Accounts { get; set; }
+    public decimal Balance { get; set; }
+    public int Transactions { get; set; }
 }

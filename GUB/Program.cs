@@ -1,8 +1,10 @@
 using DataAccessLayer.Models;
 using GUB.API;
+using GUB.ViewModel.LandingPage;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.Customers;
+using Services.BusinessLogic.LandingPage;
 
 namespace GUB
 {
@@ -25,6 +27,8 @@ namespace GUB
 
             builder.Services.AddTransient<DataInitializer>();
             builder.Services.AddTransient<ICustomerService, CustomerService>();
+            builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
+            builder.Services.AddTransient<ICountryCardData, CountryCardData>();
             builder.Services.AddTransient<ZenQuotesService>();
 
 

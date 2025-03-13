@@ -13,20 +13,21 @@ public class CardsInfoService : ICardsInfoService
     {
         _bankAppDataContext = bankAppDataContext;
     }
-    public List<CountryDTO> GetCountryList()
+    public List<CountryDTO> GetCountryList(string country)
     {
         var qurey = _bankAppDataContext.Customers
     .Include(c => c.Dispositions) 
         .ThenInclude(d => d.Account)
         .ThenInclude(t => t.Transactions)
+    .Where(c => c.Country == country)
     .AsQueryable();
 
-        return qurey.Select(c => new CountryDTO
+        return qurey.GroupBy(c => c.Country).Select(c => new CountryDTO
         {
-            Country = c.Country,
-            
-
-
+            Country = c.Key,
+            Accounts = c.Sum(c => c.Dispositions.Select(d => d.AccountId).Distinct().Count()),
+            Balance = c.Sum(s => s.Dispositions.Sum(d => d.Account.Balance)),
+            Transactions = c.Sum(s => s.Dispositions.Sum(d => d.Account.Transactions.Select(t => t.TransactionId).Distinct().Count()))
         }).ToList();
 
     }
