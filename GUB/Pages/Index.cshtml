@@ -19,13 +19,11 @@
                             <h1 class ="display-4 fw-bold text-white text-uppercase">
                                 Greater Unity Bank</h1>
                             @foreach (var q in Model.ZenQuotes){
-
                             <p class="mb-0 p-3 border-start border-primary fs-5 fst-italic text-secondary">
                                 "@q.Quote"
                                 <span class="d-block text-end fw-bold text-dark">- @q.Author</span>
                             </p>
                             }
-
                         </div>
                     </div>
                 </div>
@@ -46,7 +44,7 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="">Introduction to webdesign</a></h5>
-                                <p class="fst-italic text-center">Sunday, September 26th at 7:00 pm</p>
+                                <p class="fst-italic text-center">@Model.DateOnly</p>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
                             </div>
                         </div>
