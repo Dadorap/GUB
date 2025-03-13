@@ -4,11 +4,3 @@
 @{
 }
 
-@{
-    var client = new HttpClient();
-    var response = await client.GetStringAsync("https://zenquotes.io/api/random");
-    var json = JArray.Parse(response);
-    var quote = json[0]["q"].ToString();
-    var author = json[0]["a"].ToString();
-}
-<p>"@quote" - @author</p>

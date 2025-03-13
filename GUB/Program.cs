@@ -1,4 +1,5 @@
 using DataAccessLayer.Models;
+using GUB.API;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.Customers;
@@ -24,6 +25,8 @@ namespace GUB
 
             builder.Services.AddTransient<DataInitializer>();
             builder.Services.AddTransient<ICustomerService, CustomerService>();
+            builder.Services.AddTransient<ZenQuotesService>();
+
 
             var app = builder.Build();
 
