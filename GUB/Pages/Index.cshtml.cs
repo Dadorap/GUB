@@ -36,7 +36,5 @@ public class IndexModel : PageModel
         FinCard = _countryCardData.GetCountryData("Finland");
         NorCard = _countryCardData.GetCountryData("Norway");
         DkCard = _countryCardData.GetCountryData("Denmark");
-
-
     }
 }

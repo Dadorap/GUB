@@ -1,5 +1,6 @@
 ﻿using GUB.API;
 using Services.BusinessLogic.LandingPage;
+using System.Globalization;
 
 namespace GUB.ViewModel.LandingPage
 {
@@ -20,7 +21,9 @@ namespace GUB.ViewModel.LandingPage
                 {
                     Country = c.Country,
                     Accounts = c.Accounts,
-                    Balance = c.Balance,
+                    Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
+                .Replace(",", " ")
+                .Replace(".", ","),
                     Transactions = c.Transactions
                 }).ToList();
             }
@@ -30,7 +33,9 @@ namespace GUB.ViewModel.LandingPage
                 {
                     Country = c.Country,
                     Accounts = c.Accounts,
-                    Balance = c.Balance,
+                    Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
+                    .Replace(",", " ")
+                    .Replace(".", ","),
                     Transactions = c.Transactions
                 }).ToList();
             }
@@ -40,7 +45,9 @@ namespace GUB.ViewModel.LandingPage
                 {
                     Country = c.Country,
                     Accounts = c.Accounts,
-                    Balance = c.Balance,
+                    Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
+                    .Replace(",", " ")
+                    .Replace(".", ","),
                     Transactions = c.Transactions
                 }).ToList();
             }
@@ -50,7 +57,9 @@ namespace GUB.ViewModel.LandingPage
                 {
                     Country = c.Country,
                     Accounts = c.Accounts,
-                    Balance = c.Balance,
+                    Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
+                    .Replace(",", " ")
+                    .Replace(".", ","),
                     Transactions = c.Transactions
                 }).ToList();
             }

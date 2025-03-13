@@ -51,7 +51,10 @@
                                     <div class="p-3 d-flex flex-column align-items-center">
                                         <i class="bi bi-cash-stack h2 text-light"></i>
                                         <h6 class="mt-2">Transactions</h6>
-                                        <p class="fw-bold text-light">525550</p>
+                                        @foreach (var c in Model.SweCard)
+                                        {
+                                            <p class="fw-bold text-light">@c.Transactions</p>
+                                        }
                                     </div>
 
                                     <!-- Total Balance -->
@@ -60,7 +63,7 @@
                                         <h6 class="mt-2">Balance</h6>
                                         @foreach (var c in Model.SweCard)
                                         {
-                                            <p class="fw-bold text-light">@c.Balance</p>
+                                            <p class="fw-bold text-light">@c.Balance Sek</p>
                                         }
                                     </div>
 
@@ -68,7 +71,10 @@
                                     <div class="p-3 d-flex flex-column align-items-center">
                                         <i class="bi bi-bank h2 text-light"></i>
                                         <h6 class="mt-2">Accounts</h6>
-                                        <p class="fw-bold text-light">500</p>
+                                        @foreach (var c in Model.SweCard)
+                                        {
+                                            <p class="fw-bold text-light">@c.Accounts</p>
+                                        }
                                     </div>
                                 </div>
 
