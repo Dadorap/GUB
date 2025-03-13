@@ -1,6 +1,6 @@
-﻿namespace DataAccessLayer.DTOs;
+﻿namespace GUB.ViewModel.LandingPage;
 
-public class CountryDTO
+public class LandingPageCardViewModel
 {
     public string Country { get; set; }
     public int TotalAccounts { get; set; }

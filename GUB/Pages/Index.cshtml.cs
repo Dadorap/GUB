@@ -20,7 +20,8 @@ public class IndexModel : PageModel
 
     public async Task OnGet()
     {
-        ZenQuotes = await _zenQuotesService.GetQuotes(); DateTime now = DateTime.Now;
+        ZenQuotes = await _zenQuotesService.GetQuotes(); 
+        DateTime now = DateTime.Now;
         DateOnly = now.ToString("dddd, MMMM d 'at' HH:mm", CultureInfo.InvariantCulture);
 
 
