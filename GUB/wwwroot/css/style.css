@@ -1524,6 +1524,12 @@ pre {
   background-color: #343a40;
   border-color: #454d55; }
 
+.table .thead-green th {
+    color: #fff;
+    background-color: #5fcf80;
+    border-color: #5fcf80;
+}
+
 .table .thead-light th {
   color: #495057;
   background-color: #e9ecef;
