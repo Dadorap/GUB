@@ -5,11 +5,11 @@
 }
 
 <div class="grey-bg container-fluid">
+    @* customer details *@
     <section id="minimal-statistics">
         <div class="row">
             <div class="col-12 mt-3 mb-1">
-                <h4 class="text-uppercase">Minimal Statistics Cards</h4>
-                <p>Statistics on minimal cards.</p>
+                <h2 class="text-uppercase">Customer Details</h2>            
             </div>
         </div>
         @* row 1 *@
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>Address</h3>
-                                    <span>Kings street 65</span>
+                                    <span>Kings street 65, 851 66</span>
                                 </div>
                             </div>
                         </div>
@@ -91,18 +91,19 @@
         </div>
         @* row 2 *@
         <div class="row">
-            @* country *@
+            @* SSN *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="danger">Country</h3>
-                                    <span>Sweden</span>
+                                    <h3 class="danger">Social Security Number</h3>
+                                    <span>500315-6933</span>
                                 </div>
                                 <div class="align-self-center">
-                                    <i class="fa-solid fa-globe text-primary fa-3x"></i>
+                                    <i class="fa-solid fa-id-card text-primary fa-3x"></i>
+
                                 </div>
                             </div>
                         </div>
@@ -110,15 +111,15 @@
                 </div>
             </div>
 
-            @* city *@
+            @* country/city *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="warning">City</h3>
-                                    <span>Conversion Rate</span>
+                                    <h3 class="warning">Country/City</h3>
+                                    <span>Sweden / Härnösand</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="fa-solid fa-city text-secondary fa-3x"></i>
@@ -166,35 +167,38 @@
         </div>
     </section>
 
+    @* balance and accounts *@
     <section id="stats-subtitle">
         <div class="row">
             <div class="col-12 mt-3 mb-1">
-                <h4 class="text-uppercase">Statistics With Subtitle</h4>
-                <p>Statistics on minimal cards with Title &amp; Sub Title.</p>
+                <h2 class="text-uppercase">Accounts & Balance</h2>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xl-6 col-md-12">
-                <div class="card overflow-hidden">
-                    <div class="card-content">
-                        <div class="card-body cleartfix">
-                            <div class="media align-items-stretch">
-                                <div class="align-self-center">
-                                    <i class="icon-pencil primary font-large-2 mr-2"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h4>Total Posts</h4>
-                                    <span>Monthly blog posts</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <h1>18,000</h1>
+            @for(int i= 0; i < 5; i++){
+                @* accounts *@
+                <div class="col-xl-6 col-md-12">
+                    <div class="card overflow-hidden">
+                        <div class="card-content">
+                            <div class="card-body cleartfix">
+                                <div class="media align-items-stretch">
+                                    <div class="align-self-center">
+                                        <i class="icon-pencil primary font-large-2 mr-2"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Account ID</h4>
+                                        <span>@(i+235)</span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <h1>18,000</h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
 
             <div class="col-xl-6 col-md-12">
                 <div class="card">
@@ -204,12 +208,11 @@
                                 <div class="align-self-center">
                                     <i class="icon-speech warning font-large-2 mr-2"></i>
                                 </div>
-                                <div class="media-body">
-                                    <h4>Total Comments</h4>
-                                    <span>Monthly blog comments</span>
+                                <div class="media-body align-self-center">
+                                    <h1>Total Balance</h1>
                                 </div>
                                 <div class="align-self-center">
-                                    <h1>84,695</h1>
+                                    <h1 class="text-success">84,695</h1>
                                 </div>
                             </div>
                         </div>
@@ -218,48 +221,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xl-6 col-md-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body cleartfix">
-                            <div class="media align-items-stretch">
-                                <div class="align-self-center">
-                                    <h1 class="mr-2">$76,456.00</h1>
-                                </div>
-                                <div class="media-body">
-                                    <h4>Total Sales</h4>
-                                    <span>Monthly Sales Amount</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="icon-heart danger font-large-2"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-xl-6 col-md-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body cleartfix">
-                            <div class="media align-items-stretch">
-                                <div class="align-self-center">
-                                    <h1 class="mr-2">$36,000.00</h1>
-                                </div>
-                                <div class="media-body">
-                                    <h4>Total Cost</h4>
-                                    <span>Monthly Cost</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="icon-wallet success font-large-2"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 </div>
