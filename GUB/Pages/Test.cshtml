@@ -12,6 +12,7 @@
                 <p>Statistics on minimal cards.</p>
             </div>
         </div>
+        @* row 1 *@
         <div class="row">
             @* user *@
             <div class="col-xl-3 col-sm-6 col-12">
@@ -39,7 +40,7 @@
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="align-self-center">
-                                    <i class="fa-solid fa-envelope text-success fa-3x float-left"></i>
+                                    <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>E-Mail</h3>
@@ -50,14 +51,14 @@
                     </div>
                 </div>
             </div>
-
+            @* phone number *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="align-self-center">
-                                    <i class="fa-solid fa-mobile-screen-button text-success fa-3x float-left"></i>
+                                    <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>Phone Number</h3>
@@ -69,18 +70,18 @@
                 </div>
             </div>
 
-
+            @* address *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="align-self-center">
-                                    <i class="icon-pointer danger font-large-2 float-left"></i>
+                                    <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
                                 </div>
                                 <div class="media-body text-right">
-                                    <h3>423</h3>
-                                    <span>Total Visits</span>
+                                    <h3>Address</h3>
+                                    <span>Kings street 65</span>
                                 </div>
                             </div>
                         </div>
@@ -88,19 +89,20 @@
                 </div>
             </div>
         </div>
-
+        @* row 2 *@
         <div class="row">
+            @* country *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="danger">278</h3>
-                                    <span>New Projects</span>
+                                    <h3 class="danger">Country</h3>
+                                    <span>Sweden</span>
                                 </div>
                                 <div class="align-self-center">
-                                    <i class="icon-rocket danger font-large-2 float-right"></i>
+                                    <i class="fa-solid fa-globe text-primary fa-3x"></i>
                                 </div>
                             </div>
                         </div>
@@ -108,35 +110,53 @@
                 </div>
             </div>
 
-
+            @* city *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="warning">64.89 %</h3>
+                                    <h3 class="warning">City</h3>
                                     <span>Conversion Rate</span>
                                 </div>
                                 <div class="align-self-center">
-                                    <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                                    <i class="fa-solid fa-city text-secondary fa-3x"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @* birth date *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
                                 <div class="media-body text-left">
-                                    <h3 class="primary">423</h3>
-                                    <span>Support Tickets</span>
+                                    <h3 class="primary">Birth Date</h3>
+                                    <span>1985-03-05</span>
                                 </div>
                                 <div class="align-self-center">
-                                    <i class="icon-support primary font-large-2 float-right"></i>
+                                    <i class="fa-solid fa-calendar-check text-success fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="primary">Gender</h3>
+                                    <span>Female</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-venus-mars text-warning fa-3x"></i>
                                 </div>
                             </div>
                         </div>
@@ -145,89 +165,84 @@
             </div>
         </div>
 
+        @* row 3 *@
         <div class="row">
+            @* user *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="primary">278</h3>
-                                    <span>New Posts</span>
-                                </div>
                                 <div class="align-self-center">
-                                    <i class="icon-book-open primary font-large-2 float-right"></i>
+                                    <i class="fa-solid fa-user  text-success fa-3x float-left"></i>
                                 </div>
-                            </div>
-                            <div class="progress mt-1 mb-0" style="height: 7px;">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="warning">156</h3>
-                                    <span>New Comments</span>
+                                <div class="media-body text-right">
+                                    <h3>Full Name</h3>
+                                    <span>Hanna Stormo</span>
                                 </div>
-                                <div class="align-self-center">
-                                    <i class="icon-bubbles warning font-large-2 float-right"></i>
-                                </div>
-                            </div>
-                            <div class="progress mt-1 mb-0" style="height: 7px;">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            @* Emial *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="success">64.89 %</h3>
-                                    <span>Bounce Rate</span>
-                                </div>
                                 <div class="align-self-center">
-                                    <i class="icon-cup success font-large-2 float-right"></i>
+                                    <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
                                 </div>
-                            </div>
-                            <div class="progress mt-1 mb-0" style="height: 7px;">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="media-body text-right">
+                                    <h3>E-Mail</h3>
+                                    <span>HannaStormo@rhyta.com</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @* phone number *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
                             <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="danger">423</h3>
-                                    <span>Total Visits</span>
-                                </div>
                                 <div class="align-self-center">
-                                    <i class="icon-direction danger font-large-2 float-right"></i>
+                                    <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>Phone Number</h3>
+                                    <span>076-558 88 88</span>
                                 </div>
                             </div>
-                            <div class="progress mt-1 mb-0" style="height: 7px;">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* address *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>Address</h3>
+                                    <span>Kings street 65</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 
     <section id="stats-subtitle">
