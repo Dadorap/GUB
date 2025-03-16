@@ -39,7 +39,7 @@ namespace GUB.Pages
                     City = s.City,
                     PhoneNumber = s.PhoneNumber,
                     Address = s.Address
-                }).ToList();
+                }).Take(15).ToList();
         }
     }
 }

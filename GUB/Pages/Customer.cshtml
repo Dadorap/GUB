@@ -89,9 +89,6 @@
                                                             <i class="fa-solid fa-angle-down"></i>
                                                         </a>
                                                     </th>
-
-
-
                                                     <th>Details</th>
                                                 </tr>
                                             </thead>
@@ -105,8 +102,6 @@
                                                         <td>@c.FirstName</td>
                                                         <td>@c.LastName</td>
                                                         <td>@c.Country</td>
-
-
                                                         <td><a asp-page="/Customer" asp-route-id="@c.Id" class="btn btn-primary">View</a></td>
                                                     </tr>
                                                 }
@@ -117,6 +112,9 @@
                             </div>
                         </div>
                     </div>
+                    <button class="btn btn-success btn-lg d-block mx-auto">
+                        <span>Load more...</span>
+                    </button>
                 </div>
             </div>
         </div>
