@@ -31,3 +31,7 @@ thead {
     top: 0;
     position: sticky;
 }
+
+thead .table-header {
+    background-color: #5fcf80 !important;
+}
