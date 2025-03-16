@@ -19,7 +19,7 @@ public class CountryCardData : ICountryCardData
             return _cardsInfoService.GetCountryList("Sweden").Select(c => new LandingPageCardViewModel
             {
                 Country = c.Country,
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " "),
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
@@ -33,7 +33,7 @@ public class CountryCardData : ICountryCardData
             return _cardsInfoService.GetCountryList("Finland").Select(c => new LandingPageCardViewModel
             {
                 Country = c.Country,
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " "),
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
@@ -47,7 +47,7 @@ public class CountryCardData : ICountryCardData
             return _cardsInfoService.GetCountryList("Denmark").Select(c => new LandingPageCardViewModel
             {
                 Country = c.Country,
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " "),
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
@@ -61,7 +61,7 @@ public class CountryCardData : ICountryCardData
             return _cardsInfoService.GetCountryList("Norway").Select(c => new LandingPageCardViewModel
             {
                 Country = c.Country,
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " "),
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")

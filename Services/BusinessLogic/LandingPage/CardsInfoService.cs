@@ -25,7 +25,10 @@ public class CardsInfoService : ICardsInfoService
         return qurey.GroupBy(c => c.Country).Select(c => new CountryDTO
         {
             Country = c.Key,
-            Accounts = c.Sum(c => c.Dispositions.Select(d => d.AccountId).Distinct().Count()),
+            Customers = c.Where(c => c.Country == country)
+            .Select(c => c.CustomerId) 
+            .Distinct() 
+            .Count(),
             Balance = c.Sum(s => s.Dispositions.Sum(d => d.Account.Balance)),
             Transactions = c.Sum(s => s.Dispositions.Sum(d => d.Account.Transactions.Select(t => t.TransactionId).Distinct().Count()))
         }).ToList();
