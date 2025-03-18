@@ -21,12 +21,14 @@ namespace Services.BusinessLogic.Customers
 
         public List<CustomerDTO> GetCustomers( string sortColumn, string sortOrder, int pageNo, string q)
         {
+            var pageSize = 9;
             var query = _bankAppDataContext.Customers.AsQueryable();
 
             if(!string.IsNullOrEmpty(q))
             {
                 query = query.Where(n => n.Givenname.Contains(q) || n.Surname.Contains(q) || n.City.Contains(q));
             }
+
 
             if (sortColumn == "First Name")
                 if (sortOrder == "asc")
@@ -63,6 +65,10 @@ namespace Services.BusinessLogic.Customers
                     query = query.OrderBy(s => s.Streetaddress);
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.Streetaddress);
+
+            var firstItemIndex = (pageNo - 1) * pageSize;
+            query = query.Skip(firstItemIndex);
+            query = query.Take(pageSize);
 
             return query.Select(s => new CustomerDTO
             {

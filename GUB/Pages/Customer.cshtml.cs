@@ -32,6 +32,10 @@ namespace GUB.Pages
 
         public async Task OnGet(string sortColumn, string sortOrder,int pageNo, string q)
         {
+
+            if (pageNo == 0)
+                pageNo = 1;
+
             Q = q; 
             SortColumn = sortColumn;
             SortOrder = sortOrder;
@@ -49,7 +53,7 @@ namespace GUB.Pages
                     Address = s.Address,
                     Country = s.Country,
                     City = s.City,
-                }).Take(15).ToList();
+                }).ToList();
         }
     }
 }
