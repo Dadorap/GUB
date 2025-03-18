@@ -87,9 +87,12 @@
                     @if (User.IsInRole("Cashier"))
                     {
                         <li>
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Customer">Customers</a>
+                            <a class="nav-link text-dark" asp-page="/Customer">Customers</a>
                         </li>
-                    }                    @if (User.IsInRole("Admin"))
+                        <li></li>
+
+                    }                    
+                    @if (User.IsInRole("Admin"))
                     {
                         <li>
                             <a  asp-area="Identity" asp-page="/Account/Register">Register</a>
