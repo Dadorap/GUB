@@ -47,11 +47,11 @@ namespace Services.BusinessLogic.Customers
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.City);
 
-            if (sortColumn == "Phone")
+            if (sortColumn == "SSN")
                 if (sortOrder == "asc")
-                    query = query.OrderBy(s => s.Telephonenumber);
+                    query = query.OrderBy(s => s.NationalId);
                 else if (sortOrder == "desc")
-                    query = query.OrderByDescending(s => s.Telephonenumber);
+                    query = query.OrderByDescending(s => s.NationalId);
 
             if (sortColumn == "Address")
                 if (sortOrder == "asc")
@@ -66,7 +66,7 @@ namespace Services.BusinessLogic.Customers
                 LastName = s.Surname,
                 Country = s.Country,
                 City = s.City,
-                PhoneNumber = s.Telephonenumber,
+                SSN = s.NationalId,
                 Address = s.Streetaddress
             }).ToList();
         }

@@ -33,12 +33,12 @@ namespace GUB.Pages
                 .Select(s => new CustomerViewModel
                 {
                     Id = s.Id,
+                    SSN = s.SSN,
                     FirstName = s.FirstName,
                     LastName = s.LastName,
+                    Address = s.Address,
                     Country = s.Country,
                     City = s.City,
-                    PhoneNumber = s.PhoneNumber,
-                    Address = s.Address
                 }).Take(15).ToList();
         }
     }
