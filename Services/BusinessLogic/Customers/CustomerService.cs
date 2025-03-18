@@ -19,9 +19,14 @@ namespace Services.BusinessLogic.Customers
             _bankAppDataContext = bankAppDataContext;
         }
 
-        public List<CustomerDTO> GetCustomers(string sortColumn, string sortOrder)
+        public List<CustomerDTO> GetCustomers( string sortColumn, string sortOrder, int pageNo, string q)
         {
             var query = _bankAppDataContext.Customers.AsQueryable();
+
+            if(!string.IsNullOrEmpty(q))
+            {
+                query = query.Where(n => n.Givenname.Contains(q) || n.Surname.Contains(q) || n.City.Contains(q));
+            }
 
             if (sortColumn == "First Name")
                 if (sortOrder == "asc")

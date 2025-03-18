@@ -42,7 +42,7 @@
                                     </div>
                                     <!--end of col-->
                                     <div class="col text-dark">
-                                        <input class="form-control form-control-lg form-control-borderless border-0" type="search" placeholder="Search First Name/Last Name/city">
+                                        <input asp-for="@Model.Q" class="form-control form-control-lg form-control-borderless border-0" type="search" placeholder="Search First Name/Last Name/city">
                                     </div>
                                     <!--end of col-->
                                     <div class="col-auto">
@@ -87,6 +87,7 @@
                                                     <th scope="col">
                                                         First Name
                                                         <a asp-page="/Customer"
+                                                           asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="First Name"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
@@ -94,6 +95,7 @@
 
                                                         </a>
                                                         <a asp-page="/Customer"
+                                                           asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="First Name"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
@@ -104,6 +106,7 @@
                                                     <th scope="col">
                                                         Last Name
                                                         <a asp-page="/Customer"
+                                                           asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="Last Name"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
@@ -111,6 +114,7 @@
 
                                                         </a>
                                                         <a asp-page="/Customer"
+                                                           asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="Last Name"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
@@ -138,6 +142,7 @@
                                                     <th scope="col">
                                                         City
                                                         <a asp-page="/Customer"
+                                                           asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="City"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
@@ -145,6 +150,7 @@
 
                                                         </a>
                                                         <a asp-page="/Customer"
+                                                           asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="City"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
@@ -188,6 +194,37 @@
                                                         <td><a asp-page="/Customer" asp-route-id="@c.Id" class="btn btn-primary">View</a></td>
                                                     </tr>
                                                 }
+                                                <tr>
+                                                    <td>
+                                                        @if (Model.CurrentPage != 1)
+                                                        {
+                                                            <a class="btn btn-success"
+                                                               asp-page="/Customer"
+                                                               asp-route-q="@Model.Q"
+                                                               asp-route-sortColumn="@Model.SortColumn"
+                                                               asp-route-sortOrder="@Model.SortOrder"
+                                                               asp-route-pageNo="@(Model.CurrentPage-1)">
+                                                                Prev
+                                                            </a>
+                                                        }
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <a class="btn btn-success"
+                                                           asp-page="/Customer"
+                                                           asp-route-q="@Model.Q"
+                                                           asp-route-sortColumn="@Model.SortColumn"
+                                                           asp-route-sortOrder="@Model.SortOrder"
+                                                           asp-route-pageNo="@(Model.CurrentPage+1)">
+                                                            Next
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -195,9 +232,6 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-success btn-lg d-block mx-auto">
-                        <span>Load more...</span>
-                    </button>
                 </div>
            
             </div>

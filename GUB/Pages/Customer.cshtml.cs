@@ -24,12 +24,22 @@ namespace GUB.Pages
 
         public List<CustomerViewModel> Customers { get; set; }
         public List<ZenQuotesDTO> ZenQuotes { get; set; } = new();
+        public string SortColumn { get; set; }
+        public string SortOrder { get; set; }
+        public int CurrentPage { get; set; }
+        public string Q { get; set; }
 
 
-        public async Task OnGet(string sortColumn, string sortOrder)
+        public async Task OnGet(string sortColumn, string sortOrder,int pageNo, string q)
         {
+            Q = q; 
+            SortColumn = sortColumn;
+            SortOrder = sortOrder;
+            CurrentPage = pageNo;
+
+
             ZenQuotes = await _zenQuotesService.GetQuotes();
-            Customers = _customerService.GetCustomers(sortColumn, sortOrder)
+            Customers = _customerService.GetCustomers(SortColumn, SortOrder, pageNo,  q)
                 .Select(s => new CustomerViewModel
                 {
                     Id = s.Id,
