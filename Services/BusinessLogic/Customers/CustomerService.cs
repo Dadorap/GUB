@@ -19,6 +19,11 @@ namespace Services.BusinessLogic.Customers
             _bankAppDataContext = bankAppDataContext;
         }
 
+        public CustomerDetailsDTO GetCustomer(int customerId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<CustomerDTO> GetCustomers( string sortColumn, string sortOrder, int pageNo, string q)
         {
             var pageSize = 9;
