@@ -1,5 +1,5 @@
 ﻿@page
-@model GUB.Pages.CustomerModel
+@model GUB.Pages.Customers.CustomerModel
 @{
 }
 
@@ -193,7 +193,7 @@
                                                         <td>@c.Address</td>
                                                         <td>@c.City</td>
                                                         <td>@c.Country</td>
-                                                        <td><a asp-page="/Test" asp-route-id="@c.Id" class="btn btn-primary">View</a></td>
+                                                        <td><a asp-page="/Customers/CustomerDetails" asp-route-id="@c.Id" class="btn btn-primary">View</a></td>
                                                     </tr>
                                                 }
                                                 <tr>
