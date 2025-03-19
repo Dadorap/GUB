@@ -16,11 +16,12 @@ public class CustomerDetailsDTO
     public string CustomerEmail { get; set; }
     public string CustomerPhone { get; set; }
     public string CustomerCity { get; set; }
-    public string CustomerContry { get; set; }
+    public string CustomerCountry { get; set; }
     public string CustomerAddress { get; set; }
     public string CustomerPostalCode { get; set; }
     public string SocialSecurityNumber { get; set; }
 
+    public List<int> AccountId { get; set; }
     public decimal Balance { get; set; }
     public int Transactions { get; set; }
 }

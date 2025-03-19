@@ -40,11 +40,12 @@ namespace Services.BusinessLogic.Customers
                 CustomerPhone = q.Telephonenumber,
                 CustomerCity = q.City,
                 CustomerAddress = q.Streetaddress,
-                CustomerContry = q.Country,
+                CustomerCountry = q.Country,
                 CustomerPostalCode = q.Zipcode,
                 Balance = q.Dispositions != null
                         ? q.Dispositions.Sum(d => d.Account != null ? d.Account.Balance : 0)
                         : 0,
+                AccountId = q.Dispositions.Select(d => d.AccountId).ToList(),
             };
 
             return customer;
