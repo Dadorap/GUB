@@ -31,7 +31,8 @@ namespace Services.BusinessLogic.Customers
             var customer = new CustomerDetailsDTO
             {
                 CustomerId = q.CustomerId,
-                CustomerName = $"{q.Givenname} {q.Surname}",
+                CustomerFirstName = q.Givenname,
+                CustomerLastName =  q.Surname ,
                 SocialSecurityNumber = q.NationalId,
                 CustomerGender = q.Gender,
                 CustomerBirthDate = q.Birthday.Value,

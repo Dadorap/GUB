@@ -1,6 +1,7 @@
 using DataAccessLayer.DTOs;
 using GUB.API;
 using GUB.ViewModel.LandingPage;
+using GUB.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Globalization;
 
@@ -19,7 +20,7 @@ public class IndexModel : PageModel
     }
 
 
-    public List<ZenQuotesDTO> ZenQuotes { get; set; } = new();
+    public List<ZenQuotesViewModel> ZenQuotes { get; set; } = new();
     public List<LandingPageCardViewModel> SweCard { get; set; } = new();
     public List<LandingPageCardViewModel> FinCard { get; set; } = new();
     public List<LandingPageCardViewModel> NorCard { get; set; } = new();
@@ -28,7 +29,12 @@ public class IndexModel : PageModel
 
     public async Task OnGet()
     {
-        ZenQuotes = await _zenQuotesService.GetQuotes();
+        ZenQuotes = (await _zenQuotesService.GetQuotes())
+            .Select(q => new ZenQuotesViewModel
+            {
+                Quote = q.Quote,
+                Author = q.Author
+            }).ToList();
         DateTime now = DateTime.Now;
         DateOnly = now.ToString("dddd, MMMM d 'at' HH:mm", CultureInfo.InvariantCulture);
 

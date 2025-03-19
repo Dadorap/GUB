@@ -1,6 +1,7 @@
 using DataAccessLayer.DTOs;
 using GUB.API;
 using GUB.ViewModel.Customers;
+using GUB.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,27 +24,33 @@ namespace GUB.Pages
         }
 
         public List<CustomerViewModel> Customers { get; set; }
-        public List<ZenQuotesDTO> ZenQuotes { get; set; } = new();
+        public List<ZenQuotesViewModel> ZenQuotes { get; set; }
         public string SortColumn { get; set; }
         public string SortOrder { get; set; }
         public int CurrentPage { get; set; }
         public string Q { get; set; }
 
 
-        public async Task OnGet(string sortColumn, string sortOrder,int pageNo, string q)
+        public async Task OnGet(string sortColumn, string sortOrder, int pageNo, string q)
         {
 
             if (pageNo == 0)
                 pageNo = 1;
 
-            Q = q; 
+            Q = q;
             SortColumn = sortColumn;
             SortOrder = sortOrder;
             CurrentPage = pageNo;
 
 
-            ZenQuotes = await _zenQuotesService.GetQuotes();
-            Customers = _customerService.GetCustomers(SortColumn, SortOrder, pageNo,  q)
+            ZenQuotes = (await _zenQuotesService.GetQuotes())
+                        .Select(q => new ZenQuotesViewModel
+                        {
+                            Quote = q.Quote,
+                            Author = q.Author
+                        }).ToList();
+
+            Customers = _customerService.GetCustomers(SortColumn, SortOrder, pageNo, q)
                 .Select(s => new CustomerViewModel
                 {
                     Id = s.Id,
