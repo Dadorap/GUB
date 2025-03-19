@@ -19,11 +19,11 @@ namespace GUB.Pages.Customers
         public string Address { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public string PostalCode { get; set; }
-        public string SSN { get; set; }
+        public string SSN { get; set; } 
         public DateOnly BirthDate { get; set; }
         public string Gender { get; set; }
         public decimal Balance { get; set; }
+        public List<int> Account { get; set; }
 
 
 
@@ -36,13 +36,14 @@ namespace GUB.Pages.Customers
             FullName = c.CustomerFirstName + " " + c.CustomerLastName;
             Email = c.CustomerEmail;
             PhoneNumber = c.CustomerPhone;
-            Address = c.CustomerAddress + " " + c.CustomerPostalCode;
-            SSN = c.SocialSecurityNumber;
+            Address = c.CustomerAddress + ", " + c.CustomerPostalCode;
+            SSN = string.IsNullOrWhiteSpace(c.SocialSecurityNumber) ? "Missing SSN" : c.SocialSecurityNumber;
             Country = c.CustomerCountry;
             City = c.CustomerCity;
             BirthDate = c.CustomerBirthDate;
             Gender = c.CustomerGender;
             Balance = c.Balance;
+            Account = c.AccountId;
 
         }
     }

@@ -10,7 +10,7 @@
                 <h2 class="text-uppercase ">Customer Details</h2>
             </div>
             <div>
-                <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customer">&lArr; Back </a>
+                 <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
             </div>
         </div>
         @* row 1 *@
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>E-Mail</h3>
-                                    <span>HannaStormo@rhyta.com</span>
+                                    <span>@Model.Email</span>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>Phone Number</h3>
-                                    <span>076-558 88 88</span>
+                                    <span>@Model.PhoneNumber</span>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="media-body text-right">
                                     <h3>Address</h3>
-                                    <span>Kings street 65, 851 66</span>
+                                    <span>@Model.Address</span>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                             <div class="media d-flex">
                                 <div class="media-body text-left">
                                     <h3 class="danger">Social Security Number</h3>
-                                    <span>500315-6933</span>
+                                    <span>@Model.SSN</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="fa-solid fa-id-card text-primary fa-3x"></i>
@@ -120,7 +120,7 @@
                             <div class="media d-flex">
                                 <div class="media-body text-left">
                                     <h3 class="warning">Country/City</h3>
-                                    <span>Sweden / Härnösand</span>
+                                    <span>@Model.Country / @Model.City</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="fa-solid fa-city text-secondary fa-3x"></i>
@@ -138,7 +138,7 @@
                             <div class="media d-flex">
                                 <div class="media-body text-left">
                                     <h3 class="primary">Birth Date</h3>
-                                    <span>1985-03-05</span>
+                                    <span>@Model.BirthDate</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="fa-solid fa-calendar-check text-success fa-3x"></i>
@@ -155,7 +155,7 @@
                             <div class="media d-flex">
                                 <div class="media-body text-left">
                                     <h3 class="primary">Gender</h3>
-                                    <span>Female</span>
+                                    <span>@Model.Gender</span>
                                 </div>
                                 <div class="align-self-center">
                                     <i class="fa-solid fa-venus-mars text-warning fa-3x"></i>
@@ -177,30 +177,28 @@
         </div>
 
         <div class="row">
-            @for (int i = 0; i < 5; i++)
-            {
-                @* accounts *@
-                <div class="col-xl-6 col-md-12">
-                    <div class="card overflow-hidden">
-                        <div class="card-content">
-                            <div class="card-body cleartfix">
-                                <div class="media align-items-stretch">
-                                    <div class="align-self-center">
-                                        <i class="icon-pencil primary font-large-2 mr-2"></i>
-                                    </div>
+            @* accounts *@
+            <div class="col-xl-6 col-md-12">
+                <div class="card overflow-hidden">
+                    <div class="card-content">
+                        <div class="card-body cleartfix">
+                            @foreach (var acc in Model.Account)
+                            {
+
+                                <div class="media align-items-stretch border-bottom">
                                     <div class="media-body">
                                         <h4>Account ID</h4>
-                                        <span>@(i + 235)</span>
+                                        <span>@acc</span>
                                     </div>
                                     <div class="align-self-center">
-                                        <h1>18,000</h1>
+                                        <h4>@Model.Balance</h4>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
-            }
+            </div>
 
             <div class="col-xl-6 col-md-12">
                 <div class="card">
@@ -214,7 +212,7 @@
                                     <h1>Total Balance</h1>
                                 </div>
                                 <div class="align-self-center">
-                                    <h1 class="text-success">84,695</h1>
+                                    <h1 class="text-success">@Model.Balance</h1>
                                 </div>
                             </div>
                         </div>

@@ -1,9 +1,7 @@
-using DataAccessLayer.DTOs;
-using GUB.API;
+ b using GUB.API;
 using GUB.ViewModel.Customers;
 using GUB.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.Customers;
 
@@ -34,13 +32,13 @@ namespace GUB.Pages.Customers
         public async Task OnGet(string sortColumn, string sortOrder, int pageNo, string q)
         {
 
-            if (pageNo == 0)
-                pageNo = 1;
-
             Q = q;
             SortColumn = sortColumn;
             SortOrder = sortOrder;
+            if (pageNo == 0)
+                pageNo = 1;
             CurrentPage = pageNo;
+
 
 
             ZenQuotes = (await _zenQuotesService.GetQuotes())

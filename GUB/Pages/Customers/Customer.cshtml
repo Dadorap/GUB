@@ -71,14 +71,14 @@
                                                     @* SSN *@
                                                     <th scope="col">
                                                         SSN
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-sortColumn="SSN"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-sortColumn="SSN"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
@@ -88,7 +88,7 @@
                                                     @* FIRST NAME *@
                                                     <th scope="col">
                                                         First Name
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="First Name"
                                                            asp-route-sortOrder="asc"
@@ -96,7 +96,7 @@
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="First Name"
                                                            asp-route-sortOrder="desc"
@@ -126,14 +126,14 @@
                                                     @* ADDRESS *@
                                                     <th scope="col">
                                                         Address
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-sortColumn="Address"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-sortColumn="Address"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
@@ -143,7 +143,7 @@
                                                     @* city *@
                                                     <th scope="col">
                                                         City
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="City"
                                                            asp-route-sortOrder="asc"
@@ -151,7 +151,7 @@
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="City"
                                                            asp-route-sortOrder="desc"
@@ -201,7 +201,7 @@
                                                         @if (Model.CurrentPage != 1)
                                                         {
                                                             <a class="btn btn-success"
-                                                               asp-page="/Customer"
+                                                               asp-page="/Customers/Customer"
                                                                asp-route-q="@Model.Q"
                                                                asp-route-sortColumn="@Model.SortColumn"
                                                                asp-route-sortOrder="@Model.SortOrder"
@@ -218,7 +218,7 @@
                                                     <td></td>
                                                     <td>
                                                         <a class="btn btn-success"
-                                                           asp-page="/Customer"
+                                                           asp-page="/Customers/Customer"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="@Model.SortColumn"
                                                            asp-route-sortOrder="@Model.SortOrder"
