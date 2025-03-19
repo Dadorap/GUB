@@ -182,16 +182,16 @@
                 <div class="card overflow-hidden">
                     <div class="card-content">
                         <div class="card-body cleartfix">
+
                             @foreach (var acc in Model.Account)
                             {
-
                                 <div class="media align-items-stretch border-bottom">
                                     <div class="media-body">
                                         <h4>Account ID</h4>
-                                        <span>@acc</span>
+                                        <span>@acc.AccountId</span>
                                     </div>
                                     <div class="align-self-center">
-                                        <h4>@Model.Balance</h4>
+                                        <h4>@acc.Balance</h4>
                                     </div>
                                 </div>
                             }
@@ -212,7 +212,7 @@
                                     <h1>Total Balance</h1>
                                 </div>
                                 <div class="align-self-center">
-                                    <h1 class="text-success">@Model.Balance</h1>
+                                    <h1 class="text-success">@Model.TotalBalance</h1>
                                 </div>
                             </div>
                         </div>

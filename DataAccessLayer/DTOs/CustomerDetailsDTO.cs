@@ -20,8 +20,8 @@ public class CustomerDetailsDTO
     public string CustomerAddress { get; set; }
     public string CustomerPostalCode { get; set; }
     public string SocialSecurityNumber { get; set; }
+    public decimal TotalBalance { get; set; }
+    public List<AccountBalanceDTO> Accounts { get; set; } 
 
-    public List<int> AccountId { get; set; }
-    public decimal Balance { get; set; }
     public int Transactions { get; set; }
 }

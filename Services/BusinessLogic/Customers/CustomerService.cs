@@ -32,7 +32,7 @@ namespace Services.BusinessLogic.Customers
             {
                 CustomerId = q.CustomerId,
                 CustomerFirstName = q.Givenname,
-                CustomerLastName =  q.Surname ,
+                CustomerLastName = q.Surname,
                 SocialSecurityNumber = q.NationalId,
                 CustomerGender = q.Gender,
                 CustomerBirthDate = q.Birthday.Value,
@@ -42,10 +42,17 @@ namespace Services.BusinessLogic.Customers
                 CustomerAddress = q.Streetaddress,
                 CustomerCountry = q.Country,
                 CustomerPostalCode = q.Zipcode,
-                Balance = q.Dispositions != null
+                TotalBalance = q.Dispositions != null
                         ? q.Dispositions.Sum(d => d.Account != null ? d.Account.Balance : 0)
                         : 0,
-                AccountId = q.Dispositions.Select(d => d.AccountId).ToList(),
+                Accounts = q.Dispositions?
+                           .Where(d => d.Account != null)
+                           .Select(d => new AccountBalanceDTO
+                           {
+                               AccountId = d.Account.AccountId,
+                               Balance = d.Account.Balance
+                           })
+            .ToList() ?? new()
             };
 
             return customer;

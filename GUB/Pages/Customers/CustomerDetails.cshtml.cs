@@ -1,3 +1,4 @@
+using GUB.ViewModel.Customers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.Customers;
@@ -22,8 +23,9 @@ namespace GUB.Pages.Customers
         public string SSN { get; set; } 
         public DateOnly BirthDate { get; set; }
         public string Gender { get; set; }
-        public decimal Balance { get; set; }
-        public List<int> Account { get; set; }
+        public decimal TotalBalance { get; set; }
+        public List<AccountBalanceViewModel> Account { get; set; }
+        
 
 
 
@@ -42,8 +44,12 @@ namespace GUB.Pages.Customers
             City = c.CustomerCity;
             BirthDate = c.CustomerBirthDate;
             Gender = c.CustomerGender;
-            Balance = c.Balance;
-            Account = c.AccountId;
+            TotalBalance = c.TotalBalance;
+            Account = c.Accounts.Select(a => new AccountBalanceViewModel
+            {
+                AccountId = a.AccountId,
+                Balance = a.Balance,
+            }).ToList();
 
         }
     }
