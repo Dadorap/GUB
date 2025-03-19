@@ -190,14 +190,15 @@
                                         <h4>Account ID</h4>
                                         <span>@acc.AccountId</span>
                                     </div>
-                                    <div class="media-body flex-column d-flex align-items-start justify-content-evenly">
-                                        <span class="text-success">
+                                    <div class="media-body d-flex flex-column align-items-start justify-content-evenly">
+                                        <a asp-page="/Customers/Deposit" class="text-success text-decoration-none">
                                             <i class="fa-solid fa-circle-plus"></i> Deposit
-                                        </span>                                      
-                                        <span class="text-danger pointer-event">
+                                        </a>
+                                        <a asp-page="/Customers/Withdraw" class="text-danger text-decoration-none">
                                             <i class="fa-solid fa-circle-minus"></i> Withdraw
-                                        </span>
+                                        </a>
                                     </div>
+
                                     <div class="text-end">
                                         <h4>Balance</h4>
                                         <span class="text-green fs-3">@acc.Balance</span>
