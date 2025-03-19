@@ -190,8 +190,9 @@
                                         <h4>Account ID</h4>
                                         <span>@acc.AccountId</span>
                                     </div>
-                                    <div class="align-self-center">
-                                        <h4>@acc.Balance</h4>
+                                    <div class="text-end">
+                                        <h4>Balance</h4>
+                                        <span class="text-green fs-3">@acc.Balance</span>
                                     </div>
                                 </div>
                             }
@@ -209,10 +210,10 @@
                                     <i class="icon-speech warning font-large-2 mr-2"></i>
                                 </div>
                                 <div class="media-body align-self-center">
-                                    <h1>Total Balance</h1>
+                                    <h1 class="font-weight-bolder">Total Balance</h1>
                                 </div>
                                 <div class="align-self-center">
-                                    <h1 class="text-success">@Model.TotalBalance</h1>
+                                    <h1 class="text-success fw-bolder">@Model.TotalBalance</h1>
                                 </div>
                             </div>
                         </div>
