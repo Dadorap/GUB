@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Services.BusinessLogic.Customers
 {
-    
+
     public class CustomerService : ICustomerService
     {
         private readonly BankAppDataContext _bankAppDataContext;
@@ -21,15 +21,40 @@ namespace Services.BusinessLogic.Customers
 
         public CustomerDetailsDTO GetCustomer(int customerId)
         {
-            throw new NotImplementedException();
+            var q = _bankAppDataContext.Customers
+                .Include(c => c.Dispositions)
+                .ThenInclude(d => d.Account)
+                .First(q => q.CustomerId == customerId);
+
+
+
+            var customer = new CustomerDetailsDTO
+            {
+                CustomerId = q.CustomerId,
+                CustomerName = $"{q.Givenname} {q.Surname}",
+                SocialSecurityNumber = q.NationalId,
+                CustomerGender = q.Gender,
+                CustomerBirthDate = q.Birthday.Value,
+                CustomerEmail = q.Emailaddress,
+                CustomerPhone = q.Telephonenumber,
+                CustomerCity = q.City,
+                CustomerAddress = q.Streetaddress,
+                CustomerContry = q.Country,
+                CustomerPostalCode = q.Zipcode,
+                Balance = q.Dispositions != null
+                        ? q.Dispositions.Sum(d => d.Account != null ? d.Account.Balance : 0)
+                        : 0,
+            };
+
+            return customer;
         }
 
-        public List<CustomerDTO> GetCustomers( string sortColumn, string sortOrder, int pageNo, string q)
+        public List<CustomerDTO> GetCustomers(string sortColumn, string sortOrder, int pageNo, string q)
         {
             var pageSize = 9;
             var query = _bankAppDataContext.Customers.AsQueryable();
 
-            if(!string.IsNullOrEmpty(q))
+            if (!string.IsNullOrEmpty(q))
             {
                 query = query.Where(n => n.Givenname.Contains(q) || n.Surname.Contains(q) || n.City.Contains(q));
             }
