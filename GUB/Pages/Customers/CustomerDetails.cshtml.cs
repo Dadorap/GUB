@@ -48,6 +48,7 @@ namespace GUB.Pages.Customers
             Account = c.Accounts.Select(a => new AccountBalanceViewModel
             {
                 AccountId = a.AccountId,
+                AccountNumber = a.AccountNumber,
                 Balance = a.Balance,
             }).ToList();
 

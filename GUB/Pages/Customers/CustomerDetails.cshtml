@@ -190,11 +190,11 @@
                             {
                                 <div class="media align-items-stretch border-bottom">
                                     <div class="media-body">
-                                        <h4>Account ID</h4>
-                                        <span>@acc.AccountId</span>
+                                        <h4>Account Number</h4>
+                                        <span>@acc.AccountNumber</span>
                                     </div>
                                     <div class="media-body d-flex flex-column align-items-start justify-content-evenly">
-                                        <a asp-page="/Customers/Deposit" class="text-success text-decoration-none">
+                                        <a asp-page="/Customers/Deposit" asp-route-id="@acc.AccountId" class="text-success text-decoration-none">
                                             <i class="fa-solid fa-circle-plus"></i> Deposit
                                         </a>
                                         <a asp-page="/Customers/Withdraw" class="text-danger text-decoration-none">

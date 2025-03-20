@@ -49,7 +49,8 @@ namespace Services.BusinessLogic.Customers
                            .Where(d => d.Account != null)
                            .Select(d => new AccountBalanceDTO
                            {
-                               AccountId = d.Account.AccountId,
+                               AccountId = d.AccountId,
+                               AccountNumber = d.Account.AccountId,
                                Balance = d.Account.Balance
                            })
             .ToList() ?? new()

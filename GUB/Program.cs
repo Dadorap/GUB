@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.Customers;
 using Services.BusinessLogic.LandingPage;
+using Services.BusinessLogic.Transactions;
 
 namespace GUB
 {
@@ -30,6 +31,7 @@ namespace GUB
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
             builder.Services.AddTransient<ICountryCardData, CountryCardData>();
             builder.Services.AddTransient<ZenQuotesService>();
+            builder.Services.AddTransient<IAccountService, AccountService>();
 
 
             var app = builder.Build();
