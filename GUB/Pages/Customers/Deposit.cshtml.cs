@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.Transactions;
+using System.ComponentModel.DataAnnotations;
 
 namespace GUB.Pages.Customers
 {
+    [BindProperties]
     public class DepositModel : PageModel
     {
         private readonly IAccountService _accountService;
@@ -13,15 +15,36 @@ namespace GUB.Pages.Customers
             _accountService = accountService;
         }
 
-        public int Id { get; set; }
         public int AccountNumber { get; set; }
         public decimal Balance { get; set; }
+
+        [Range(100, 10000)]
+        public decimal Amount { get; set; }
+        public DateTime DepositDate { get; set; }
+
+        [Required]
+        [MinLength(5)]
+        [MaxLength(250)]
+        public string Comment { get; set; }
+
         public void OnGet(int id)
         {
+            DepositDate = DateTime.Now;
             var acc = _accountService.GetAccount(id);
-            Id = acc.AccountId;
-            AccountNumber = acc.AccountNumber;
+            AccountNumber = acc.AccountId;
             Balance = acc.Balance;
+
+        }
+
+        public IActionResult OnPost(int id)
+        {
+            var accountDb = _accountService.GetAccount(id);
+
+            accountDb.Balance += Amount;
+
+            _accountService.Update(accountDb);
+
+            return RedirectToPage("Customer");
 
         }
     }

@@ -23,8 +23,8 @@ namespace Services.BusinessLogic.Transactions
         public List<AccountBalanceDTO> GetAccounts()
         {
             return _bankAppDataContext.Accounts.Select(s => new AccountBalanceDTO
-            {
-                AccountNumber = s.AccountId,
+            {              
+                AccountId = s.AccountId,
                 Balance = s.Balance,
             }).ToList();
         }
@@ -32,13 +32,20 @@ namespace Services.BusinessLogic.Transactions
         public AccountBalanceDTO GetAccount(int accountId)
         {
             var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == accountId);
-            var accDto =  new AccountBalanceDTO { AccountNumber = acc.AccountId, Balance = acc.Balance};
+            var accDto =  new AccountBalanceDTO { AccountId = acc.AccountId, Balance = acc.Balance};
             return accDto;
         }
 
         public void Update(AccountBalanceDTO account)
         {
-            _bankAppDataContext.SaveChanges();
+            var acc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == account.AccountId);
+
+            if (acc != null)
+            {
+                acc.Balance = account.Balance;
+                _bankAppDataContext.Update(acc);
+                _bankAppDataContext.SaveChanges(); 
+            }
         }
     }
 }
