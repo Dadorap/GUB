@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Identity.Client;
 using Services.BusinessLogic.Transactions;
 using System.ComponentModel.DataAnnotations;
 
@@ -41,14 +42,20 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
-            var accountDb = _accountService.GetAccount(id);
+            if (DepositDate < DateTime.Now)
+            {
+                ModelState.AddModelError(
+                "DepositDate", "Cannot Deposit money in the past!");
+            }
 
-            accountDb.Balance += Amount;
-
-            _accountService.Update(accountDb);
-
-            return RedirectToPage("Customer");
-
+            if (ModelState.IsValid)
+            {
+                var accountDb = _accountService.GetAccount(id);
+                accountDb.Balance += Amount;
+                _accountService.Update(accountDb);
+                return RedirectToPage("Customer");
+            }
+            return Page();
         }
     }
 }
