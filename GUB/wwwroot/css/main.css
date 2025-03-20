@@ -1891,6 +1891,9 @@ section,
 .grey-bg {
     background-color: #fff;
 }
+.green-bg {
+    background-color: #5fcf80 !important;
+}
 
 .form-control-borderless {
     color: black !important;
@@ -1914,4 +1917,9 @@ input.form-control::placeholder {
 
 .text-green {
     color: #5fcf80 !important;
+}
+.deposit-img {
+    background-image: url("../img/course-3.jpg");
+    background-size: cover;
+    background-position: center;
 }
