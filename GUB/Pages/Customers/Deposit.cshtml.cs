@@ -32,10 +32,10 @@ namespace GUB.Pages.Customers
 
         public void OnGet(int id)
         {
-            DepositDate = DateTime.Now;
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
+            DepositDate = acc.DepositDate;
 
         }
 
