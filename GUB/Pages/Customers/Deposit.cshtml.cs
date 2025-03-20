@@ -21,12 +21,14 @@ namespace GUB.Pages.Customers
 
         [Required]
         [Range(100, 10000)]
-        public decimal Amount { get; set; } 
+        public decimal Amount { get; set; }
 
-        [Required]
-        [MinLength(5)]
-        [MaxLength(250)]
+        [Required(ErrorMessage = "You forgot to write a comment!")]
+        [MinLength(5, ErrorMessage = "Comments must be at least 5 characters long")]
+        [MaxLength(100)]
         public string Comment { get; set; }
+
+
 
         public void OnGet(int id)
         {
