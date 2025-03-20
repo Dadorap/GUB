@@ -81,10 +81,10 @@
                     <li><a asp-area="" asp-page="/Test" class="active">Test<br></a></li>
 
                     <!--  <li class="dropdown">
-                                 <a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> 
-                        <ul> 
-                             <li><a href="#">Dropdown 1</a></li> 
-                         </ul> 
+                                 <a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                             <li><a href="#">Dropdown 1</a></li>
+                         </ul>
                     </li> -->
                     @if (User.IsInRole("Cashier"))
                     {
@@ -93,17 +93,17 @@
                         </li>
                         <li></li>
 
-                    }                    
+                    }
                     @if (User.IsInRole("Admin"))
                     {
                         <li>
-                            <a  asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            <a asp-area="Identity" asp-page="/Account/Register">Register</a>
 
                         </li>
                     }
 
 
-           
+
 
                 </ul>
 
@@ -114,7 +114,7 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <!-- Show login partial when user is logged in -->
-                 <partial name="_LoginPartial" /> 
+                <partial name="_LoginPartial" />
             }
             else
             {
@@ -182,7 +182,12 @@
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/popper.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+
+
 
     <!-- Vendor JS Files -->
     <script src="~/vendor/php-email-form/validate.js"></script>

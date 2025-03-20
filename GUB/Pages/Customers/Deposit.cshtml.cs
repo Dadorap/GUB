@@ -17,10 +17,11 @@ namespace GUB.Pages.Customers
 
         public int AccountNumber { get; set; }
         public decimal Balance { get; set; }
-
-        [Range(100, 10000)]
-        public decimal Amount { get; set; }
         public DateTime DepositDate { get; set; }
+
+        [Required]
+        [Range(100, 10000)]
+        public decimal Amount { get; set; } 
 
         [Required]
         [MinLength(5)]
