@@ -14,6 +14,7 @@ namespace GUB.Pages.Customers
             _customerService = customerService;
         }
 
+        public int CustomerId { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -34,7 +35,7 @@ namespace GUB.Pages.Customers
         public void OnGet(int id)
         {
             var c = _customerService.GetCustomer(id);
-
+            CustomerId = c.CustomerId;
             FullName = c.CustomerFirstName + " " + c.CustomerLastName;
             Email = c.CustomerEmail;
             PhoneNumber = c.CustomerPhone;

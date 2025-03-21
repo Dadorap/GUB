@@ -11,7 +11,7 @@
             </div>
             <div>
                 <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
-                <a class="btn btn-success float-left m-4" asp-area="" asp-page="/Customers/UpdateCustomer">
+                <a class="btn btn-success float-left m-4" asp-area="" asp-route-id="@Model.CustomerId" asp-page="/Customers/UpdateCustomer">
                     <i class="fa-solid fa-pencil text-light"></i> EDIT
                 </a>
             </div>

@@ -3,173 +3,231 @@
 @{
 }
 <div class="grey-bg container-fluid">
-    @* customer details *@
-    <section id="minimal-statistics" class="ml-3 mr-3">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-uppercase ">Customer Details</h2>
+    <form method="post">
+        @* customer details *@
+        <section id="minimal-statistics" class="ml-3 mr-3">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-uppercase border-bottom">Customer Details Update</h2>
+                </div>
+                <div>
+                    <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
+                </div>
             </div>
-            <div>
-                <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
-                <a class="btn btn-success float-left m-4" asp-area="" asp-page="/Customers/UpdateCustomer">
-                    <i class="fa-solid fa-pencil text-light"></i> EDIT
-                </a>
-            </div>
-        </div>
-        @* row 1 *@
-        <div class="row">
-            @* user *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-user  text-success fa-3x float-left"></i>
-                                </div>
-                                <div class="media-body text-right">
-                                    <h3>Full Name</h3>
-                                    <span>@Model.</span>
+            @* row 1 *@
+            <div class="row">
+                @* firstName *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="FirstName" class="d-block">First Name</label>
+                                        <input asp-for="FirstName" class="border-0" value="@Model.FirstName">
+                                        <span class="field-validation-error text-danger" asp-validation-for="FirstName"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @* lastName *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="LastName" class="d-block">Last Name</label>
+                                        <input asp-for="LastName" class="border-0" value="@Model.LastName">
+                                        <span class="field-validation-error text-danger" asp-validation-for="LastName"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* Emial *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="Email" class="d-block">Email</label>
+                                        <input asp-for="Email" class="border-0" value="@Model.Email">
+                                        <span class="field-validation-error text-danger" asp-validation-for="Email"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* phone number *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="PhoneNumber" class="d-block">Phone Number</label>
+                                        <input asp-for="PhoneNumber" class="border-0" value="@Model.PhoneNumber">
+                                        <span class="field-validation-error text-danger" asp-validation-for="PhoneNumber"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
             </div>
 
-            @* Emial *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
-                                </div>
-                                <div class="media-body text-right">
-                                    <h3>E-Mail</h3>
-                                    <span>@Model.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @* phone number *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
-                                </div>
-                                <div class="media-body text-right">
-                                    <h3>Phone Number</h3>
-                                    <span>@Model.</span>
+            @* row 2 *@
+            <div class="row">
+                @* address *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <h3>Address</h3>
+                                        <span>@Model.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                @* postal code *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
+                                    </div>
+                                    <div class="media-body text-right">
+                                        <h3>Postal Code</h3>
+                                        <span>@Model.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* country *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="warning">Country</h3>
+                                        <span>@Model. / @Model.</span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-globe text-primary fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* city *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="warning">City</h3>
+                                        <span>@Model. / @Model.</span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-city text-secondary fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* SSN *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="danger">Social Security Number</h3>
+                                        <span>@Model.</span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-id-card text-body fa-3x"></i>
 
-            @* address *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
+                                    </div>
                                 </div>
-                                <div class="media-body text-right">
-                                    <h3>Address</h3>
-                                    <span>@Model.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* birth date *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="primary">Birth Date</h3>
+                                        <span>@Model.</span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-calendar-check text-success fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* gender *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h3 class="primary">Gender</h3>
+                                        <span>@Model.</span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-venus-mars text-warning fa-3x"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @* row 2 *@
-        <div class="row">
-            @* SSN *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="danger">Social Security Number</h3>
-                                    <span>@Model.</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-id-card text-primary fa-3x"></i>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @* country/city *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="warning">Country/City</h3>
-                                    <span>@Model. / @Model.</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-city text-secondary fa-3x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @* birth date *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="primary">Birth Date</h3>
-                                    <span>@Model.</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-calendar-check text-success fa-3x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="primary">Gender</h3>
-                                    <span>@Model.</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-venus-mars text-warning fa-3x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+        <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Update</button>
+        </section>
+    </form>
 </div>
