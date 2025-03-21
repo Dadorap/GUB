@@ -44,7 +44,7 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Withdraw(id, Amount, WithdrawDate);
+            var resp = _accountService.Transaction(id, Amount, WithdrawDate, "withdraw");
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;

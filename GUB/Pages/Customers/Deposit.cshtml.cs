@@ -43,7 +43,7 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Deposit(id, Amount, DepositDate);
+            var resp = _accountService.Transaction(id, Amount, DepositDate, "deposit");
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;

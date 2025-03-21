@@ -7,6 +7,5 @@ public interface IAccountService
 {
     List<AccountBalanceDTO> GetAccounts();
     AccountBalanceDTO GetAccount(int accountId);
-    RespCode Withdraw(int id, decimal amount, DateTime withdrawDate);
-    RespCode Deposit(int id, decimal amount, DateTime date);
+    RespCode Transaction(int id, decimal amount, DateTime withdrawDate, string transaction);
 }

@@ -31,7 +31,7 @@ namespace Services.BusinessLogic.Transactions
             }).ToList();
         }
 
-        public RespCode Withdraw(int id, decimal amount, DateTime withdrawDate)
+        public RespCode Transaction(int id, decimal amount, DateTime withdrawDate, string transaction)
         {
             var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
             if (withdrawDate < DateTime.Now)
@@ -47,30 +47,20 @@ namespace Services.BusinessLogic.Transactions
                 return RespCode.IncorrectAmount;
             }
 
+            if (transaction.ToLower() == "withdraw")
+            {
             acc.Balance -= amount;
+            }else if (transaction.ToLower() == "deposit")
+            {
+                acc.Balance += amount;
+
+            }
+
             _bankAppDataContext.Update(acc);
             _bankAppDataContext.SaveChanges();
             return RespCode.OK;
         }
 
-        public RespCode Deposit(int id, decimal amount, DateTime date)
-        {
-            var acc = _bankAppDataContext.Accounts.First(a =>a.AccountId == id);
-
-            if (date < DateTime.Now)
-            {
-                return RespCode.InvalidDate;
-            }
-            if (amount < 100 && amount > 10000)
-            {
-                return RespCode.IncorrectAmount;
-            }
-
-            acc.Balance += amount;
-            _bankAppDataContext.Update(acc);
-            _bankAppDataContext.SaveChanges();
-            return RespCode.OK;
-        }
 
         public AccountBalanceDTO GetAccount(int accountId)
         {
