@@ -60,7 +60,7 @@ namespace Services.BusinessLogic.Customers
 
         public List<CustomerDTO> GetCustomers(string sortColumn, string sortOrder, int pageNo, string q)
         {
-            var pageSize = 9;
+            var pageSize = 50;
             var query = _bankAppDataContext.Customers.AsQueryable();
 
             if (!string.IsNullOrEmpty(q))
