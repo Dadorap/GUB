@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 public enum RespCode
 {
@@ -24,7 +25,7 @@ namespace Services.BusinessLogic.Transactions
         public List<AccountBalanceDTO> GetAccounts()
         {
             return _bankAppDataContext.Accounts.Select(s => new AccountBalanceDTO
-            {              
+            {
                 AccountId = s.AccountId,
                 Balance = s.Balance,
             }).ToList();
@@ -45,7 +46,7 @@ namespace Services.BusinessLogic.Transactions
             {
                 return RespCode.IncorrectAmount;
             }
-            
+
             acc.Balance -= amount;
             _bankAppDataContext.Update(acc);
             _bankAppDataContext.SaveChanges();
@@ -54,9 +55,21 @@ namespace Services.BusinessLogic.Transactions
 
         public AccountBalanceDTO GetAccount(int accountId)
         {
-            var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == accountId);
+            var acc = _bankAppDataContext.Customers
+                            .Include(c => c.Dispositions)
+                            .ThenInclude(d => d.Account)
+                            .FirstOrDefault(c => c.Dispositions.Any(d => d.AccountId == accountId));
+
+            var customer = acc.Dispositions.First(d => d.AccountId == accountId);
+
+            
+
             var date = DateTime.Now.AddHours(1);
-            var accDto =  new AccountBalanceDTO { AccountId = acc.AccountId, Balance = acc.Balance, DepositDate = date};
+            var accDto = new AccountBalanceDTO { 
+                AccountId = customer.AccountId, 
+                Balance = customer.Account.Balance,
+                TransactionDate = date, 
+                CustomerId = acc.CustomerId };
             return accDto;
         }
 
@@ -68,7 +81,7 @@ namespace Services.BusinessLogic.Transactions
             {
                 acc.Balance = account.Balance;
                 _bankAppDataContext.Update(acc);
-                _bankAppDataContext.SaveChanges(); 
+                _bankAppDataContext.SaveChanges();
             }
         }
     }

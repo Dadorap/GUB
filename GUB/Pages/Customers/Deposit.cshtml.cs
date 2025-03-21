@@ -36,7 +36,7 @@ namespace GUB.Pages.Customers
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
-            DepositDate = acc.DepositDate;
+            DepositDate = acc.TransactionDate;
 
         }
 

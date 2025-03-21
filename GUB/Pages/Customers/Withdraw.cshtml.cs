@@ -19,6 +19,7 @@ namespace GUB.Pages.Customers
         public int AccountNumber { get; set; }
         public decimal Balance { get; set; }
         public DateTime WithdrawDate { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
         [Range(100, 10000)]
@@ -36,7 +37,8 @@ namespace GUB.Pages.Customers
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
-            WithdrawDate = acc.DepositDate;
+            WithdrawDate = acc.TransactionDate;
+            CustomerId = acc.CustomerId;
 
         }
 
@@ -46,6 +48,8 @@ namespace GUB.Pages.Customers
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
+            CustomerId = acc.CustomerId;
+
 
             if (resp == RespCode.InvalidDate)
             {               
@@ -63,7 +67,7 @@ namespace GUB.Pages.Customers
             {
                 if (resp == RespCode.OK)
                 {
-                    return RedirectToPage("Customer");
+                    return RedirectToPage("CustomerDetails", new { id = CustomerId });
                 }
             }
             
