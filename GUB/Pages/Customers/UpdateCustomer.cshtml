@@ -2,4 +2,174 @@
 @model GUB.Pages.Customers.UpdateCustomerModel
 @{
 }
-<h1>update</h1>
+<div class="grey-bg container-fluid">
+    @* customer details *@
+    <section id="minimal-statistics" class="ml-3 mr-3">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-uppercase ">Customer Details</h2>
+            </div>
+            <div>
+                <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
+                <a class="btn btn-success float-left m-4" asp-area="" asp-page="/Customers/UpdateCustomer">
+                    <i class="fa-solid fa-pencil text-light"></i> EDIT
+                </a>
+            </div>
+        </div>
+        @* row 1 *@
+        <div class="row">
+            @* user *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-user  text-success fa-3x float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>Full Name</h3>
+                                    <span>@Model.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* Emial *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>E-Mail</h3>
+                                    <span>@Model.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* phone number *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>Phone Number</h3>
+                                    <span>@Model.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* address *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>Address</h3>
+                                    <span>@Model.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* row 2 *@
+        <div class="row">
+            @* SSN *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="danger">Social Security Number</h3>
+                                    <span>@Model.</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-id-card text-primary fa-3x"></i>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* country/city *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="warning">Country/City</h3>
+                                    <span>@Model. / @Model.</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-city text-secondary fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* birth date *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="primary">Birth Date</h3>
+                                    <span>@Model.</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-calendar-check text-success fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="primary">Gender</h3>
+                                    <span>@Model.</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-venus-mars text-warning fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
