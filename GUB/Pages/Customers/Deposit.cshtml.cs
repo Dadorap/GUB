@@ -44,6 +44,7 @@ namespace GUB.Pages.Customers
         {
             if (DepositDate < DateTime.Now)
             {
+                OnGet(id);
                 ModelState.AddModelError(
                 "DepositDate", "Cannot Deposit money in the past!");
             }
