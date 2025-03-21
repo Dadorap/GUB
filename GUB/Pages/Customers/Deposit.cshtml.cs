@@ -42,9 +42,12 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
+            var acc = _accountService.GetAccount(id);
+            AccountNumber = acc.AccountId;
+            Balance = acc.Balance;
+
             if (DepositDate < DateTime.Now)
             {
-                OnGet(id);
                 ModelState.AddModelError(
                 "DepositDate", "Cannot Deposit money in the past!");
             }
