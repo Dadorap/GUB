@@ -6,7 +6,8 @@ public enum RespCode
     OK,
     BalanceTooLow,
     IncorrectAmount,
-    InvalidMessage
+    InvalidMessage,
+    InvalidDate
 }
 
 namespace Services.BusinessLogic.Transactions
@@ -27,6 +28,28 @@ namespace Services.BusinessLogic.Transactions
                 AccountId = s.AccountId,
                 Balance = s.Balance,
             }).ToList();
+        }
+
+        public RespCode Withdraw(int id, decimal amount, DateTime withdrawDate)
+        {
+            var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
+            if (withdrawDate < DateTime.Now)
+            {
+                return RespCode.InvalidDate;
+            }
+            if (acc.Balance < amount)
+            {
+                return RespCode.BalanceTooLow;
+            }
+            if (amount < 100 && amount > 10000)
+            {
+                return RespCode.IncorrectAmount;
+            }
+            
+            acc.Balance -= amount;
+            _bankAppDataContext.Update(acc);
+            _bankAppDataContext.SaveChanges();
+            return RespCode.OK;
         }
 
         public AccountBalanceDTO GetAccount(int accountId)

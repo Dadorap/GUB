@@ -8,4 +8,5 @@ public interface IAccountService
     List<AccountBalanceDTO> GetAccounts();
     void Update(AccountBalanceDTO account);
     AccountBalanceDTO GetAccount(int accountId);
+    RespCode Withdraw(int id, decimal amount, DateTime withdrawDate);
 }

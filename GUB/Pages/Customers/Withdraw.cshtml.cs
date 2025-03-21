@@ -42,28 +42,31 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
+            var resp = _accountService.Withdraw(id, Amount, WithdrawDate);
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
 
-            if (WithdrawDate < DateTime.Now)
+            if (resp == RespCode.InvalidDate)
             {               
                 ModelState.AddModelError(
                 "WithdrawDate", "Cannot Deposit money in the past!");
             }
-            if (Amount > Balance)
+            if (resp == RespCode.IncorrectAmount)
             {
                 ModelState.AddModelError(
                     "Amount", "You cannot Withdraw money you don't own!");
             }
 
+                 
             if (ModelState.IsValid)
             {
-                var accountDb = _accountService.GetAccount(id);
-                accountDb.Balance -= Amount;
-                _accountService.Update(accountDb);
-                return RedirectToPage("Customer");
+                if (resp == RespCode.OK)
+                {
+                    return RedirectToPage("Customer");
+                }
             }
+            
             return Page();
         }
     }
