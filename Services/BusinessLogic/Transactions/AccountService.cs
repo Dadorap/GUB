@@ -53,6 +53,25 @@ namespace Services.BusinessLogic.Transactions
             return RespCode.OK;
         }
 
+        public RespCode Deposit(int id, decimal amount, DateTime date)
+        {
+            var acc = _bankAppDataContext.Accounts.First(a =>a.AccountId == id);
+
+            if (date < DateTime.Now)
+            {
+                return RespCode.InvalidDate;
+            }
+            if (amount < 100 && amount > 10000)
+            {
+                return RespCode.IncorrectAmount;
+            }
+
+            acc.Balance += amount;
+            _bankAppDataContext.Update(acc);
+            _bankAppDataContext.SaveChanges();
+            return RespCode.OK;
+        }
+
         public AccountBalanceDTO GetAccount(int accountId)
         {
             var acc = _bankAppDataContext.Customers
@@ -73,16 +92,6 @@ namespace Services.BusinessLogic.Transactions
             return accDto;
         }
 
-        public void Update(AccountBalanceDTO account)
-        {
-            var acc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == account.AccountId);
-
-            if (acc != null)
-            {
-                acc.Balance = account.Balance;
-                _bankAppDataContext.Update(acc);
-                _bankAppDataContext.SaveChanges();
-            }
-        }
+       
     }
 }

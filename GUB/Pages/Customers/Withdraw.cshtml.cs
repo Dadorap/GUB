@@ -56,13 +56,17 @@ namespace GUB.Pages.Customers
                 ModelState.AddModelError(
                 "WithdrawDate", "Cannot Deposit money in the past!");
             }
-            if (resp == RespCode.IncorrectAmount)
+            if (resp == RespCode.BalanceTooLow)
             {
                 ModelState.AddModelError(
                     "Amount", "You cannot Withdraw money you don't own!");
             }
+            if (resp == RespCode.IncorrectAmount)
+            {
+                ModelState.AddModelError(
+                    "Amount", "Amount must be between 100 and 10,000.");
+            }
 
-                 
             if (ModelState.IsValid)
             {
                 if (resp == RespCode.OK)

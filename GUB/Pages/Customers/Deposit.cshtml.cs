@@ -19,6 +19,7 @@ namespace GUB.Pages.Customers
         public int AccountNumber { get; set; }
         public decimal Balance { get; set; }
         public DateTime DepositDate { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
         [Range(100, 10000)]
@@ -42,22 +43,30 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
+            var resp = _accountService.Deposit(id, Amount, DepositDate);
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
+            CustomerId = acc.CustomerId;
 
-            if (DepositDate < DateTime.Now)
+
+            if (resp == RespCode.InvalidDate)
             {
                 ModelState.AddModelError(
                 "DepositDate", "Cannot Deposit money in the past!");
             }
+            if (resp == RespCode.IncorrectAmount)
+            {
+                ModelState.AddModelError(
+                    "Amount", "Amount must be between 100 and 10,000.");
+            }
 
             if (ModelState.IsValid)
             {
-                var accountDb = _accountService.GetAccount(id);
-                accountDb.Balance += Amount;
-                _accountService.Update(accountDb);
-                return RedirectToPage("Customer");
+                if (resp == RespCode.OK)
+                {
+                    return RedirectToPage("CustomerDetails", new { id = CustomerId });
+                }
             }
             return Page();
         }

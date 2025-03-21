@@ -9,4 +9,5 @@ public interface IAccountService
     void Update(AccountBalanceDTO account);
     AccountBalanceDTO GetAccount(int accountId);
     RespCode Withdraw(int id, decimal amount, DateTime withdrawDate);
+    RespCode Deposit(int id, decimal amount, DateTime date);
 }
