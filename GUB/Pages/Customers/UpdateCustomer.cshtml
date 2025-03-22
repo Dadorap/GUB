@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-               
+
 
             </div>
 
@@ -221,8 +221,12 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <label asp-for="Gender" class="d-block">Gender</label>
-                                        <input asp-for="Gender" class="form-control w-75 border" value="@Model.Gender">
+                                        <label asp-for="Gender" class="d-block"></label>
+                                        <select asp-for="Gender" class="form-controll rounded-5 w-75">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
                                         <span class="field-validation-error text-danger" asp-validation-for="Gender"></span>
                                     </div>
                                     <div class="align-self-center">
@@ -234,7 +238,7 @@
                     </div>
                 </div>
             </div>
-        <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Update</button>
+            <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Update</button>
         </section>
     </form>
 </div>
