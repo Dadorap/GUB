@@ -7,6 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+enum CountryCode
+{
+    SE,
+    FI,
+    DK,
+    NO
+}
+
+enum Gender
+{
+    female,
+    male,
+    other
+}
+
+
+
 namespace Services.BusinessLogic.Customers
 {
 
@@ -39,6 +56,8 @@ namespace Services.BusinessLogic.Customers
                 CustomerEmail = q.Emailaddress,
                 CustomerPhone = q.Telephonenumber,
                 CustomerCity = q.City,
+                CustomerCountryCode = q.CountryCode,
+                CustomerPhoneCode = q.Telephonecountrycode,
                 CustomerAddress = q.Streetaddress,
                 CustomerCountry = q.Country,
                 CustomerPostalCode = q.Zipcode,
