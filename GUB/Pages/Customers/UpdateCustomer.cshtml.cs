@@ -34,6 +34,7 @@ namespace GUB.Pages.Customers
         [StringLength(50)]
         [Required]
         public string Country { get; set; }
+        [Required]
         public string CountryCode { get; set; }
         [StringLength(50)]
         [Required]
@@ -41,10 +42,9 @@ namespace GUB.Pages.Customers
         [StringLength(50)]
         public string SSN { get; set; }
         [StringLength(50)]
-        public int TelephoneCountryCode { get; set; }
+        public string TelephoneCountryCode { get; set; }
         [DataType(DataType.Date)]
         public DateOnly BirthDate { get; set; }
-        [StringLength(50)]
         [Required]
         public string Gender { get; set; }
   
@@ -59,10 +59,12 @@ namespace GUB.Pages.Customers
             Address = c.CustomerAddress;
             PostalCode = c.CustomerPostalCode;
             Country = c.CustomerCountry;
+            CountryCode = c.CustomerCountryCode;
             City = c.CustomerCity;
             SSN = c.SocialSecurityNumber;
             BirthDate = c.CustomerBirthDate;
             Gender = c.CustomerGender;
+            TelephoneCountryCode =  c.CustomerPhoneCode;
         }
 
     }

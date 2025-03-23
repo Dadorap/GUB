@@ -21,6 +21,14 @@ enum Gender
     male,
     other
 }
+enum PhoneCode
+{
+    Denmark = 45,
+    Sweden = 46,
+    Norway = 47,
+    Finland = 358
+}
+
 
 
 
