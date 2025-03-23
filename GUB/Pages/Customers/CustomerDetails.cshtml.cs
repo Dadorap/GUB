@@ -18,9 +18,11 @@ namespace GUB.Pages.Customers
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        public string? TelephoneCountryCode { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public string CountryCode { get; set; }
         public string SSN { get; set; } 
         public DateOnly BirthDate { get; set; }
         public string Gender { get; set; }
@@ -39,10 +41,12 @@ namespace GUB.Pages.Customers
             FullName = c.CustomerFirstName + " " + c.CustomerLastName;
             Email = c.CustomerEmail;
             PhoneNumber = c.CustomerPhone;
+            TelephoneCountryCode = c.CustomerPhoneCode;
             Address = c.CustomerAddress + ", " + c.CustomerPostalCode;
             SSN = string.IsNullOrWhiteSpace(c.SocialSecurityNumber) ? "Missing SSN" : c.SocialSecurityNumber;
             Country = c.CustomerCountry;
             City = c.CustomerCity;
+            CountryCode = c.CustomerCountryCode;
             BirthDate = c.CustomerBirthDate;
             Gender = c.CustomerGender;
             TotalBalance = c.TotalBalance;

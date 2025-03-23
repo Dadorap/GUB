@@ -17,6 +17,7 @@ namespace GUB.Pages.Customers
             _customerService = customerService;
         }
 
+        public int CustomerId { get; set; }
         [MaxLength(100)]
         [Required]
         public string FirstName { get; set; }
@@ -53,6 +54,7 @@ namespace GUB.Pages.Customers
         {
             var c = _customerService.GetCustomer(id);
 
+            CustomerId = c.CustomerId;
             FirstName = c.CustomerFirstName;
             LastName = c.CustomerLastName;
             Email = c.CustomerEmail;
@@ -71,6 +73,11 @@ namespace GUB.Pages.Customers
         public IActionResult OnPost(int id)
         {
             OnGet(id);
+
+            if (ModelState.IsValid)
+            {
+                return RedirectToPage("CustomerDetails" , new {id = CustomerId});
+            }
 
             return Page();
         }
