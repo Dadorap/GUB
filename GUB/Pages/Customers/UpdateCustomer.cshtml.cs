@@ -25,8 +25,8 @@ namespace GUB.Pages.Customers
         public string LastName { get; set; }
         [EmailAddress]
         [StringLength(150)]
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string? Email { get; set; } = null;
+        public string? PhoneNumber { get; set; } = null;
         [StringLength(100)]
         [Required]
         public string Address { get; set; }
@@ -40,11 +40,12 @@ namespace GUB.Pages.Customers
         [Required]
         public string City { get; set; }
         [StringLength(50)]
-        public string SSN { get; set; }
+        public string? SSN { get; set; } = null;
+
         [StringLength(50)]
-        public string TelephoneCountryCode { get; set; }
+        public string? TelephoneCountryCode { get; set; } = null;
         [DataType(DataType.Date)]
-        public DateOnly BirthDate { get; set; }
+        public DateOnly? BirthDate { get; set; } = null;
         [Required]
         public string Gender { get; set; }
   
@@ -66,6 +67,14 @@ namespace GUB.Pages.Customers
             Gender = c.CustomerGender;
             TelephoneCountryCode =  c.CustomerPhoneCode;
         }
+
+        public IActionResult OnPost(int id)
+        {
+            OnGet(id);
+
+            return Page();
+        }
+
 
     }
 }

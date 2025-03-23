@@ -17,7 +17,7 @@ public class CustomerDetailsDTO
     public string CustomerCountry { get; set; }
     public string CustomerCountryCode { get; set; }
     public DateOnly CustomerBirthDate { get; set; }
-    public string SocialSecurityNumber { get; set; }
+    public string? SocialSecurityNumber { get; set; }
     public string CustomerPhone { get; set; }
     public string CustomerPhoneCode { get; set; }
     public string CustomerPostalCode { get; set; }
