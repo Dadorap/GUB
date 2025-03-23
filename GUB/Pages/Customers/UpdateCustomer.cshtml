@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                </div>                
+                </div>
                 @* phone number code *@
                 <div class="col-xl-3 col-sm-6 col-12">
                     <div class="card">
@@ -193,7 +193,12 @@
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
                                         <label asp-for="Country" class="d-block">Country</label>
-                                        <input asp-for="Country" class="form-control w-75 border" value="@Model.Country">
+                                        <select asp-for="Country" class="form-controll rounded-5 w-75">
+                                            <option value="sweden">Sweden</option>
+                                            <option value="finland">Finland</option>
+                                            <option value="denmark">Denmark</option>
+                                            <option value="norway">Norway</option>
+                                        </select>
                                         <span class="field-validation-error text-danger" asp-validation-for="Country"></span>
                                     </div>
                                     <div class="align-self-center">
