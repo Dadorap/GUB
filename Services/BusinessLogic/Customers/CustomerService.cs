@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -167,6 +169,19 @@ namespace Services.BusinessLogic.Customers
 
             _bankAppDataContext.Update(c);
             _bankAppDataContext.SaveChanges();
+        }
+
+
+        public List<SelectListItem> FillGenderList()
+        {
+            var genderList = Enum.GetValues<Gender>()
+                .Select(g => new SelectListItem()
+                {
+                    Value = ToString(),
+                    Text = ToString(),
+                }).ToList();
+
+            return genderList;
         }
     }
 }

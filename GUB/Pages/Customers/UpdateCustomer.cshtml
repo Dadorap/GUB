@@ -275,11 +275,7 @@
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
                                         <label asp-for="Gender" class="d-block"></label>
-                                        <select asp-for="Gender" class="form-controll rounded-5 w-75">
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
-                                        </select>
+                                        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Enums>()" class="form-controll rounded-5 w-75"></select>
                                         <span class="field-validation-error text-danger" asp-validation-for="Gender"></span>
                                     </div>
                                     <div class="align-self-center">

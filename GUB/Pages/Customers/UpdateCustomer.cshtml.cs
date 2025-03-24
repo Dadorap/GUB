@@ -2,6 +2,8 @@ using GUB.ViewModel.Customers;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using NuGet.Protocol.Plugins;
 using Services.BusinessLogic.Customers;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
@@ -48,9 +50,11 @@ namespace GUB.Pages.Customers
         public string? TelephoneCountryCode { get; set; } = null;
         [DataType(DataType.Date)]
         public DateOnly? BirthDate { get; set; } = null;
-        [Required]
-        public string Gender { get; set; }
-  
+        [Range(1,99, ErrorMessage = "Choose a valid gender!")]
+        public Enums Gender { get; set; }
+        public List<SelectListItem> Genders { get; set; }
+
+
         public void OnGet(int id)
         {
             var c = _customerService.GetCustomer(id);
@@ -66,10 +70,12 @@ namespace GUB.Pages.Customers
             CountryCode = c.CustomerCountryCode;
             City = c.CustomerCity;
             SSN = c.SocialSecurityNumber;
-            BirthDate = c.CustomerBirthDate;
-            Gender = c.CustomerGender;
+            BirthDate = c.CustomerBirthDate;            
             TelephoneCountryCode =  c.CustomerPhoneCode;
+
+            Genders = _customerService.FillGenderList();
         }
+
 
         public IActionResult OnPost(int id)
         {

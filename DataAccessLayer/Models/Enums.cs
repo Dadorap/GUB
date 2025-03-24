@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-public enum Genders
+public enum Enums
 {
     [Display(Name = "Choose...")]
     Choose = 0,

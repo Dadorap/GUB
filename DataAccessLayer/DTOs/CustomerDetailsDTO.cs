@@ -9,7 +9,7 @@ namespace DataAccessLayer.DTOs;
 public class CustomerDetailsDTO
 {
     public int CustomerId { get; set; }
-    public string CustomerGender { get; set; }
+    public Enums CustomerGender { get; set; }
     public string CustomerFirstName { get; set; }
     public string CustomerLastName { get; set; }
     public string CustomerAddress { get; set; }
