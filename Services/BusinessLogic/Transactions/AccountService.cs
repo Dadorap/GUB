@@ -8,7 +8,8 @@ public enum RespCode
     BalanceTooLow,
     IncorrectAmount,
     InvalidMessage,
-    InvalidDate
+    InvalidDate,
+    InvalidCountry
 }
 
 namespace Services.BusinessLogic.Transactions
