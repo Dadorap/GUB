@@ -214,15 +214,11 @@
                                                     <td>@*  *@</td>
 
                                                     <td colspan="2">
-                                                        @for (int i = 1; i <= Model.PageCount; i++)
+                                                        @for (int i = 1; i <= 10; i++)
                                                         {
-                                                            string activeLink = "btn-secondary";
-                                                            if (i == Model.CurrentPage)
-                                                            {
-                                                                activeLink = "btn-primary";
-                                                            }
 
-                                                            <a class="btn @activeLink"
+
+                                                            <a class="btn @(Model.CurrentPage == i ? "btn-primary" : "btn-secondary")"
                                                                asp-page="/Customers/Customer"
                                                                asp-route-q="@Model.Q"
                                                                asp-route-sortColumn="@Model.SortColumn"
@@ -232,6 +228,11 @@
                                                             </a>
                                                         }
                                                     </td>
+
+                                                    <td>@*  *@</td>
+                                                    <td>@*  *@</td>
+
+
                                                     <td>
                                                         @if (Model.CurrentPage != Model.PageCount)
                                                         {

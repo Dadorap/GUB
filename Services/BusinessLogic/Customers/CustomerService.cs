@@ -88,9 +88,9 @@ namespace Services.BusinessLogic.Customers
             return customer;
         }
 
-        public PagedResult<CustomerDTO> GetCustomers(string sortColumn, string sortOrder, int pageNo, string q)
+        public PagedResult<CustomerDTO> GetCustomers(string sortColumn, string sortOrder, int page, string q)
         {
-            var page = 1;
+
             var pageSize = 50;
             var query = _bankAppDataContext.Customers.AsQueryable();
 
