@@ -147,5 +147,26 @@ namespace Services.BusinessLogic.Customers
                 Address = s.Streetaddress
             }).ToList();
         }
+
+        public void UpdateCustomer(CustomerDetailsDTO custDto)
+        {
+            var c = _bankAppDataContext.Customers.First(c => c.CustomerId == custDto.CustomerId);
+            
+            c.Givenname = custDto.CustomerFirstName;
+            c.Surname = custDto.CustomerLastName;
+            c.Gender = custDto.CustomerGender;
+            c.Streetaddress = custDto.CustomerAddress;
+            c.City = custDto.CustomerCity;
+            c.Country = custDto.CustomerCountry;
+            c.CountryCode = custDto.CustomerCountryCode;
+            c.Zipcode = custDto.CustomerPostalCode;
+            c.Birthday = custDto.CustomerBirthDate;
+            c.NationalId = custDto.SocialSecurityNumber;
+            c.Telephonenumber = custDto.CustomerPhone;
+            c.Emailaddress = custDto.CustomerEmail;
+
+            _bankAppDataContext.Update(c);
+            _bankAppDataContext.SaveChanges();
+        }
     }
 }

@@ -1,3 +1,4 @@
+using GUB.ViewModel.Customers;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -72,11 +73,30 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
-            OnGet(id);
+
 
             if (ModelState.IsValid)
             {
-                return RedirectToPage("CustomerDetails" , new {id = CustomerId});
+            var UpdatedCustomer = _customerService.GetCustomer(id);
+
+                UpdatedCustomer.CustomerId = id;
+                UpdatedCustomer.CustomerFirstName = FirstName;
+                UpdatedCustomer.CustomerLastName = LastName;
+                UpdatedCustomer.CustomerEmail = Email;
+                UpdatedCustomer.CustomerPhoneCode = TelephoneCountryCode;
+                UpdatedCustomer.CustomerCountryCode = CountryCode;
+                UpdatedCustomer.CustomerCity = City;
+                UpdatedCustomer.CustomerAddress = Address;
+                UpdatedCustomer.CustomerBirthDate = BirthDate;
+                UpdatedCustomer.CustomerCountry = Country;
+                UpdatedCustomer.CustomerGender = Gender;
+                UpdatedCustomer.CustomerPhone = PhoneNumber;
+                UpdatedCustomer.CustomerPostalCode = PostalCode;
+                UpdatedCustomer.SocialSecurityNumber =SSN;
+
+                _customerService.UpdateCustomer(UpdatedCustomer);
+
+                return RedirectToPage("CustomerDetails" , new {id = id});
             }
 
             return Page();

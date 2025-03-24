@@ -24,7 +24,7 @@ namespace GUB.Pages.Customers
         public string Country { get; set; }
         public string CountryCode { get; set; }
         public string SSN { get; set; } 
-        public DateOnly BirthDate { get; set; }
+        public DateOnly? BirthDate { get; set; }
         public string Gender { get; set; }
         public decimal TotalBalance { get; set; }
         public List<AccountBalanceViewModel> Account { get; set; }
