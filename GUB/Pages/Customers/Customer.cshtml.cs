@@ -27,17 +27,19 @@ namespace GUB.Pages.Customers
         public string SortOrder { get; set; }
         public int CurrentPage { get; set; }
         public string Q { get; set; }
+        public int PageCount { get; set; }
 
 
         public async Task OnGet(string sortColumn, string sortOrder, int pageNo, string q)
         {
-
+            var result = _customerService.GetCustomers(SortColumn, SortOrder, pageNo, q);
             Q = q;
             SortColumn = sortColumn;
             SortOrder = sortOrder;
             if (pageNo == 0)
                 pageNo = 1;
             CurrentPage = pageNo;
+            PageCount = result.PageCount;
 
 
 
@@ -48,8 +50,8 @@ namespace GUB.Pages.Customers
                             Author = q.Author
                         }).ToList();
 
-            Customers = _customerService.GetCustomers(SortColumn, SortOrder, pageNo, q)
-                .Select(s => new CustomerViewModel
+            Customers = result.Results
+                .Select (s => new CustomerViewModel
                 {
                     Id = s.Id,
                     SSN = s.SSN,

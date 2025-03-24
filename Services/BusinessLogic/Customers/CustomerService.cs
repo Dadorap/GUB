@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using GUB.Infrastructure.Paging;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
@@ -87,8 +88,9 @@ namespace Services.BusinessLogic.Customers
             return customer;
         }
 
-        public List<CustomerDTO> GetCustomers(string sortColumn, string sortOrder, int pageNo, string q)
+        public PagedResult<CustomerDTO> GetCustomers(string sortColumn, string sortOrder, int pageNo, string q)
         {
+            var page = 1;
             var pageSize = 50;
             var query = _bankAppDataContext.Customers.AsQueryable();
 
@@ -134,11 +136,9 @@ namespace Services.BusinessLogic.Customers
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.Streetaddress);
 
-            var firstItemIndex = (pageNo - 1) * pageSize;
-            query = query.Skip(firstItemIndex);
-            query = query.Take(pageSize);
 
-            return query.Select(s => new CustomerDTO
+
+            var dtoQuery = query.Select(s => new CustomerDTO
             {
                 Id = s.CustomerId,
                 FirstName = s.Givenname,
@@ -147,7 +147,9 @@ namespace Services.BusinessLogic.Customers
                 City = s.City,
                 SSN = s.NationalId,
                 Address = s.Streetaddress
-            }).ToList();
+            });
+            return dtoQuery.GetPaged(page, pageSize);
+
         }
 
         public void UpdateCustomer(CustomerDetailsDTO custDto)

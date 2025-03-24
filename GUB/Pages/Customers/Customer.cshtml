@@ -34,7 +34,7 @@
                 <div class="container">
                     <br />
                     <div class="row justify-content-center">
- 
+
                         <div class="col-12 col-md-10 col-lg-8">
                             <form class="card card-sm" method="get">
                                 <div class="card-body row no-gutters align-items-center">
@@ -55,9 +55,9 @@
                         </div>
                         <!--end of col-->
                     </div>
-                            <h3 class ="text-dark">Page Numebr: @Model.CurrentPage</h3>
+                    <h3 class="text-dark">Page Numebr: @Model.CurrentPage of @Model.PageCount</h3>
                 </div>
-                
+
                 <div class="w-50 h-100 mb-5">
                     <div class="row justify-content-center">
                         <div class="col-12">
@@ -210,21 +210,40 @@
                                                             </a>
                                                         }
                                                     </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>@*  *@</td>
+                                                    <td>@*  *@</td>
+
+                                                    <td colspan="2">
+                                                        @for (int i = 1; i <= Model.PageCount; i++)
+                                                        {
+                                                            string activeLink = "btn-secondary";
+                                                            if (i == Model.CurrentPage)
+                                                            {
+                                                                activeLink = "btn-primary";
+                                                            }
+
+                                                            <a class="btn @activeLink"
+                                                               asp-page="/Customers/Customer"
+                                                               asp-route-q="@Model.Q"
+                                                               asp-route-sortColumn="@Model.SortColumn"
+                                                               asp-route-sortOrder="@Model.SortOrder"
+                                                               asp-route-pageNo="@i">
+                                                                @i
+                                                            </a>
+                                                        }
+                                                    </td>
                                                     <td>
-                                                        <a class="btn btn-success"
-                                                           asp-page="/Customers/Customer"
-                                                           asp-route-q="@Model.Q"
-                                                           asp-route-sortColumn="@Model.SortColumn"
-                                                           asp-route-sortOrder="@Model.SortOrder"
-                                                           asp-route-pageNo="@(Model.CurrentPage+1)">
-                                                            Next
-                                                        </a>
+                                                        @if (Model.CurrentPage != Model.PageCount)
+                                                        {
+                                                            <a class="btn btn-secondary"
+                                                               asp-page="/Customers/Customer"
+                                                               asp-route-q="@Model.Q"
+                                                               asp-route-sortColumn="@Model.SortColumn"
+                                                               asp-route-sortOrder="@Model.SortOrder"
+                                                               asp-route-pageNo="@(Model.CurrentPage + 1)">
+                                                                Next
+                                                            </a>
+                                                        }
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -235,7 +254,7 @@
                         </div>
                     </div>
                 </div>
-           
+
             </div>
         </div>
 </section>
