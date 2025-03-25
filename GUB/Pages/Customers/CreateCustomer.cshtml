@@ -2,3 +2,292 @@
 @model GUB.Pages.Customers.CreateCustomerModel
 @{
 }
+<div class="grey-bg container-fluid">
+    <form method="post">
+        @* customer details *@
+        <section id="minimal-statistics" class="ml-3 mr-3">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-uppercase border-bottom">Customer Details Update</h2>
+                </div>
+                <div>
+                    <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
+                </div>
+            </div>
+            @* row 1 *@
+            <div class="row">
+                @* firstName *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="FirstName" class="d-block">First Name</label>
+                                        <input asp-for="FirstName" class="form-control w-75 border" value="@Model.FirstName">
+                                        <span class="field-validation-error text-danger" asp-validation-for="FirstName"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* lastName *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="LastName" class="d-block">Last Name</label>
+                                        <input asp-for="LastName" class="form-control w-75 border" value="@Model.LastName">
+                                        <span class="field-validation-error text-danger" asp-validation-for="LastName"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* Emial *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="Email" class="d-block">Email</label>
+                                        <input asp-for="Email" class="form-control w-75 border" value="@Model.Email">
+                                        <span class="field-validation-error text-danger" asp-validation-for="Email"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* phone number *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="PhoneNumber" class="d-block">Phone Number</label>
+                                        <input asp-for="PhoneNumber" class="form-control w-75 border" value="@Model.PhoneNumber">
+                                        <span class="field-validation-error text-danger" asp-validation-for="PhoneNumber"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* phone number code *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="TelephoneCountryCode" class="d-block"></label>
+                                        <select asp-for="TelephoneCountryCode" class="form-controll rounded-5 w-75">
+                                            <option value="45">45</option>
+                                            <option value="46">46</option>
+                                            <option value="47">47</option>
+                                            <option value="358">358</option>
+                                        </select>
+                                        <span class="field-validation-error text-danger" asp-validation-for="TelephoneCountryCode"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            @* row 2 *@
+            <div class="row">
+                @* address *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="Address" class="d-block">Address</label>
+                                        <input asp-for="Address" class="form-control w-75 border" value="@Model.Address">
+                                        <span class="field-validation-error text-danger" asp-validation-for="Address"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* postal code *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="PostalCode" class="d-block">Postal Code</label>
+                                        <input asp-for="PostalCode" class="form-control w-75 border" value="@Model.PostalCode">
+                                        <span class="field-validation-error text-danger" asp-validation-for="PostalCode"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-location-dot text-danger fa-3x float-left"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* country Code *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="CountryCode" class="d-block"></label>
+                                        <select asp-for="CountryCode" class="form-controll rounded-5 w-75">
+                                            <option value="se">SE</option>
+                                            <option value="fi">FI</option>
+                                            <option value="dk">DK</option>
+                                            <option value="no">NO</option>
+                                        </select>
+                                        <span class="field-validation-error text-danger" asp-validation-for="CountryCode"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-globe text-primary fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* country *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="Country" class="d-block">Country</label>
+                                        <select asp-for="Country" class="form-controll rounded-5 w-75">
+                                            <option value="Sweden">Sweden</option>
+                                            <option value="Finland">Finland</option>
+                                            <option value="Denmark">Denmark</option>
+                                            <option value="Norway">Norway</option>
+                                        </select>
+                                        <span class="field-validation-error text-danger" asp-validation-for="Country"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-globe text-primary fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* city *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="City" class="d-block">City</label>
+                                        <input asp-for="City" class="form-control w-75 border" value="@Model.City">
+                                        <span class="field-validation-error text-danger" asp-validation-for="City"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-city text-secondary fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* SSN *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="SSN" class="d-block">Social Security Number</label>
+                                        <input asp-for="SSN" class="form-control w-75 border" value="@Model.SSN">
+                                        <span class="field-validation-error text-danger" asp-validation-for="SSN"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-id-card text-body fa-3x"></i>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* birth date *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="BirthDate" class="d-block">Birth Date</label>
+                                        <input asp-for="BirthDate" class="form-control w-75 border" value="@Model.BirthDate">
+                                        <span class="field-validation-error text-danger" asp-validation-for="BirthDate"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-calendar-check text-success fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* gender *@
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <label asp-for="Gender" class="d-block"></label>
+                                        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Enums>()" class="form-controll rounded-5 w-75"></select>
+                                        <span class="field-validation-error text-danger" asp-validation-for="Gender"></span>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fa-solid fa-venus-mars text-warning fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Update</button>
+        </section>
+    </form>
+</div>
