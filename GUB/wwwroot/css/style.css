@@ -2146,9 +2146,9 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5); }
 
 .btn-success {
-  color: #fff;
-  background-color: #28a745;
-  border-color: #28a745; }
+    color: #fff;
+    background-color: #5fcf80;
+    border-color: #5fcf80;}
   .btn-success:hover {
     color: #fff;
     background-color: #218838;
