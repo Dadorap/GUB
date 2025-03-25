@@ -218,7 +218,7 @@
                                                         {
 
 
-                                                            <a class="btn @(Model.CurrentPage == i ? "btn-primary" : "btn-secondary")"
+                                                            <a class="btn @(Model.CurrentPage == i ? "btn-success" : "btn-secondary")"
                                                                asp-page="/Customers/Customer"
                                                                asp-route-q="@Model.Q"
                                                                asp-route-sortColumn="@Model.SortColumn"
@@ -236,7 +236,7 @@
                                                     <td>
                                                         @if (Model.CurrentPage != Model.PageCount)
                                                         {
-                                                            <a class="btn btn-secondary"
+                                                            <a class="btn btn-success"
                                                                asp-page="/Customers/Customer"
                                                                asp-route-q="@Model.Q"
                                                                asp-route-sortColumn="@Model.SortColumn"

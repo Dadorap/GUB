@@ -32,13 +32,14 @@ namespace GUB.Pages.Customers
 
         public async Task OnGet(string sortColumn, string sortOrder, int pageNo, string q)
         {
-            var result = _customerService.GetCustomers(SortColumn, SortOrder, pageNo, q);
             Q = q;
             SortColumn = sortColumn;
             SortOrder = sortOrder;
             if (pageNo == 0)
                 pageNo = 1;
             CurrentPage = pageNo;
+
+            var result = _customerService.GetCustomers(SortColumn, SortOrder, CurrentPage, q);
             PageCount = result.PageCount;
 
 
