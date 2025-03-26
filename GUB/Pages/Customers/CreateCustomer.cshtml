@@ -244,9 +244,9 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <label asp-for="BirthDate" class="d-block">Birth Date</label>
-                                        <input asp-for="BirthDate" class="form-control w-75 border" value="@Model.BirthDate">
-                                        <span class="field-validation-error text-danger" asp-validation-for="BirthDate"></span>
+                                        <label asp-for="BirthDateInput" class="d-block">Birth Date</label>
+                                        <input asp-for="BirthDateInput" type="date" class="form-control w-75 border" />
+                                        <span class="field-validation-error text-danger" asp-validation-for="BirthDateInput"></span>
                                     </div>
                                     <div class="align-self-center">
                                         <i class="fa-solid fa-calendar-check text-success fa-3x"></i>

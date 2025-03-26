@@ -48,8 +48,8 @@ namespace GUB.Pages.Customers
         [StringLength(50)]
         public string? SSN { get; set; } = null;
 
-        [StringLength(50)]
         [DataType(DataType.Date)]
+        public string BirthDateInput { get; set; }
         public DateOnly? BirthDate { get; set; } = null;
         [Required]
         [Range(1, 99, ErrorMessage = "Choose a valid gender!")]
@@ -66,13 +66,16 @@ namespace GUB.Pages.Customers
         public IActionResult OnPost()
         {
             var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);
+            if (DateOnly.TryParse(BirthDateInput, out var parsedDate))
+            {
+                BirthDate = parsedDate;
+            }
 
             if (resp == RespCode.InvalidCountry)
             {
                 ModelState.AddModelError(
                 "Country", "Invalid Country");
             }
-
 
             if (ModelState.IsValid)
             {
@@ -96,7 +99,7 @@ namespace GUB.Pages.Customers
 
                 _customerService.CreateNewCustomer(newCustomer);
 
-                return RedirectToPage("Customers/Customer");
+                return RedirectToPage("Customer");
             }
             PhoneCodes = _customerService.FillPhoneCodes();
             PhoneCodes.Insert(0, new SelectListItem { Text = "-- Select Phone Code --", Value = "" });

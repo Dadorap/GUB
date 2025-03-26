@@ -177,9 +177,27 @@ namespace Services.BusinessLogic.Customers
                     .ToList();
         }
 
-        public void CreateNewCustomer(CustomerDTO customerDetailsDTO)
+        public void CreateNewCustomer(CustomerDTO c)
         {
-            throw new NotImplementedException();
+            var newCustomer = new Customer()
+            {
+                Givenname = c.CustomerFirstName,
+                Surname = c.CustomerLastName,
+                Gender = c.CustomerGender,
+                Streetaddress = c.CustomerAddress,
+                Zipcode = c.CustomerPostalCode,
+                CountryCode = c.CustomerCountryCode,
+                Country = c.CustomerCountry,
+                City = c.CustomerCity,
+                Telephonecountrycode = c.CustomerPhoneCode,
+                Telephonenumber = c.CustomerPhone,
+                NationalId = c.SocialSecurityNumber,
+                Birthday = c.CustomerBirthDate,
+                Emailaddress = c.CustomerEmail              
+            };
+
+            _bankAppDataContext.Customers.Add(newCustomer);
+            _bankAppDataContext.SaveChanges();                       
         }
     }
 }
