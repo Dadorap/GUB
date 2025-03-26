@@ -25,7 +25,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }
@@ -39,7 +39,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }
@@ -53,7 +53,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }
@@ -67,7 +67,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }

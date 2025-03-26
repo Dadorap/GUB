@@ -19,7 +19,6 @@ public class CardsInfoService : ICardsInfoService
         var query = _bankAppDataContext.Customers
     .Include(c => c.Dispositions)
         .ThenInclude(d => d.Account)
-        .ThenInclude(t => t.Transactions)
         .Where(c => c.Country == country)
         .AsQueryable();
 
@@ -33,9 +32,11 @@ public class CardsInfoService : ICardsInfoService
 
             Balance = c.Sum(s => s.Dispositions.Sum(d => d.Account.Balance)),
 
-            Transactions = c.SelectMany(s => s.Dispositions)
-                   .SelectMany(d => d.Account.Transactions)
-                   .Count()
+            Accounts = c.SelectMany(c => c.Dispositions)
+                .Select(d => d.AccountId)
+                .Distinct()
+                .Count()
+                
         }).ToList();
 
 
