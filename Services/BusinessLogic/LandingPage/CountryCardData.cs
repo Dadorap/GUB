@@ -1,4 +1,5 @@
-﻿using Services.BusinessLogic.LandingPage;
+﻿using Contracts.DTOs;
+using Services.BusinessLogic.LandingPage;
 using System.Globalization;
 
 namespace GUB.ViewModel.LandingPage;
@@ -12,7 +13,7 @@ public class CountryCardData : ICountryCardData
 
         _cardsInfoService = cardsInfoService;
     }
-    public List<LandingPageCardViewModel> GetCountryData(string country)
+    public List<LnadingPargeCardDTO> GetCountryData(string country)
     {
         if (country == "Sweden")
         {
@@ -24,7 +25,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }
@@ -38,7 +39,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }
@@ -52,7 +53,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }
@@ -66,7 +67,7 @@ public class CountryCardData : ICountryCardData
                 Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Transactions = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
+                Accounts = c.Transactions.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
             }).ToList();
         }
