@@ -15,61 +15,19 @@ public class CountryCardData : ICountryCardData
     }
     public List<LnadingPargeCardDTO> GetCountryData(string country)
     {
-        if (country == "Sweden")
+        var countryList = _cardsInfoService.GetCountryList(country);
+
+        return countryList.Select(c => new LnadingPargeCardDTO
         {
-            return _cardsInfoService.GetCountryList("Sweden").Select(c => new LnadingPargeCardDTO
-            {
-                Country = c.Country,
-                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
+            Country = c.Country,
+            Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " "),
-                Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
+            Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
                 .Replace(".", ","),
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
+            Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
                 .Replace(",", " ")
-            }).ToList();
-        }
-        else if (country == "Finland")
-        {
-            return _cardsInfoService.GetCountryList("Finland").Select(c => new LnadingPargeCardDTO
-            {
-                Country = c.Country,
-                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
-                .Replace(",", " "),
-                Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
-                .Replace(",", " ")
-                .Replace(".", ","),
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
-                .Replace(",", " ")
-            }).ToList();
-        }
-        else if (country == "Denmark")
-        {
-            return _cardsInfoService.GetCountryList("Denmark").Select(c => new LnadingPargeCardDTO
-            {
-                Country = c.Country,
-                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
-                .Replace(",", " "),
-                Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
-                .Replace(",", " ")
-                .Replace(".", ","),
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
-                .Replace(",", " ")
-            }).ToList();
-        }
-        else
-        {
-            return _cardsInfoService.GetCountryList("Norway").Select(c => new LnadingPargeCardDTO
-            {
-                Country = c.Country,
-                Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
-                .Replace(",", " "),
-                Balance = c.Balance.ToString("#,##0.00", CultureInfo.InvariantCulture)
-                .Replace(",", " ")
-                .Replace(".", ","),
-                Accounts = c.Accounts.ToString("#,##0", CultureInfo.InvariantCulture)
-                .Replace(",", " ")
-            }).ToList();
-        }
+        }).ToList();
+
     }
 }
