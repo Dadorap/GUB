@@ -134,7 +134,7 @@ namespace Services.BusinessLogic.Customers
         public void UpdateCustomer(CustomerDetailsDTO custDto)
         {
             var c = _bankAppDataContext.Customers.First(c => c.CustomerId == custDto.CustomerId);
-            
+
             c.Givenname = custDto.CustomerFirstName;
             c.Surname = custDto.CustomerLastName;
             c.Gender = custDto.CustomerGender;
@@ -163,6 +163,18 @@ namespace Services.BusinessLogic.Customers
                 }).ToList();
 
             return genderList;
+        }
+
+        public List<SelectListItem> FillPhoneCodes()
+        {
+            return Enum.GetValues(typeof(PhoneCode))
+                    .Cast<PhoneCode>()
+                    .Select(pc => new SelectListItem
+                    {
+                        Text = pc.ToString(), // Display "Denmark"
+                        Value = ((int)pc).ToString() // Value will be "45"
+                    })
+                    .ToList();
         }
 
         public void CreateNewCustomer(CustomerDTO customerDetailsDTO)

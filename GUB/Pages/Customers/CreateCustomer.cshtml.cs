@@ -60,16 +60,8 @@ namespace GUB.Pages.Customers
 
         public void OnGet()
         {
-            PhoneCodes = Enum.GetValues(typeof(PhoneCode))
-            .Cast<PhoneCode>()
-            .Select(pc => new SelectListItem
-            {
-                Text = pc.ToString(), // Display "Denmark"
-                Value = ((int)pc).ToString() // Value will be "45"
-            })
-        .ToList();
+            PhoneCodes = _customerService.FillPhoneCodes();
             PhoneCodes.Insert(0, new SelectListItem { Text = "-- Select Phone Code --", Value = "" });
-
         }
         public IActionResult OnPost()
         {
@@ -106,7 +98,8 @@ namespace GUB.Pages.Customers
 
                 return RedirectToPage("Customers/Customer");
             }
-
+            PhoneCodes = _customerService.FillPhoneCodes();
+            PhoneCodes.Insert(0, new SelectListItem { Text = "-- Select Phone Code --", Value = "" });
             return Page();
         }
 
