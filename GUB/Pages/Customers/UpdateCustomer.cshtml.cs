@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NuGet.Protocol.Plugins;
 using Services.BusinessLogic.Customers;
+using Services.BusinessLogic.Validations;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
@@ -15,49 +16,66 @@ namespace GUB.Pages.Customers
     {
 
         private readonly ICustomerService _customerService;
-        public UpdateCustomerModel(ICustomerService customerService)
+        private readonly ICountryValidation _countryValidation;
+        public UpdateCustomerModel(ICustomerService customerService,
+                                   ICountryValidation countryValidation)
         {
             _customerService = customerService;
+            _countryValidation = countryValidation;
         }
 
         public int CustomerId { get; set; }
-        [MaxLength(100)]
         [Required]
+        [MaxLength(100)]
         public string FirstName { get; set; }
-        [MaxLength(100)]
         [Required]
+        [MaxLength(100)]
         public string LastName { get; set; }
         [EmailAddress]
         [StringLength(150)]
         public string? Email { get; set; } = null;
         public string? PhoneNumber { get; set; } = null;
-        [StringLength(100)]
         [Required]
+        [StringLength(100)]
         public string Address { get; set; }
         public string PostalCode { get; set; }
-        [StringLength(50)]
         [Required]
-        public string Country { get; set; }
-        [Required]
-        public string CountryCode { get; set; }
+        [Range(1, 99, ErrorMessage = "Choose a valid Country!")]
+        public CustomerCountry Country { get; set; }
+        [Range(1, 99, ErrorMessage = "Choose a valid Country code!")]
+        public CountryCode CountryCode { get; set; }
+
         [StringLength(50)]
         [Required]
         public string City { get; set; }
         [StringLength(50)]
         public string? SSN { get; set; } = null;
 
-        [StringLength(50)]
-        public string? TelephoneCountryCode { get; set; } = null;
         [DataType(DataType.Date)]
         public DateOnly? BirthDate { get; set; } = null;
-        [Range(1,99, ErrorMessage = "Choose a valid gender!")]
+        [Range(1, 99, ErrorMessage = "Choose a valid gender!")]
         public Gender Gender { get; set; }
         public List<SelectListItem> Genders { get; set; }
+        public PhoneCode? PhoneCode { get; set; } = null;
+        public List<SelectListItem> PhoneCodes { get; set; }
 
 
         public void OnGet(int id)
         {
             var c = _customerService.GetCustomer(id);
+
+            if (Enum.TryParse<CustomerCountry>(c.CustomerCountry, out var country))
+            {
+                Country = country;
+            }
+            if (Enum.TryParse<CountryCode>(c.CustomerCountryCode, out var countryCode))
+            {
+                CountryCode = countryCode;
+            }
+            if (Enum.TryParse<PhoneCode>(c.CustomerPhoneCode, out var phoneCode))
+            {
+                PhoneCode = phoneCode;
+            }
 
             CustomerId = c.CustomerId;
             FirstName = c.CustomerFirstName;
@@ -66,12 +84,10 @@ namespace GUB.Pages.Customers
             PhoneNumber = c.CustomerPhone;
             Address = c.CustomerAddress;
             PostalCode = c.CustomerPostalCode;
-            Country = c.CustomerCountry;
-            CountryCode = c.CustomerCountryCode;
             City = c.CustomerCity;
             SSN = c.SocialSecurityNumber;
-            BirthDate = c.CustomerBirthDate;            
-            TelephoneCountryCode =  c.CustomerPhoneCode;
+            BirthDate = c.CustomerBirthDate;
+
 
             Genders = _customerService.FillGenderList();
         }
@@ -79,30 +95,36 @@ namespace GUB.Pages.Customers
 
         public IActionResult OnPost(int id)
         {
+            var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);
 
+            if (resp == RespCode.InvalidCountry)
+            {
+                ModelState.AddModelError(
+                    "Country", "Choose a valid country!");
+            }
 
             if (ModelState.IsValid)
             {
-            var UpdatedCustomer = _customerService.GetCustomer(id);
+                var UpdatedCustomer = _customerService.GetCustomer(id);
 
                 UpdatedCustomer.CustomerId = id;
                 UpdatedCustomer.CustomerFirstName = FirstName;
                 UpdatedCustomer.CustomerLastName = LastName;
                 UpdatedCustomer.CustomerEmail = Email;
-                UpdatedCustomer.CustomerPhoneCode = TelephoneCountryCode;
-                UpdatedCustomer.CustomerCountryCode = CountryCode;
+                UpdatedCustomer.CustomerPhoneCode = PhoneCode.ToString();
+                UpdatedCustomer.CustomerCountryCode = CountryCode.ToString();
                 UpdatedCustomer.CustomerCity = City;
                 UpdatedCustomer.CustomerAddress = Address;
                 UpdatedCustomer.CustomerBirthDate = BirthDate;
-                UpdatedCustomer.CustomerCountry = Country;
+                UpdatedCustomer.CustomerCountry = Country.ToString();
                 UpdatedCustomer.CustomerGender = Gender;
                 UpdatedCustomer.CustomerPhone = PhoneNumber;
                 UpdatedCustomer.CustomerPostalCode = PostalCode;
-                UpdatedCustomer.SocialSecurityNumber =SSN;
+                UpdatedCustomer.SocialSecurityNumber = SSN;
 
                 _customerService.UpdateCustomer(UpdatedCustomer);
 
-                return RedirectToPage("CustomerDetails" , new {id = id});
+                return RedirectToPage("CustomerDetails", new { id = id });
             }
 
             return Page();

@@ -100,14 +100,10 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <label asp-for="TelephoneCountryCode" class="d-block"></label>
-                                        <select asp-for="TelephoneCountryCode" class="form-controll rounded-5 w-75">
-                                            <option value="45">45</option>
-                                            <option value="46">46</option>
-                                            <option value="47">47</option>
-                                            <option value="358">358</option>
+                                        <label asp-for="PhoneCode" class="d-block"></label>
+                                        <select asp-for="PhoneCode" asp-items="Html.GetEnumSelectList<PhoneCode>()" class="form-controll rounded-5 w-75">
                                         </select>
-                                        <span class="field-validation-error text-danger" asp-validation-for="TelephoneCountryCode"></span>
+                                        <span class="field-validation-error text-danger" asp-validation-for="PhoneCode"></span>
                                     </div>
                                     <div class="align-self-center">
                                         <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
@@ -168,12 +164,8 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <label asp-for="CountryCode" class="d-block"></label>
-                                        <select asp-for="CountryCode" class="form-controll rounded-5 w-75">
-                                            <option value="se">SE</option>
-                                            <option value="fi">FI</option>
-                                            <option value="dk">DK</option>
-                                            <option value="no">NO</option>
+                                        <label asp-for="CountryCode" class="d-block">Country Code</label>
+                                        <select asp-for="CountryCode" asp-items="Html.GetEnumSelectList<CountryCode>()" class="form-controll rounded-5 w-75">
                                         </select>
                                         <span class="field-validation-error text-danger" asp-validation-for="CountryCode"></span>
                                     </div>
@@ -193,11 +185,7 @@
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
                                         <label asp-for="Country" class="d-block">Country</label>
-                                        <select asp-for="Country" class="form-controll rounded-5 w-75">
-                                            <option value="Sweden">Sweden</option>
-                                            <option value="Finland">Finland</option>
-                                            <option value="Denmark">Denmark</option>
-                                            <option value="Norway">Norway</option>
+                                        <select asp-for="Country" asp-items="Html.GetEnumSelectList<CustomerCountry>()" class="form-controll rounded-5 w-75">
                                         </select>
                                         <span class="field-validation-error text-danger" asp-validation-for="Country"></span>
                                     </div>
