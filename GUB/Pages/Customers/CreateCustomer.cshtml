@@ -102,6 +102,7 @@
                                     <div class="media-body text-left">
                                         <label asp-for="TelephoneCountryCode" class="d-block"></label>
                                         <select asp-for="TelephoneCountryCode" class="form-controll rounded-5 w-75">
+                                            <option value="None">None</option>
                                             <option value="45">45</option>
                                             <option value="46">46</option>
                                             <option value="47">47</option>
@@ -161,30 +162,7 @@
                         </div>
                     </div>
                 </div>
-                @* country Code *@
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div class="media d-flex">
-                                    <div class="media-body text-left">
-                                        <label asp-for="CountryCode" class="d-block"></label>
-                                        <select asp-for="CountryCode" class="form-controll rounded-5 w-75">
-                                            <option value="se">SE</option>
-                                            <option value="fi">FI</option>
-                                            <option value="dk">DK</option>
-                                            <option value="no">NO</option>
-                                        </select>
-                                        <span class="field-validation-error text-danger" asp-validation-for="CountryCode"></span>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="fa-solid fa-globe text-primary fa-3x"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 @* country *@
                 <div class="col-xl-3 col-sm-6 col-12">
                     <div class="card">
@@ -193,11 +171,7 @@
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
                                         <label asp-for="Country" class="d-block">Country</label>
-                                        <select asp-for="Country" class="form-controll rounded-5 w-75">
-                                            <option value="Sweden">Sweden</option>
-                                            <option value="Finland">Finland</option>
-                                            <option value="Denmark">Denmark</option>
-                                            <option value="Norway">Norway</option>
+                                        <select asp-for="Country" asp-items="Html.GetEnumSelectList<CustomerCountry>()" class="form-controll rounded-5 w-75">
                                         </select>
                                         <span class="field-validation-error text-danger" asp-validation-for="Country"></span>
                                     </div>
@@ -287,7 +261,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Update</button>
+            <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Save</button>
         </section>
     </form>
 </div>

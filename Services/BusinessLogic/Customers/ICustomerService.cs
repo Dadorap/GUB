@@ -11,4 +11,5 @@ public interface ICustomerService
     CustomerDetailsDTO GetCustomer(int customerId);
     void UpdateCustomer(CustomerDetailsDTO customerDetailsDTO);
     List<SelectListItem> FillGenderList();
+    void CreateNewCustomer(CustomerDetailsDTO customerDetailsDTO);
 }

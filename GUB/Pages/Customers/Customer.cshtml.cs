@@ -55,12 +55,12 @@ namespace GUB.Pages.Customers
                 .Select (s => new CustomerViewModel
                 {
                     Id = s.Id,
-                    SSN = s.SSN,
-                    FirstName = s.FirstName,
-                    LastName = s.LastName,
-                    Address = s.Address,
-                    Country = s.Country,
-                    City = s.City,
+                    SSN = s.SocialSecurityNumber,
+                    FirstName = s.CustomerFirstName,
+                    LastName = s.CustomerLastName,
+                    Address = s.CustomerAddress,
+                    Country = s.CustomerCountry,
+                    City = s.CustomerCity,
                 }).ToList();
         }
     }

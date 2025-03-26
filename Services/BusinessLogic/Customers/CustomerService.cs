@@ -10,27 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-enum CountryCode
-{
-    SE,
-    FI,
-    DK,
-    NO
-}
-
-enum Gender
-{
-    female,
-    male,
-    other
-}
-enum PhoneCode
-{
-    Denmark = 45,
-    Sweden = 46,
-    Norway = 47,
-    Finland = 358
-}
 
 
 
@@ -141,12 +120,12 @@ namespace Services.BusinessLogic.Customers
             var dtoQuery = query.Select(s => new CustomerDTO
             {
                 Id = s.CustomerId,
-                FirstName = s.Givenname,
-                LastName = s.Surname,
-                Country = s.Country,
-                City = s.City,
-                SSN = s.NationalId,
-                Address = s.Streetaddress
+                CustomerFirstName = s.Givenname,
+                CustomerLastName = s.Surname,
+                CustomerCountry = s.Country,
+                CustomerCity = s.City,
+                SocialSecurityNumber = s.NationalId,
+                CustomerAddress = s.Streetaddress
             });
             return dtoQuery.GetPaged(page, pageSize);
 
@@ -162,7 +141,7 @@ namespace Services.BusinessLogic.Customers
             c.Streetaddress = custDto.CustomerAddress;
             c.City = custDto.CustomerCity;
             c.Country = custDto.CustomerCountry;
-            c.CountryCode = custDto.CustomerCountryCode;
+            c.CountryCode = custDto.CustomerCountryCode.ToString();
             c.Zipcode = custDto.CustomerPostalCode;
             c.Birthday = custDto.CustomerBirthDate;
             c.NationalId = custDto.SocialSecurityNumber;
@@ -176,7 +155,7 @@ namespace Services.BusinessLogic.Customers
 
         public List<SelectListItem> FillGenderList()
         {
-            var genderList = Enum.GetValues<Gender>()
+            var genderList = Enum.GetValues<Enums>()
                 .Select(g => new SelectListItem()
                 {
                     Value = ToString(),
@@ -184,6 +163,11 @@ namespace Services.BusinessLogic.Customers
                 }).ToList();
 
             return genderList;
+        }
+
+        public void CreateNewCustomer(CustomerDetailsDTO customerDetailsDTO)
+        {
+            throw new NotImplementedException();
         }
     }
 }
