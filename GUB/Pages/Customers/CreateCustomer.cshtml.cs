@@ -6,10 +6,13 @@ using Services.BusinessLogic.Customers;
 using System.ComponentModel.DataAnnotations;
 using Contracts.DTOs;
 using Services.BusinessLogic.Validations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GUB.Pages.Customers
 {
     [BindProperties]
+    [Authorize(Roles = "Cashier")]
+
     public class CreateCustomerModel : PageModel
     {
         private readonly ICustomerService _customerService;

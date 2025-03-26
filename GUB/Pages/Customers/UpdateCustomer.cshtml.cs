@@ -1,5 +1,6 @@
 using GUB.ViewModel.Customers;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,8 @@ using System.Runtime.CompilerServices;
 namespace GUB.Pages.Customers
 {
     [BindProperties]
+    [Authorize(Roles = "Cashier")]
+
     public class UpdateCustomerModel : PageModel
     {
 

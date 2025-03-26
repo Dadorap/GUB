@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client;
@@ -7,6 +8,8 @@ using System.ComponentModel.DataAnnotations;
 namespace GUB.Pages.Customers
 {
     [BindProperties]
+    [Authorize(Roles = "Cashier")]
+
     public class DepositModel : PageModel
     {
         private readonly IAccountService _accountService;

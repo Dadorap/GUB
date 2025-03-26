@@ -1,10 +1,13 @@
 using GUB.ViewModel.Customers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.Customers;
 
 namespace GUB.Pages.Customers
 {
+    [Authorize(Roles = "Cashier")]
+
     public class CustomerDetailsModel : PageModel
     {
         private readonly ICustomerService _customerService;
