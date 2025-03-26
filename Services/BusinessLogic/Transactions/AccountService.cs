@@ -1,16 +1,7 @@
-﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+﻿using Contracts.DTOs;
+using Contracts.Models;
 using Microsoft.EntityFrameworkCore;
 
-public enum RespCode
-{
-    OK,
-    BalanceTooLow,
-    IncorrectAmount,
-    InvalidMessage,
-    InvalidDate,
-    InvalidCountry
-}
 
 namespace Services.BusinessLogic.Transactions
 {

@@ -1,4 +1,4 @@
-﻿namespace DataAccessLayer.DTOs;
+﻿namespace Contracts.DTOs;
 
 public class CountryDTO
 {

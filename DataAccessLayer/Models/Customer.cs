@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccessLayer.Models;
+namespace Contracts.Models;
 
 public partial class Customer
 {
     public int CustomerId { get; set; }
-    public Enums Gender { get; set; } = Enums.Choose;
+    public Gender Gender { get; set; } = Gender.Choose;
 
     public string Givenname { get; set; } = null!;
 

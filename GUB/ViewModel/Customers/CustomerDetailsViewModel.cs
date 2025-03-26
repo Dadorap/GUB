@@ -3,7 +3,7 @@
     public class CustomerDetailsViewModel
     {
         public int CustomerId { get; set; }
-        public Enums CustomerGender { get; set; }
+        public Gender CustomerGender { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
         public string CustomerAddress { get; set; }

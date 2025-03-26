@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.DTOs;
+namespace Contracts.DTOs;
 
 public class CustomerDetailsDTO
 {
     public int CustomerId { get; set; }
-    public Enums CustomerGender { get; set; }
+    public Gender CustomerGender { get; set; }
     public string CustomerFirstName { get; set; }
     public string CustomerLastName { get; set; }
     public string CustomerAddress { get; set; }

@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.DTOs;
+﻿using Contracts.DTOs;
 using Newtonsoft.Json.Linq;
 
 namespace GUB.API;

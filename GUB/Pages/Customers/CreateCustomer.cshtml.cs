@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.BusinessLogic.Customers;
 using System.ComponentModel.DataAnnotations;
-using Con
+using Contracts.DTOs;
+using Services.BusinessLogic.Validations;
 
 namespace GUB.Pages.Customers
 {
@@ -12,9 +13,12 @@ namespace GUB.Pages.Customers
     public class CreateCustomerModel : PageModel
     {
         private readonly ICustomerService _customerService;
-        public CreateCustomerModel(ICustomerService customerService)
+        private readonly ICountryValidation _countryValidation;
+        
+        public CreateCustomerModel(ICustomerService customerService, ICountryValidation countryValidation)
         {
             _customerService = customerService;
+            _countryValidation = countryValidation;        
         }
 
         public int CustomerId { get; set; }
@@ -35,7 +39,8 @@ namespace GUB.Pages.Customers
         [Required]
         [Range(1, 99, ErrorMessage = "Choose a valid Country!")]
         public CustomerCountry Country { get; set; }
-        public string CountryCode { get; set; }
+        [Range(1, 99, ErrorMessage = "Choose a valid Country code!")]
+        public CountryCode CountryCode { get; set; }
 
         [StringLength(50)]
         [Required]
@@ -44,20 +49,37 @@ namespace GUB.Pages.Customers
         public string? SSN { get; set; } = null;
 
         [StringLength(50)]
-        public PhoneCode? TelephoneCountryCode { get; set; } = null;
         [DataType(DataType.Date)]
         public DateOnly? BirthDate { get; set; } = null;
         [Required]
         [Range(1, 99, ErrorMessage = "Choose a valid gender!")]
-        public Enums Gender { get; set; }
+        public Gender Gender { get; set; }
         public List<SelectListItem> Genders { get; set; }
-        public void OnGet(int id)
-        {
-            CustomerId = id;
-        }
+        public PhoneCode? PhoneCode { get; set; } = null;
+        public List<SelectListItem> PhoneCodes { get; set; }
 
+        public void OnGet()
+        {
+            PhoneCodes = Enum.GetValues(typeof(PhoneCode))
+            .Cast<PhoneCode>()
+            .Select(pc => new SelectListItem
+            {
+                Text = pc.ToString(), // Display "Denmark"
+                Value = ((int)pc).ToString() // Value will be "45"
+            })
+        .ToList();
+            PhoneCodes.Insert(0, new SelectListItem { Text = "-- Select Phone Code --", Value = "" });
+
+        }
         public IActionResult OnPost()
         {
+            var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);
+
+            if (resp == RespCode.InvalidCountry)
+            {
+                ModelState.AddModelError(
+                "Country", "Invalid Country");
+            }
 
 
             if (ModelState.IsValid)
@@ -67,12 +89,12 @@ namespace GUB.Pages.Customers
                     CustomerFirstName = FirstName,
                     CustomerLastName = LastName,
                     CustomerEmail = Email,
-                    CustomerPhoneCode = ((int)TelephoneCountryCode.Value).ToString(),
-                    CustomerCountryCode = CountryCode,
+                    CustomerPhoneCode = ((int)PhoneCode.Value).ToString(),
                     CustomerCity = City,
                     CustomerAddress = Address,
                     CustomerBirthDate = BirthDate,
                     CustomerCountry = Country.ToString(),
+                    CustomerCountryCode = CountryCode.ToString(),
                     CustomerGender = Gender,
                     CustomerPhone = PhoneNumber,
                     CustomerPostalCode = PostalCode,
@@ -82,7 +104,7 @@ namespace GUB.Pages.Customers
 
                 _customerService.CreateNewCustomer(newCustomer);
 
-                return RedirectToPage("Customer");
+                return RedirectToPage("Customers/Customer");
             }
 
             return Page();

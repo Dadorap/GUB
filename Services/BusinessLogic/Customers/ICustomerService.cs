@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.Models;
-using DataAccessLayer.DTOs;
+﻿using Contracts.Models;
+using Contracts.DTOs;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GUB.Infrastructure.Paging;
 
@@ -11,5 +11,5 @@ public interface ICustomerService
     CustomerDetailsDTO GetCustomer(int customerId);
     void UpdateCustomer(CustomerDetailsDTO customerDetailsDTO);
     List<SelectListItem> FillGenderList();
-    void CreateNewCustomer(CustomerDetailsDTO customerDetailsDTO);
+    void CreateNewCustomer(CustomerDTO customerDetailsDTO);
 }

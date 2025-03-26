@@ -51,7 +51,7 @@ namespace GUB.Pages.Customers
         [DataType(DataType.Date)]
         public DateOnly? BirthDate { get; set; } = null;
         [Range(1,99, ErrorMessage = "Choose a valid gender!")]
-        public Enums Gender { get; set; }
+        public Gender Gender { get; set; }
         public List<SelectListItem> Genders { get; set; }
 
 

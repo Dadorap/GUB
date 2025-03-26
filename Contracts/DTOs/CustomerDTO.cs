@@ -1,4 +1,4 @@
-﻿namespace DataAccessLayer.DTOs
+﻿namespace Contracts.DTOs
 {
     public class CustomerDTO
     {
@@ -9,7 +9,7 @@
         public string CustomerAddress { get; set; }
         public string CustomerCity { get; set; }
         public string CustomerCountry { get; set; }
-        public Enums CustomerGender { get; set; }
+        public Gender CustomerGender { get; set; }
         public string CustomerCountryCode { get; set; }
         public DateOnly? CustomerBirthDate { get; set; }
         public string CustomerPhone { get; set; }

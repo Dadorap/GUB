@@ -1,4 +1,4 @@
-using DataAccessLayer.DTOs;
+using Contracts.DTOs;
 using GUB.API;
 using GUB.ViewModel.LandingPage;
 using GUB.ViewModel.ZenQuotes;

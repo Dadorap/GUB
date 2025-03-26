@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
-public enum Enums
+public enum Gender
 {
     [Display(Name = "Choose...")]
     Choose = 0,
@@ -44,4 +45,22 @@ public enum PhoneCode
     Sweden = 46,
     Norway = 47,
     Finland = 358
+}
+
+
+
+public enum RespCode
+{
+    OK,
+    BalanceTooLow,
+    IncorrectAmount,
+    InvalidMessage,
+    InvalidDate,
+    InvalidCountry
+}
+namespace Contracts
+{
+    internal class Enums
+    {
+    }
 }

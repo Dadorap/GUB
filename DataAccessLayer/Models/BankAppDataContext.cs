@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccessLayer.Models;
+namespace Contracts.Models;
 
 public partial class BankAppDataContext : IdentityDbContext
 {

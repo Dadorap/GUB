@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+﻿using Contracts.DTOs;
+using Contracts.Models;
 using GUB.Infrastructure.Paging;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -155,7 +155,7 @@ namespace Services.BusinessLogic.Customers
 
         public List<SelectListItem> FillGenderList()
         {
-            var genderList = Enum.GetValues<Enums>()
+            var genderList = Enum.GetValues<Gender>()
                 .Select(g => new SelectListItem()
                 {
                     Value = ToString(),
@@ -165,7 +165,7 @@ namespace Services.BusinessLogic.Customers
             return genderList;
         }
 
-        public void CreateNewCustomer(CustomerDetailsDTO customerDetailsDTO)
+        public void CreateNewCustomer(CustomerDTO customerDetailsDTO)
         {
             throw new NotImplementedException();
         }
