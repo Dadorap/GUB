@@ -2,7 +2,7 @@
 using Services.BusinessLogic.LandingPage;
 using System.Globalization;
 
-namespace GUB.ViewModel.LandingPage;
+namespace Services.BusinessLogic.LandingPage;
 
 public class CountryCardData : ICountryCardData
 {
@@ -17,7 +17,7 @@ public class CountryCardData : ICountryCardData
     {
         if (country == "Sweden")
         {
-            return _cardsInfoService.GetCountryList("Sweden").Select(c => new LandingPageCardViewModel
+            return _cardsInfoService.GetCountryList("Sweden").Select(c => new LnadingPargeCardDTO
             {
                 Country = c.Country,
                 Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
@@ -31,7 +31,7 @@ public class CountryCardData : ICountryCardData
         }
         else if (country == "Finland")
         {
-            return _cardsInfoService.GetCountryList("Finland").Select(c => new LandingPageCardViewModel
+            return _cardsInfoService.GetCountryList("Finland").Select(c => new LnadingPargeCardDTO
             {
                 Country = c.Country,
                 Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
@@ -45,7 +45,7 @@ public class CountryCardData : ICountryCardData
         }
         else if (country == "Denmark")
         {
-            return _cardsInfoService.GetCountryList("Denmark").Select(c => new LandingPageCardViewModel
+            return _cardsInfoService.GetCountryList("Denmark").Select(c => new LnadingPargeCardDTO
             {
                 Country = c.Country,
                 Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)
@@ -59,7 +59,7 @@ public class CountryCardData : ICountryCardData
         }
         else
         {
-            return _cardsInfoService.GetCountryList("Norway").Select(c => new LandingPageCardViewModel
+            return _cardsInfoService.GetCountryList("Norway").Select(c => new LnadingPargeCardDTO
             {
                 Country = c.Country,
                 Customers = c.Customers.ToString("#,##0", CultureInfo.InvariantCulture)

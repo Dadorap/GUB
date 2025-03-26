@@ -1,6 +1,5 @@
 using Contracts.Models;
 using GUB.API;
-using GUB.ViewModel.LandingPage;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.Customers;
@@ -34,6 +33,7 @@ namespace GUB
             builder.Services.AddTransient<ZenQuotesService>();
             builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<ICountryValidation, CountryValidation>();
+            builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
 
 
             var app = builder.Build();

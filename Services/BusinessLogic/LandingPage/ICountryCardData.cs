@@ -1,6 +1,6 @@
 ﻿using Contracts.DTOs;
 
-namespace GUB.ViewModel.LandingPage;
+namespace Services.BusinessLogic.LandingPage;
 
 public interface ICountryCardData
 {
