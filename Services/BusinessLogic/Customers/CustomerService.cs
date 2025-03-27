@@ -199,5 +199,11 @@ namespace Services.BusinessLogic.Customers
             _bankAppDataContext.Customers.Add(newCustomer);
             _bankAppDataContext.SaveChanges();                       
         }
+
+       public CustomerDTO GetCustomerData()
+        {
+            var customer = new CustomerDTO();  
+            return customer;
+        }
     }
 }

@@ -13,4 +13,6 @@ public interface ICustomerService
     List<SelectListItem> FillGenderList();
     List<SelectListItem> FillPhoneCodes();
     void CreateNewCustomer(CustomerDTO c);
+
+    CustomerDTO GetCustomerData();
 }

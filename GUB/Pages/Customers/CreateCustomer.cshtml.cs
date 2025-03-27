@@ -17,11 +17,11 @@ namespace GUB.Pages.Customers
     {
         private readonly ICustomerService _customerService;
         private readonly ICountryValidation _countryValidation;
-        
+
         public CreateCustomerModel(ICustomerService customerService, ICountryValidation countryValidation)
         {
             _customerService = customerService;
-            _countryValidation = countryValidation;        
+            _countryValidation = countryValidation;
         }
 
         public int CustomerId { get; set; }
@@ -82,32 +82,33 @@ namespace GUB.Pages.Customers
 
             if (ModelState.IsValid)
             {
-                var newCustomer = new CustomerDTO()
-                {
-                    CustomerFirstName = FirstName,
-                    CustomerLastName = LastName,
-                    CustomerEmail = Email,
-                    CustomerPhoneCode = ((int)PhoneCode.Value).ToString(),
-                    CustomerCity = City,
-                    CustomerAddress = Address,
-                    CustomerBirthDate = BirthDate,
-                    CustomerCountry = Country.ToString(),
-                    CustomerCountryCode = CountryCode.ToString(),
-                    CustomerGender = Gender,
-                    CustomerPhone = PhoneNumber,
-                    CustomerPostalCode = PostalCode,
-                    SocialSecurityNumber = SSN,
-                };
+                var custData = _customerService.GetCustomerData();
 
+                custData.CustomerFirstName = FirstName;
+                custData.CustomerLastName = LastName;
+                custData.CustomerEmail = Email;
+                custData.CustomerCity = City;
+                custData.CustomerAddress = Address;
+                custData.CustomerBirthDate = BirthDate;
+                custData.CustomerCountry = Country.ToString();
+                custData.CustomerCountryCode = CountryCode.ToString();
+                custData.CustomerGender = Gender;
+                custData.CustomerPhone = PhoneNumber;
+                custData.CustomerPhoneCode = PhoneCode == null ? null : ((int)PhoneCode.Value).ToString();
+                custData.CustomerPostalCode = PostalCode;
+                custData.SocialSecurityNumber = SSN;
 
-                _customerService.CreateNewCustomer(newCustomer);
-
+                _customerService.CreateNewCustomer(custData);
                 return RedirectToPage("Customer");
-            }
+            };
             PhoneCodes = _customerService.FillPhoneCodes();
             PhoneCodes.Insert(0, new SelectListItem { Text = "-- Select Phone Code --", Value = "" });
             return Page();
-        }
 
+
+        }
     }
 }
+
+
+
