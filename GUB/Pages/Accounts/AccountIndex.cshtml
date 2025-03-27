@@ -40,7 +40,9 @@
                                     </div>
                                     <!--end of col-->
                                     <div class="col text-dark">
-                                        <input asp-for="@Model.Q" class="form-control form-control-lg form-control-borderless border-0" type="search" placeholder="Search First Name/Last Name/city">
+                                        <input asp-for="@Model.Q" class="form-control form-control-lg
+                                        form-control-borderless border-0" type="search"
+                                               placeholder="Search Account ID, First Name/Last Name">
                                     </div>
                                     <!--end of col-->
                                     <div class="col-auto">
@@ -67,19 +69,35 @@
                                         <table class="table table-striped">
                                             <thead class="thead-green">
                                                 <tr>
-                                                    <th scope="col"> Id</th>
-                                                    @* SSN *@
+                                                    @* accout id *@
                                                     <th scope="col">
-                                                        SSN
-                                                        <a asp-page="/Customers/Customer"
-                                                           asp-route-sortColumn="SSN"
+                                                        Accout ID
+                                                        <a asp-page="/Accounts/AccountIndex"
+                                                           asp-route-sortColumn="Accout ID"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customers/Customer"
-                                                           asp-route-sortColumn="SSN"
+                                                        <a asp-page="/Accounts/AccountIndex"
+                                                           asp-route-sortColumn="Accout ID"
+                                                           asp-route-sortOrder="desc"
+                                                           style="text-decoration:none">
+                                                            <i class="fa-solid fa-angle-down text-light"></i>
+                                                        </a>
+                                                    </th>
+                                                    @* customer id *@
+                                                    <th scope="col">
+                                                        Customer ID
+                                                        <a asp-page="/Accounts/AccountIndex"
+                                                           asp-route-sortColumn="Customer ID"
+                                                           asp-route-sortOrder="asc"
+                                                           style="text-decoration:none">
+                                                            <i class="fa-solid fa-angle-up text-light"></i>
+
+                                                        </a>
+                                                        <a asp-page="/Accounts/AccountIndex"
+                                                           asp-route-sortColumn="Customer ID"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-down text-light"></i>
@@ -88,7 +106,7 @@
                                                     @* FIRST NAME *@
                                                     <th scope="col">
                                                         First Name
-                                                        <a asp-page="/Customers/Customer"
+                                                        <a asp-page="/Accounts/AccountIndex"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="First Name"
                                                            asp-route-sortOrder="asc"
@@ -96,7 +114,7 @@
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customers/Customer"
+                                                        <a asp-page="/Accounts/AccountIndex"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="First Name"
                                                            asp-route-sortOrder="desc"
@@ -107,7 +125,7 @@
                                                     @* LAST NAME *@
                                                     <th scope="col">
                                                         Last Name
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Accounts/AccountIndex"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="Last Name"
                                                            asp-route-sortOrder="asc"
@@ -115,7 +133,7 @@
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Accounts/AccountIndex"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="Last Name"
                                                            asp-route-sortOrder="desc"
@@ -123,55 +141,20 @@
                                                             <i class="fa-solid fa-angle-down text-light"></i>
                                                         </a>
                                                     </th>
-                                                    @* ADDRESS *@
+                                                    @* Frequency *@
                                                     <th scope="col">
-                                                        Address
-                                                        <a asp-page="/Customers/Customer"
-                                                           asp-route-sortColumn="Address"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Customers/Customer"
-                                                           asp-route-sortColumn="Address"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
-                                                    </th>
-                                                    @* city *@
-                                                    <th scope="col">
-                                                        City
-                                                        <a asp-page="/Customers/Customer"
+                                                        Frequency
+                                                        <a asp-page="/Accounts/AccountIndex"
                                                            asp-route-q="@Model.Q"
-                                                           asp-route-sortColumn="City"
+                                                           asp-route-sortColumn="Frequency"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customers/Customer"
+                                                        <a asp-page="/Accounts/AccountIndex"
                                                            asp-route-q="@Model.Q"
-                                                           asp-route-sortColumn="City"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
-                                                    </th>
-
-                                                    @* COUNTRY *@
-                                                    <th scope="col">
-                                                        Country
-                                                        <a asp-page="/Customer"
-                                                           asp-route-sortColumn="Country"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Customer"
-                                                           asp-route-sortColumn="Country"
+                                                           asp-route-sortColumn="Frequency"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-down text-light"></i>
@@ -183,25 +166,23 @@
 
                                             <tbody>
 
-                                                @* @foreach (var c in Model.Customers) *@
-                                                @* { *@
-                                                @*     <tr> *@
-                                                @*         <td>@c.Id</td> *@
-                                                @*         <td>@c.SSN</td> *@
-                                                @*         <td>@c.FirstName</td> *@
-                                                @*         <td>@c.LastName</td> *@
-                                                @*         <td>@c.Address</td> *@
-                                                @*         <td>@c.City</td> *@
-                                                @*         <td>@c.Country</td> *@
-                                                @*         <td><a asp-page="/Customers/CustomerDetails" asp-route-id="@c.Id" class="btn btn-primary">View</a></td> *@
-                                                @*     </tr> *@
-                                                @* } *@
+                                                @foreach (var c in Model.Accounts)
+                                                {
+                                                    <tr>
+                                                        <td>@c.AccountId</td>
+                                                        <td>@c.CustomerId</td>
+                                                        <td>@c.CustomerFirstName</td>
+                                                        <td>@c.CustomerLastName</td>
+                                                        <td>@c.Frequency</td>
+                                                        <td><a asp-page="/Customers/CustomerDetails" asp-route-id="@c.CustomerId" class="btn btn-primary">View</a></td>
+                                                    </tr>
+                                                }
                                                 <tr>
                                                     <td>
                                                         @if (Model.CurrentPage != 1)
                                                         {
                                                             <a class="btn btn-success"
-                                                               asp-page="/Customers/Customer"
+                                                               asp-page="/Accounts/AccountIndex"
                                                                asp-route-q="@Model.Q"
                                                                asp-route-sortColumn="@Model.SortColumn"
                                                                asp-route-sortOrder="@Model.SortOrder"
@@ -211,7 +192,6 @@
                                                         }
                                                     </td>
                                                     <td>@*  *@</td>
-                                                    <td>@*  *@</td>
 
                                                     <td colspan="2">
                                                         @for (int i = 1; i <= 10; i++)
@@ -219,7 +199,7 @@
 
 
                                                             <a class="btn @(Model.CurrentPage == i ? "btn-success" : "btn-secondary")"
-                                                               asp-page="/Customers/Customer"
+                                                               asp-page="/Accounts/AccountIndex"
                                                                asp-route-q="@Model.Q"
                                                                asp-route-sortColumn="@Model.SortColumn"
                                                                asp-route-sortOrder="@Model.SortOrder"
@@ -230,14 +210,13 @@
                                                     </td>
 
                                                     <td>@*  *@</td>
-                                                    <td>@*  *@</td>
 
 
                                                     <td>
                                                         @if (Model.CurrentPage != Model.PageCount)
                                                         {
                                                             <a class="btn btn-success"
-                                                               asp-page="/Customers/Customer"
+                                                               asp-page="/Accounts/AccountIndex"
                                                                asp-route-q="@Model.Q"
                                                                asp-route-sortColumn="@Model.SortColumn"
                                                                asp-route-sortOrder="@Model.SortOrder"

@@ -1,20 +1,24 @@
 using GUB.API;
+using GUB.ViewModel.Accounts;
 using GUB.ViewModel.Customers;
 using GUB.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Services.BusinessLogic.Transactions;
 
 namespace GUB.Pages.Accounts
 {
     public class AccountIndexModel : PageModel
     {
         private readonly ZenQuotesService _zenQuotesService;
+        private readonly IAccountService _accountService;
 
-        public AccountIndexModel(ZenQuotesService zenQuotesService)
+        public AccountIndexModel(ZenQuotesService zenQuotesService, IAccountService accountService)
         {
             _zenQuotesService = zenQuotesService;
+            _accountService = accountService;
         }
-        public List<CustomerViewModel> Customers { get; set; }
+        public List<AccountsViewModel> Accounts { get; set; }
         public List<ZenQuotesViewModel> ZenQuotes { get; set; }
         public string SortColumn { get; set; }
         public string SortOrder { get; set; }
@@ -31,8 +35,8 @@ namespace GUB.Pages.Accounts
                 pageNo = 1;
             CurrentPage = pageNo;
 
-            //var result = _customerService.GetCustomers(SortColumn, SortOrder, CurrentPage, q);
-            //PageCount = result.PageCount;
+            var result = _accountService.GetAccounts(SortColumn, SortOrder, CurrentPage, q);
+            PageCount = result.PageCount;
 
 
 
@@ -42,6 +46,15 @@ namespace GUB.Pages.Accounts
                             Quote = q.Quote,
                             Author = q.Author
                         }).ToList();
+            Accounts = result.Results.Select(x => new AccountsViewModel 
+                        {
+                            AccountId = x.AccountId,
+                            CustomerId = x.CustomerId,
+                            CustomerFirstName = x.CustomerFirstName,
+                            CustomerLastName = x.CustomerLastName,
+                            Frequency = x.Frequency,
+                        }).ToList();
+
         }
     }
 }

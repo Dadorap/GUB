@@ -1,8 +1,6 @@
-﻿using System.Transactions;
+﻿namespace GUB.ViewModel.Accounts;
 
-namespace DataAccessLayer.DTOs;
-
-public class AccountsDTO
+public class AccountsViewModel
 {
     public int AccountId { get; set; }
     public int CustomerId { get; set; }
