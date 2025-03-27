@@ -1,4 +1,4 @@
-﻿using Contracts.DTOs;
+﻿using DataAccessLayer.DTOs;
 using Services.BusinessLogic.LandingPage;
 using System.Globalization;
 

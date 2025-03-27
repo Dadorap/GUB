@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contracts.Models
+namespace DataAccessLayer.Models
 {
     public class DataInitializer
     {

@@ -1,5 +1,5 @@
-﻿using Contracts.DTOs;
-using Contracts.Models;
+﻿using DataAccessLayer.DTOs;
+using DataAccessLayer.Models;
 using GUB.Infrastructure.Paging;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;

@@ -1,5 +1,5 @@
-﻿using Contracts.DTOs;
-using Contracts.Models;
+﻿using DataAccessLayer.DTOs;
+using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -74,6 +74,11 @@ namespace Services.BusinessLogic.Transactions
             return accDto;
         }
 
+        public List<AccountsDTO> GetAllAccounts()
+        {
+            throw new NotImplementedException();
+        }
+    
        
     }
 }

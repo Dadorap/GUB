@@ -1,4 +1,4 @@
-using Contracts.Models;
+using DataAccessLayer.Models;
 using GUB.API;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

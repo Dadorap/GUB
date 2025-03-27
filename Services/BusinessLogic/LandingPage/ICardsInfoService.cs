@@ -1,4 +1,4 @@
-﻿using Contracts.DTOs;
+﻿using DataAccessLayer.DTOs;
 
 namespace Services.BusinessLogic.LandingPage;
 

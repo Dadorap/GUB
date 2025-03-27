@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Contracts.Models;
+namespace DataAccessLayer.Models;
 
 public partial class Transaction
 {

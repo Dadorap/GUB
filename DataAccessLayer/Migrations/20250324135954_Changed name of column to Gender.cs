@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Contracts.Migrations
+namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
     public partial class ChangednameofcolumntoGender : Migration
