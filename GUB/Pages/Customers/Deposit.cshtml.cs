@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client;
-using Services.BusinessLogic.Transactions;
+using Services.BusinessLogic.AccountManagement;
 using System.ComponentModel.DataAnnotations;
 
 namespace GUB.Pages.Customers

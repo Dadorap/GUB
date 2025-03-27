@@ -4,7 +4,7 @@ using GUB.ViewModel.Customers;
 using GUB.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Services.BusinessLogic.Transactions;
+using Services.BusinessLogic.AccountManagement;
 
 namespace GUB.Pages.Accounts
 {

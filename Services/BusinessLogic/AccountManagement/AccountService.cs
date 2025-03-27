@@ -4,7 +4,7 @@ using GUB.Infrastructure.Paging;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Services.BusinessLogic.Transactions
+namespace Services.BusinessLogic.AccountManagement
 {
     public class AccountService : IAccountService
     {

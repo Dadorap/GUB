@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.Customers;
 using Services.BusinessLogic.LandingPage;
-using Services.BusinessLogic.Transactions;
+using Services.BusinessLogic.AccountManagement;
 using Services.BusinessLogic.Validations;
 
 namespace GUB

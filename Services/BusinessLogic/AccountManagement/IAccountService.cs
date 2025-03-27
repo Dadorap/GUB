@@ -1,8 +1,7 @@
 ﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
 using GUB.Infrastructure.Paging;
 
-namespace Services.BusinessLogic.Transactions;
+namespace Services.BusinessLogic.AccountManagement;
 
 public interface IAccountService
 {
