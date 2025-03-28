@@ -1,25 +1,26 @@
 using GUB.API;
 using GUB.ViewModel.Accounts;
 using GUB.ViewModel.ZenQuotes;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
 
 namespace GUB.Pages.Accounts
 {
-    public class TransactionDetailModel : PageModel
+    public class TransactionDetailsModel : PageModel
     {
         private readonly ZenQuotesService _zenQuotesService;
         private readonly ITransactionDetailService _transacitonDetailService;
 
-        public TransactionDetailModel(ZenQuotesService zenQuotesService, ITransactionDetailService transacitonDetailService)
+        public TransactionDetailsModel(ZenQuotesService zenQuotesService, ITransactionDetailService transacitonDetailService)
         {
             _zenQuotesService = zenQuotesService;
-            _transacitonDetailService = transacitonDetailService;      
+            _transacitonDetailService = transacitonDetailService;
         }
         public List<TransactionDetailsViewModel> Transactions { get; set; }
         public List<ZenQuotesViewModel> ZenQuotes { get; set; }
         public string Q { get; set; }
+        public int AccountId { get; set; }
+        public int CurrentPage { get; set; }
 
         public async Task OnGet(int id, string q)
         {
@@ -45,6 +46,7 @@ namespace GUB.Pages.Accounts
                 Account = s.Account
 
             }).ToList();
+            AccountId = Transactions.FirstOrDefault().AccountId;
 
         }
     }
