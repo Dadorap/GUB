@@ -3,23 +3,23 @@ using DataAccessLayer.Models;
 
 namespace Services.BusinessLogic.AccountManagement;
 
-public class AccountDetailService : IAccountDetailService
+public class TransactionDetailService : ITransactionDetailService
 {
     private readonly BankAppDataContext _bankAppDataContext;
 
-    public AccountDetailService(BankAppDataContext bankAppDataContext)
+    public TransactionDetailService(BankAppDataContext bankAppDataContext)
     {
         _bankAppDataContext = bankAppDataContext;
     }
 
-    public List<TransactionDTO> GetAccountDetails(int id)
+    public List<TransactionDTO> GetTransactionDetails(int id)
     {
-       var trans = _bankAppDataContext.Transactions
-            .Where(t => t.AccountId == id)
-            .AsQueryable();
+        var trans = _bankAppDataContext.Transactions
+             .Where(t => t.AccountId == id)
+             .AsQueryable();
         if (trans == null) return null;
 
-        var accTrans = trans.Select(s=> new TransactionDTO()
+        var accTrans = trans.Select(s => new TransactionDTO()
         {
             TransactionId = s.TransactionId,
             AccountId = s.AccountId,
@@ -31,7 +31,8 @@ public class AccountDetailService : IAccountDetailService
             Symbol = s.Symbol,
             Bank = s.Bank,
             Account = s.Account,
-        }).ToList();
+        }).OrderByDescending(d => d.Date)
+          .ToList();
 
         return accTrans;
     }

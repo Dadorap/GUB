@@ -34,6 +34,7 @@ namespace GUB
             builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<ICountryValidation, CountryValidation>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
+            builder.Services.AddTransient<ITransactionDetailService, TransactionDetailService>();
 
 
             var app = builder.Build();
