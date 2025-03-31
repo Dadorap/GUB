@@ -17,7 +17,7 @@ public class TransactionDetailService : ITransactionDetailService
         var trans = _bankAppDataContext.Transactions
              .Where(t => t.AccountId == id)
              .AsQueryable();
-        if (trans == null) return null;
+        
 
         var accTrans = trans.Select(s => new TransactionDTO()
         {

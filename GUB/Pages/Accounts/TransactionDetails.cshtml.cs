@@ -18,15 +18,13 @@ namespace GUB.Pages.Accounts
             _zenQuotesService = zenQuotesService;
             _transacitonDetailService = transacitonDetailService;
         }
-        //public List<TransactionDetailsViewModel> Transactions { get; set; }
         public List<ZenQuotesViewModel> ZenQuotes { get; set; }
-        public string Q { get; set; }
         public int AccountId { get; set; }
         public int CurrentPage { get; set; }
+        public int PageCount { get; set; }
 
-        public  async Task OnGet(int id, string q)
+        public  async Task OnGet(int id)
         {
-            Q = q;
             ZenQuotes = (await _zenQuotesService.GetQuotes())
                         .Select(q => new ZenQuotesViewModel
                         {
@@ -38,6 +36,7 @@ namespace GUB.Pages.Accounts
 
         public IActionResult OnGetShowMore(int id, int pageNo)
         {
+
             var listOfTransa = _transacitonDetailService.GetTransactionDetails(id)
                 .Where(s => s.AccountId == id)
                 .AsQueryable()
@@ -55,7 +54,7 @@ namespace GUB.Pages.Accounts
                     Bank = s.Bank,
                     Account = s.Account
                 }).ToList();
-
+            PageCount = listOfTransa.Count;
 
             return new JsonResult(new { transa = listOfTransa });
         }
