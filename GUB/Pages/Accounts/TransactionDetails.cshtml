@@ -56,7 +56,7 @@
                         <!--end of col-->
                     </div>
                     <div>
-                        <h3 class=" text-dark float-left">@Model.AccountId</h3>
+                        <h3 class=" text-dark float-left">Account ID: @Model.AccountId</h3>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                                                 <tr>
                                                     @* transaction id *@
                                                     <th scope="col">
-                                                        Transaction ID
+                                                        Trans. ID
                                                         <a asp-page="/Accounts/TransactionDetails"
                                                            asp-route-sortColumn="Transaction ID"
                                                            asp-route-sortOrder="asc"
@@ -85,24 +85,7 @@
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-down text-light"></i>
                                                         </a>
-                                                    </th>
-                                                    @* accout id *@
-                                                    <th scope="col">
-                                                        Accout ID
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Accout ID"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Accout ID"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
-                                                    </th>
+                                                    </th>                                                
                                                     @* Date *@
                                                     <th scope="col">
                                                         Date
@@ -248,10 +231,9 @@
                                                 {
                                                     <tr>
                                                         <td>@c.TransactionId</td>
-                                                        <td>@c.AccountId</td>
                                                         <td>@c.Date</td>
                                                         <td>@c.Type</td>
-                                                        <td>@c.Operation</td>
+                                                        <td class="fs-6">@c.Operation</td>
                                                         <td>@c.Amount</td>
                                                         <td>@c.Balance</td>
                                                         <td>@c.Symbol</td>
