@@ -29,6 +29,9 @@
         <div class="table-container" style="background-color: #f5f7fa;">
 
             <div class="mask d-flex align-items-center flex-column">
+                    <div class="d-flex justify-content-center mt-4">
+                        <h2 class="text-uppercase border-bottom text-muted">Transactions History</h2>
+                    </div>
                 <div class="container">
                     <br />
                     <div>
@@ -50,156 +53,38 @@
                                                     @* transaction id *@
                                                     <th scope="col">
                                                         Trans. ID
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Transaction ID"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Transaction ID"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
-                                                    </th>                                                     
-                                             
+                                                    </th>                                                                                                 
                                                     @* Date *@
                                                     <th scope="col">
-                                                        Date
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Date"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Date"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
+                                                        Date                   
                                                     </th>
                                                     @* Type *@
                                                     <th scope="col">
-                                                        Date
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Type"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Type"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
+                                                        Type
                                                     </th>
                                                     @* Operation *@
                                                     <th scope="col">
                                                         Operation
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Operation"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Operation"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
                                                     </th>
                                                     @* Amount *@
                                                     <th scope="col">
                                                         Amount
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Amount"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Amount"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
                                                     </th>
                                                     @* Balance *@
                                                     <th scope="col">
                                                         Balance
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Balance"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Balance"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
                                                     </th>
                                                     @* Symbol *@
                                                     <th scope="col">
                                                         Symbol
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Symbol"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Symbol"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
                                                     </th>
                                                     @* Account *@
                                                     <th scope="col">
                                                         Account
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Account"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Account"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
                                                     </th>
                                                     @* Bank *@
                                                     <th scope="col">
                                                         Bank
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Bank"
-                                                           asp-route-sortOrder="asc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-up text-light"></i>
-
-                                                        </a>
-                                                        <a asp-page="/Accounts/TransactionDetails"
-                                                           asp-route-sortColumn="Bank"
-                                                           asp-route-sortOrder="desc"
-                                                           style="text-decoration:none">
-                                                            <i class="fa-solid fa-angle-down text-light"></i>
-                                                        </a>
                                                     </th>
                                                 </tr>
                                             </thead>

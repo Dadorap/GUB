@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using Microsoft.Data.SqlClient;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Services.BusinessLogic.AccountManagement;
 
@@ -32,7 +34,9 @@ public class TransactionDetailService : ITransactionDetailService
             Bank = s.Bank,
             Account = s.Account,
         }).OrderByDescending(d => d.Date)
-          .ToList();
+        .ToList();
+
+
 
         return accTrans;
     }
