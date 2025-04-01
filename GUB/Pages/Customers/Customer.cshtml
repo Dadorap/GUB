@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="w-50 h-100 mb-5">
+                <div class="h-100 mb-5 w-75">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="card">
@@ -110,7 +110,7 @@
                                                     @* LAST NAME *@
                                                     <th scope="col">
                                                         Last Name
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="Last Name"
                                                            asp-route-sortOrder="asc"
@@ -118,7 +118,7 @@
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-q="@Model.Q"
                                                            asp-route-sortColumn="Last Name"
                                                            asp-route-sortOrder="desc"
@@ -134,7 +134,6 @@
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-up text-light"></i>
-
                                                         </a>
                                                         <a asp-page="/Customers/Customer"
                                                            asp-route-sortColumn="Address"
@@ -166,14 +165,14 @@
                                                     @* COUNTRY *@
                                                     <th scope="col">
                                                         Country
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-sortColumn="Country"
                                                            asp-route-sortOrder="asc"
                                                            style="text-decoration:none">
                                                             <i class="fa-solid fa-angle-up text-light"></i>
 
                                                         </a>
-                                                        <a asp-page="/Customer"
+                                                        <a asp-page="/Customers/Customer"
                                                            asp-route-sortColumn="Country"
                                                            asp-route-sortOrder="desc"
                                                            style="text-decoration:none">
