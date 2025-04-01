@@ -1,3 +1,4 @@
+using Azure;
 using GUB.API;
 using GUB.Infrastructure.Paging;
 using GUB.ViewModel.Accounts;
@@ -23,7 +24,7 @@ namespace GUB.Pages.Accounts
         public int CurrentPage { get; set; }
         public int PageCount { get; set; }
 
-        public  async Task OnGet(int id)
+        public  async Task OnGet(int id, int pageNo)
         {
             ZenQuotes = (await _zenQuotesService.GetQuotes())
                         .Select(q => new ZenQuotesViewModel
@@ -32,15 +33,27 @@ namespace GUB.Pages.Accounts
                             Author = q.Author
                         }).ToList();
             AccountId = id;
+   
+
+            int pageSize = 10;
+            var allTrans = _transacitonDetailService.GetTransactionDetails(id);
+
+           
         }
 
         public IActionResult OnGetShowMore(int id, int pageNo)
         {
+            int pageSize = 10;
 
-            var listOfTransa = _transacitonDetailService.GetTransactionDetails(id)
+            var allTrans = _transacitonDetailService.GetTransactionDetails(id);
+            int totalPages = allTrans.Count();
+            PageCount = (int)Math.Ceiling((double)totalPages / pageSize);
+
+
+            var listOfTransa = allTrans
                 .Where(s => s.AccountId == id)
                 .AsQueryable()
-                .GetPaged(pageNo, 10).Results
+                .GetPaged(pageNo, pageSize).Results
                 .Select(s => new TransactionDetailsViewModel()
                 {
                     TransactionId = s.TransactionId,
@@ -54,9 +67,16 @@ namespace GUB.Pages.Accounts
                     Bank = s.Bank,
                     Account = s.Account
                 }).ToList();
-            PageCount = listOfTransa.Count;
 
-            return new JsonResult(new { transa = listOfTransa });
+            if (pageNo == 0)
+                pageNo = 1;
+            CurrentPage = pageNo;
+            return new JsonResult(new 
+            { 
+                transa = listOfTransa, 
+                currentPage =  CurrentPage,
+                pageCount = PageCount,
+            });
         }
     }
 }
