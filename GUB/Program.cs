@@ -36,6 +36,7 @@ namespace ViewModels
             builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<ICountryValidation, CountryValidation>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
+            builder.Services.AddTransient<ITopTenService, TopTenService>();
             builder.Services.AddTransient<ITransactionDetailService, TransactionDetailService>();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
             builder.Services.AddAutoMapper(typeof(AutoMapperProfile));

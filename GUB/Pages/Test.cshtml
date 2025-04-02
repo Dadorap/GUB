@@ -35,12 +35,12 @@
                     </div>
                 </div>
 
-                <div class="h-100 mb-5 w-50">
+                <div class="mb-5 w-50">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body p-0">
-                                    <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+                                    <div class="table-responsive table-scroll">
                                         <table class="table table-striped">
                                             <thead class="thead-green">
                                                 <tr>
@@ -65,17 +65,15 @@
 
                                             <tbody>
 
-                                                @* @foreach (var c in Model.Accounts) *@
-                                                @* { *@
-                                                @*     <tr> *@
-                                                @*         <td>@c.AccountId</td> *@
-                                                @*         <td>@c.CustomerId</td> *@
-                                                @*         <td>@c.CustomerFirstName</td> *@
-                                                @*         <td>@c.CustomerLastName</td> *@
-                                                @*         <td>@c.Frequency</td> *@
-                                                @*         <td><a asp-page="/Accounts/TransactionDetails" asp-route-id="@c.AccountId" class="btn btn-primary">View</a></td> *@
-                                                @*     </tr> *@
-                                                @* } *@
+                                                 @foreach (var c in Model.TopTen) 
+                                                 { 
+                                                   <tr> 
+                                                        <td>@c.AccoutId</td> 
+                                                        <td>@c.SSN</td> 
+                                                       <td>@c.Name</td> 
+                                                        <td>@c.Balance SEK</td>                
+                                                     </tr> 
+                                                } 
 
                                             </tbody>
                                         </table>
