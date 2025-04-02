@@ -1,11 +1,11 @@
-using GUB.API;
-using GUB.ViewModel.Customers;
-using GUB.ViewModel.ZenQuotes;
+using Common.API;
+using Common.ViewModel.Customers;
+using Common.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.Customers;
 
-namespace GUB.Pages.Customers
+namespace Common.Pages.Customers
 {
     [Authorize(Roles = "Cashier")]
 

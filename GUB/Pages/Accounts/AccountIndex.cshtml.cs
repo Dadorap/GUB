@@ -1,12 +1,12 @@
-using GUB.API;
-using GUB.ViewModel.Accounts;
-using GUB.ViewModel.Customers;
-using GUB.ViewModel.ZenQuotes;
+using Common.API;
+using Common.ViewModel.Accounts;
+using Common.ViewModel.Customers;
+using Common.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
 
-namespace GUB.Pages.Accounts
+namespace Common.Pages.Accounts
 {
     public class AccountIndexModel : PageModel
     {
@@ -40,20 +40,22 @@ namespace GUB.Pages.Accounts
 
 
 
-            ZenQuotes = (await _zenQuotesService.GetQuotes())
-                        .Select(q => new ZenQuotesViewModel
-                        {
-                            Quote = q.Quote,
-                            Author = q.Author
-                        }).ToList();
-            Accounts = result.Results.Select(x => new AccountsViewModel 
-                        {
-                            AccountId = x.AccountId,
-                            CustomerId = x.CustomerId,
-                            CustomerFirstName = x.CustomerFirstName,
-                            CustomerLastName = x.CustomerLastName,
-                            Frequency = x.Frequency,
-                        }).ToList();
+            ZenQuotes = (await _zenQuotesService
+                .GetQuotes())
+                .Select(q => new ZenQuotesViewModel
+                {
+                    Quote = q.Quote,
+                    Author = q.Author
+                })
+                .ToList();
+            Accounts = result.Results.Select(x => new AccountsViewModel
+            {
+                AccountId = x.AccountId,
+                CustomerId = x.CustomerId,
+                CustomerFirstName = x.CustomerFirstName,
+                CustomerLastName = x.CustomerLastName,
+                Frequency = x.Frequency,
+            }).ToList();
 
         }
     }

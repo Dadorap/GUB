@@ -1,13 +1,14 @@
 using DataAccessLayer.Models;
-using GUB.API;
+using Common.API;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.Customers;
 using Services.BusinessLogic.LandingPage;
 using Services.BusinessLogic.AccountManagement;
 using Services.BusinessLogic.Validations;
+using System.Reflection;
 
-namespace GUB
+namespace Common
 {
     public class Program
     {
@@ -35,6 +36,7 @@ namespace GUB
             builder.Services.AddTransient<ICountryValidation, CountryValidation>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
             builder.Services.AddTransient<ITransactionDetailService, TransactionDetailService>();
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
             var app = builder.Build();

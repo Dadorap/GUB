@@ -1,4 +1,4 @@
-﻿namespace GUB.Infrastructure.Paging
+﻿namespace Common.Infrastructure.Paging
 {
     public abstract class PagedResultBase
     {

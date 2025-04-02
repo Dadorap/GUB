@@ -1,4 +1,4 @@
-﻿namespace GUB.ViewModel.Accounts
+﻿namespace Common.ViewModel.Accounts
 {
     public class TransactionDetailsViewModel
     {

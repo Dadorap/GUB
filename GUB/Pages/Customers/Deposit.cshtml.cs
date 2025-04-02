@@ -5,7 +5,7 @@ using Microsoft.Identity.Client;
 using Services.BusinessLogic.AccountManagement;
 using System.ComponentModel.DataAnnotations;
 
-namespace GUB.Pages.Customers
+namespace Common.Pages.Customers
 {
     [BindProperties]
     [Authorize(Roles = "Cashier")]

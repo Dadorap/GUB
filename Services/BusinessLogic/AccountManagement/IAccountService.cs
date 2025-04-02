@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.DTOs;
-using GUB.Infrastructure.Paging;
+using Common.Infrastructure.Paging;
 
 namespace Services.BusinessLogic.AccountManagement;
 

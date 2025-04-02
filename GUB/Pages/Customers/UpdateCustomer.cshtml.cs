@@ -1,4 +1,4 @@
-using GUB.ViewModel.Customers;
+using Common.ViewModel.Customers;
 using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ using Services.BusinessLogic.Validations;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
-namespace GUB.Pages.Customers
+namespace Common.Pages.Customers
 {
     [BindProperties]
     [Authorize(Roles = "Cashier")]

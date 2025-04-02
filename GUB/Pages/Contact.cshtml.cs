@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace GUB.Pages
+namespace Common.Pages
 {
     public class ContactModel : PageModel
     {

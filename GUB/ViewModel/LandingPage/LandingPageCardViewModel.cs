@@ -1,4 +1,4 @@
-﻿namespace GUB.ViewModel.LandingPage;
+﻿namespace Common.ViewModel.LandingPage;
 
 public class LandingPageCardViewModel
 {

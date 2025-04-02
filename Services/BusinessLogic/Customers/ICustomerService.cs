@@ -1,7 +1,7 @@
 ﻿using DataAccessLayer.Models;
 using DataAccessLayer.DTOs;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using GUB.Infrastructure.Paging;
+using Common.Infrastructure.Paging;
 
 namespace Services.BusinessLogic.Customers;
 

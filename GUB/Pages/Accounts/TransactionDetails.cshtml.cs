@@ -1,13 +1,13 @@
 using Azure;
-using GUB.API;
-using GUB.Infrastructure.Paging;
-using GUB.ViewModel.Accounts;
-using GUB.ViewModel.ZenQuotes;
+using Common.API;
+using Common.Infrastructure.Paging;
+using Common.ViewModel.Accounts;
+using Common.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
 
-namespace GUB.Pages.Accounts
+namespace Common.Pages.Accounts
 {
     public class TransactionDetailsModel : PageModel
     {

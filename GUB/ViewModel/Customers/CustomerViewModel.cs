@@ -1,4 +1,4 @@
-﻿namespace GUB.ViewModel.Customers
+﻿namespace Common.ViewModel.Customers
 {
     public class CustomerViewModel
     {

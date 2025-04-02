@@ -1,7 +1,7 @@
 ﻿using DataAccessLayer.DTOs;
 using Newtonsoft.Json.Linq;
 
-namespace GUB.API;
+namespace Common.API;
 
 public class ZenQuotesService
 {

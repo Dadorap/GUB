@@ -1,14 +1,14 @@
 using DataAccessLayer.DTOs;
-using GUB.API;
-using GUB.ViewModel.LandingPage;
-using GUB.ViewModel.ZenQuotes;
+using Common.API;
+using Common.ViewModel.LandingPage;
+using Common.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Globalization;
 using Services.BusinessLogic.LandingPage;
 using System.Diagnostics.Metrics;
 
 
-namespace GUB.Pages;
+namespace Common.Pages;
 
 public class IndexModel : PageModel
 {
@@ -43,13 +43,16 @@ public class IndexModel : PageModel
 
         for (int i = 0; i < countries.Count; i++)
         {
-            var data = _countryCardData.GetCountryData(countries[i]).Select(s => new LandingPageCardViewModel()
+            var data = _countryCardData
+                .GetCountryData(countries[i])
+                .Select(s => new LandingPageCardViewModel()
             {
                 Country = s.Country,
                 Customers = s.Customers,
                 Balance = s.Balance,
                 Accounts = s.Accounts,
-            }).ToList();
+            })
+                .ToList();
 
             CountryCard.AddRange(data);
         }
