@@ -1,14 +1,14 @@
 using DataAccessLayer.DTOs;
-using Common.API;
-using Common.ViewModel.LandingPage;
-using Common.ViewModel.ZenQuotes;
+using ViewModels.API;
+using ViewModels.ViewModel.LandingPage;
+using ViewModels.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Globalization;
 using Services.BusinessLogic.LandingPage;
 using System.Diagnostics.Metrics;
 
 
-namespace Common.Pages;
+namespace ViewModels.Pages;
 
 public class IndexModel : PageModel
 {

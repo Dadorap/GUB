@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using DataAccessLayer.DTOs;
+using ViewModels.ViewModel.Accounts;
 
-namespace Common.Infrastructure.Paging
+namespace ViewModels.Infrastructure.Paging
 {
     public class AutoMapperProfile : Profile
     {
@@ -14,8 +10,8 @@ namespace Common.Infrastructure.Paging
         {
             // Källa => Mål
             // CreateEmployeeViewModel => Employee
-            //CreateMap<CreateEmployeeViewModel, Employee>()
-                //.ReverseMap();
+            CreateMap<TransactionDTO, TransactionDetailsViewModel>()
+                .ReverseMap();
         }
     }
 }

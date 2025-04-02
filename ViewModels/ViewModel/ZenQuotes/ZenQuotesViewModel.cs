@@ -1,4 +1,4 @@
-﻿namespace Common.ViewModel.ZenQuotes
+﻿namespace ViewModels.ViewModel.ZenQuotes
 {
     public class ZenQuotesViewModel
     {

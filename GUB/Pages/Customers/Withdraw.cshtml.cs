@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
 using System.ComponentModel.DataAnnotations;
 
-namespace Common.Pages.Customers
+namespace ViewModels.Pages.Customers
 {
     [BindProperties]
     [Authorize(Roles = "Cashier")]

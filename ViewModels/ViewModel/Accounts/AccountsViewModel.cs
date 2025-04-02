@@ -1,4 +1,4 @@
-﻿namespace Common.ViewModel.Accounts;
+﻿namespace ViewModels.ViewModel.Accounts;
 
 public class AccountsViewModel
 {

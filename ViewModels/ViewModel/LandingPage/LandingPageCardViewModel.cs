@@ -1,4 +1,4 @@
-﻿namespace Common.ViewModel.LandingPage;
+﻿namespace ViewModels.ViewModel.LandingPage;
 
 public class LandingPageCardViewModel
 {

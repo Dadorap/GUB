@@ -1,5 +1,5 @@
 using DataAccessLayer.Models;
-using Common.API;
+using ViewModels.API;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.Customers;
@@ -7,8 +7,9 @@ using Services.BusinessLogic.LandingPage;
 using Services.BusinessLogic.AccountManagement;
 using Services.BusinessLogic.Validations;
 using System.Reflection;
+using ViewModels.Infrastructure.Paging;
 
-namespace Common
+namespace ViewModels
 {
     public class Program
     {
@@ -37,6 +38,8 @@ namespace Common
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
             builder.Services.AddTransient<ITransactionDetailService, TransactionDetailService>();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
 
 
             var app = builder.Build();

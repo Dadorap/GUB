@@ -1,10 +1,10 @@
-using Common.ViewModel.Customers;
+using ViewModels.ViewModel.Customers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.Customers;
 
-namespace Common.Pages.Customers
+namespace ViewModels.Pages.Customers
 {
     [Authorize(Roles = "Cashier")]
 

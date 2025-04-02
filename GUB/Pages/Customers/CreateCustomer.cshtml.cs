@@ -1,4 +1,4 @@
-using Common.ViewModel.Customers;
+using ViewModels.ViewModel.Customers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,7 +8,7 @@ using DataAccessLayer.DTOs;
 using Services.BusinessLogic.Validations;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Common.Pages.Customers
+namespace ViewModels.Pages.Customers
 {
     [BindProperties]
     [Authorize(Roles = "Cashier")]

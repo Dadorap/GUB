@@ -1,6 +1,6 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
-using Common.Infrastructure.Paging;
+using ViewModels.Infrastructure.Paging;
 using Microsoft.EntityFrameworkCore;
 
 

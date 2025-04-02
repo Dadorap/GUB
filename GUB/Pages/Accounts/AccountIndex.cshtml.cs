@@ -1,12 +1,12 @@
-using Common.API;
-using Common.ViewModel.Accounts;
-using Common.ViewModel.Customers;
-using Common.ViewModel.ZenQuotes;
+using ViewModels.API;
+using ViewModels.ViewModel.Accounts;
+using ViewModels.ViewModel.Customers;
+using ViewModels.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
 
-namespace Common.Pages.Accounts
+namespace ViewModels.Pages.Accounts
 {
     public class AccountIndexModel : PageModel
     {

@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 
-namespace Common.Areas.Identity.Pages.Account
+namespace ViewModels.Areas.Identity.Pages.Account
 {
     [Authorize(Roles = "Admin")]   
     public class RegisterModel : PageModel

@@ -1,4 +1,4 @@
-﻿namespace Common.Infrastructure.Paging
+﻿namespace ViewModels.Infrastructure.Paging
 {
     public class PagedResult<T> : PagedResultBase where T : class
     {

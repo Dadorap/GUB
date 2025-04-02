@@ -1,4 +1,4 @@
-﻿namespace Common.ViewModel.Customers
+﻿namespace ViewModels.ViewModel.Customers
 {
     public class AccountBalanceViewModel
     {

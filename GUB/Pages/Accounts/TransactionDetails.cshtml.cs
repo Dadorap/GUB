@@ -1,30 +1,35 @@
 using Azure;
-using Common.API;
-using Common.Infrastructure.Paging;
-using Common.ViewModel.Accounts;
-using Common.ViewModel.ZenQuotes;
+using ViewModels.API;
+using ViewModels.Infrastructure.Paging;
+using ViewModels.ViewModel.Accounts;
+using ViewModels.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
+using AutoMapper;
 
-namespace Common.Pages.Accounts
+namespace ViewModels.Pages.Accounts
 {
     public class TransactionDetailsModel : PageModel
     {
         private readonly ZenQuotesService _zenQuotesService;
         private readonly ITransactionDetailService _transacitonDetailService;
+        private readonly IMapper _mapper;
 
-        public TransactionDetailsModel(ZenQuotesService zenQuotesService, ITransactionDetailService transacitonDetailService)
+        public TransactionDetailsModel(ZenQuotesService zenQuotesService,
+            ITransactionDetailService transacitonDetailService,
+            IMapper mapper)
         {
             _zenQuotesService = zenQuotesService;
             _transacitonDetailService = transacitonDetailService;
+            _mapper = mapper;
         }
         public List<ZenQuotesViewModel> ZenQuotes { get; set; }
         public int AccountId { get; set; }
         public int CurrentPage { get; set; }
         public int PageCount { get; set; }
 
-        public  async Task OnGet(int id, int pageNo)
+        public async Task OnGet(int id, int pageNo)
         {
             ZenQuotes = (await _zenQuotesService.GetQuotes())
                         .Select(q => new ZenQuotesViewModel
@@ -33,12 +38,12 @@ namespace Common.Pages.Accounts
                             Author = q.Author
                         }).ToList();
             AccountId = id;
-   
+
 
             int pageSize = 10;
             var allTrans = _transacitonDetailService.GetTransactionDetails(id);
 
-           
+
         }
 
         public IActionResult OnGetShowMore(int id, int pageNo)
@@ -49,32 +54,24 @@ namespace Common.Pages.Accounts
             int totalPages = allTrans.Count();
             PageCount = (int)Math.Ceiling((double)totalPages / pageSize);
 
+            var pagedResult = allTrans
+                             .Where(s => s.AccountId == id)
+                             .AsQueryable()
+                             .GetPaged(pageNo, pageSize).Results;
 
-            var listOfTransa = allTrans
-                .Where(s => s.AccountId == id)
-                .AsQueryable()
-                .GetPaged(pageNo, pageSize).Results
-                .Select(s => new TransactionDetailsViewModel()
-                {
-                    TransactionId = s.TransactionId,
-                    AccountId = s.AccountId,
-                    Date = s.Date,
-                    Type = s.Type,
-                    Operation = s.Operation,
-                    Amount = s.Amount,
-                    Balance = s.Balance,
-                    Symbol = s.Symbol,
-                    Bank = s.Bank,
-                    Account = s.Account
-                }).ToList();
+
+
+            var listOfTransa = _mapper.Map<List<TransactionDetailsViewModel>>(pagedResult);
+
+
 
             if (pageNo == 0)
                 pageNo = 1;
             CurrentPage = pageNo;
-            return new JsonResult(new 
-            { 
-                transa = listOfTransa, 
-                currentPage =  CurrentPage,
+            return new JsonResult(new
+            {
+                transa = listOfTransa,
+                currentPage = CurrentPage,
                 pageCount = PageCount,
             });
         }

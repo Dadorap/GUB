@@ -1,7 +1,7 @@
 ﻿using DataAccessLayer.DTOs;
 using Newtonsoft.Json.Linq;
 
-namespace Common.API;
+namespace ViewModels.API;
 
 public class ZenQuotesService
 {
