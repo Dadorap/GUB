@@ -27,7 +27,7 @@ public class IndexModel : PageModel
     public List<LandingPageCardViewModel> CountryCard { get; set; } = new();
 
     List<string> countries = new() { "Sweden", "Finland", "Norway", "Denmark" };
-    public string DateOnly { get; set; }
+    
 
     public async Task OnGet()
     {
@@ -38,7 +38,7 @@ public class IndexModel : PageModel
                 Author = q.Author
             }).ToList();
         DateTime now = DateTime.Now;
-        DateOnly = now.ToString("dddd, MMMM d 'at' HH:mm", CultureInfo.InvariantCulture);
+       var date = now.ToString("dddd, MMMM d 'at' HH:mm", CultureInfo.InvariantCulture);
 
 
         for (int i = 0; i < countries.Count; i++)
@@ -51,6 +51,7 @@ public class IndexModel : PageModel
                 Customers = s.Customers,
                 Balance = s.Balance,
                 Accounts = s.Accounts,
+                Date = date,
             })
                 .ToList();
 
