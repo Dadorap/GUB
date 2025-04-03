@@ -16,7 +16,8 @@ namespace ViewModels.Pages.Accounts
         private readonly ITransactionDetailService _transacitonDetailService;
         private readonly IMapper _mapper;
 
-        public TransactionDetailsModel(ZenQuotesService zenQuotesService,
+        public TransactionDetailsModel(
+            ZenQuotesService zenQuotesService,
             ITransactionDetailService transacitonDetailService,
             IMapper mapper)
         {
@@ -24,7 +25,7 @@ namespace ViewModels.Pages.Accounts
             _transacitonDetailService = transacitonDetailService;
             _mapper = mapper;
         }
-        public List<ZenQuotesViewModel> ZenQuotes { get; set; }
+        public List<ZenQuotesViewModel> ZenQuotes { get; set; } = new();
         public int AccountId { get; set; }
         public int CurrentPage { get; set; }
         public int PageCount { get; set; }
@@ -40,7 +41,6 @@ namespace ViewModels.Pages.Accounts
             AccountId = id;
 
 
-            int pageSize = 10;
             var allTrans = _transacitonDetailService.GetTransactionDetails(id);
 
 

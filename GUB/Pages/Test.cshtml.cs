@@ -1,31 +1,29 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using NuGet.Common;
 using Services.BusinessLogic.LandingPage;
-using ViewModels.Infrastructure.Paging;
-using ViewModels.ViewModel.Accounts;
 using ViewModels.ViewModel.LandingPage;
 
-namespace ViewModels.Pages
+namespace ViewModels.Pages;
+
+public class TestModel : PageModel
 {
-    public class TestModel : PageModel
+    private readonly ITopTenService _topTenService;
+    private readonly IMapper _mapper;
+
+    public TestModel(ITopTenService topTenService, IMapper mapper)
     {
-        private readonly ITopTenService _topTenService;
-        private readonly IMapper _mapper;
+        _topTenService = topTenService;
+        _mapper = mapper;
+    }
 
-        public TestModel(ITopTenService topTenService, IMapper mapper)
-        {
-            _topTenService = topTenService;
-            _mapper = mapper;
-        }
+    public string Country { get; set; }
+    public List<TopTenViewModel> TopTen { get; set; } = new();
 
-        public List<TopTenViewModel> TopTen { get; set; } = new();
+    public void OnGet(string countryName)
+    {
+        Country = countryName.Trim();
+        var c = _topTenService.GetTopTen(countryName);
+        TopTen = _mapper.Map<List<TopTenViewModel>>(c);
 
-        public void OnGet(string countryName)
-        {
-            var c = _topTenService.GetTopTen("Finland");
-            TopTen = _mapper.Map<List<TopTenViewModel>>(c);
-                  
-        }
     }
 }
