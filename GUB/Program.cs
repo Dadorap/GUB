@@ -63,6 +63,7 @@ namespace ViewModels
                 app.UseHsts();
             }
 
+            app.UseResponseCaching();
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -72,7 +73,6 @@ namespace ViewModels
             app.MapStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();
-            app.UseResponseCaching();
 
             app.Run();
         }

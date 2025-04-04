@@ -3,12 +3,12 @@
 
 <div class="col-md-6 d-flex align-items-stretch">
     <div class="card">
-        <a asp-page="/Test" asp-route-countryName="@Model.Country">
+        <a asp-page="/LandingPage/TopTenTable" asp-route-countryName="@Model.Country">
             <div class="card-img">
                 <img src="@Url.Content($"~/img/Flags/Flag_of_{@Model.Country}.svg.png")" alt="Flag of @Model.Country" />
             </div>
             <div class="card-body dark-background">
-                <h2 class="card-title"><a asp-page="/Test" asp-route-countryName="@Model.Country">@Model.Country</a></h2>
+                <h2 class="card-title"><a asp-page="/LandingPage/TopTenTable" asp-route-countryName="@Model.Country">@Model.Country</a></h2>
                 <p class="fst-italic text-center text-light">@Model.Date</p>
                 <div class="d-flex flex-wrap justify-content-center text-center">
 
