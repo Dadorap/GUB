@@ -5,6 +5,8 @@ namespace Services.BusinessLogic.AccountManagement;
 
 public interface IAccountService
 {
+    void CreateAccount();
+    AccountDTO GetAccountDTO();
     List<AccountBalanceDTO> GetAccounts();
     AccountBalanceDTO GetAccount(int accountId);
     RespCode Transaction(int id, decimal amount, DateTime withdrawDate, string transaction);

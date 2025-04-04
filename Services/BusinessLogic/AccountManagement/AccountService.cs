@@ -138,6 +138,22 @@ namespace Services.BusinessLogic.AccountManagement
 
         }
 
+        public AccountDTO GetAccountDTO()
+        {
+            var acc = new AccountDTO();
+            return acc;
+        }
 
+        public void CreateAccount(AccountDTO acc)
+        {
+            var newAcc = new Account();
+
+            newAcc.Frequency = acc.Frequency;
+            newAcc.Created = acc.Created;
+            newAcc.Balance = acc.Balance;
+
+            _bankAppDataContext.Accounts.Add(newAcc);
+            _bankAppDataContext.SaveChanges();
+        }
     }
 }
