@@ -27,13 +27,17 @@ namespace Services.BusinessLogic.AccountManagement
         public RespCode Transaction(int id, decimal amount, DateTime withdrawDate, string transaction)
         {
             var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
+
             if (withdrawDate < DateTime.Now)
             {
                 return RespCode.InvalidDate;
             }
-            if (acc.Balance < amount)
+            if (transaction.ToLower() == "withdraw")
             {
-                return RespCode.BalanceTooLow;
+                if (acc.Balance < amount)
+                {
+                    return RespCode.BalanceTooLow;
+                }
             }
             if (amount < 100 && amount > 10000)
             {
@@ -155,5 +159,7 @@ namespace Services.BusinessLogic.AccountManagement
             _bankAppDataContext.Accounts.Add(newAcc);
             _bankAppDataContext.SaveChanges();
         }
+
+
     }
 }

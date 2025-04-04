@@ -23,9 +23,7 @@ namespace ViewModels.Pages.Customers
         public decimal Balance { get; set; }
         public DateTime DepositDate { get; set; }
         public int CustomerId { get; set; }
-
-        [Required]
-        [Range(100, 10000)]
+        [Range(typeof(decimal), "100", "10000", ErrorMessage = "Amount must be between 100 and 10000.")]
         public decimal Amount { get; set; }
 
         [Required(ErrorMessage = "You forgot to write a comment!")]

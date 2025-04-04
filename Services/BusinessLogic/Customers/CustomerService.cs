@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NuGet.DependencyResolver;
+using Disposition = DataAccessLayer.Models.Disposition;
 
 
 
@@ -193,14 +195,33 @@ namespace Services.BusinessLogic.Customers
                 Telephonenumber = c.CustomerPhone,
                 NationalId = c.SocialSecurityNumber,
                 Birthday = c.CustomerBirthDate,
-                Emailaddress = c.CustomerEmail              
+                Emailaddress = c.CustomerEmail,
+                Dispositions = new List<Disposition>()
+
             };
+            var newAccount = new Account()
+            {
+                Frequency = "Monthly",
+                Balance = 0,
+                Created = DateOnly.FromDateTime(DateTime.Now),
+                Dispositions = new List<Disposition>()
+            };
+
+            var disposition = new Disposition()
+            {
+                Type = "OWNER",
+                Customer = newCustomer,
+                Account = newAccount,
+            };
+
+            newCustomer.Dispositions.Add(disposition);
+            newAccount.Dispositions.Add(disposition);
 
             _bankAppDataContext.Customers.Add(newCustomer);
             _bankAppDataContext.SaveChanges();                       
         }
 
-       public CustomerDTO GetCustomerData()
+       public CustomerDTO GetCustomerDTO()
         {
             var customer = new CustomerDTO();  
             return customer;

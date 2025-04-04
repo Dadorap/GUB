@@ -48,9 +48,8 @@
                                 </span>
                             </div>
                             <input asp-for="Amount" class="form-control text-right" id="exampleInputAmount" placeholder="39">
-                            <div class="input-group-append"><span class="input-group-text">.00</span></div>
+                            <div class="input-group-append"><span class="input-group-text"></span></div>
                         </div>
-                        <!-- Move validation message inside a div to prevent Bootstrap layout issues -->
                         <div class="text-danger">
                             <span class="field-validation-error" asp-validation-for="Amount"></span>
                         </div>

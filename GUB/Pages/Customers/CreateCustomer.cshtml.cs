@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using DataAccessLayer.DTOs;
 using Services.BusinessLogic.Validations;
 using Microsoft.AspNetCore.Authorization;
+using Services.BusinessLogic.AccountManagement;
 
 namespace ViewModels.Pages.Customers
 {
@@ -18,10 +19,13 @@ namespace ViewModels.Pages.Customers
         private readonly ICustomerService _customerService;
         private readonly ICountryValidation _countryValidation;
 
-        public CreateCustomerModel(ICustomerService customerService, ICountryValidation countryValidation)
+        public CreateCustomerModel(ICustomerService customerService, 
+            ICountryValidation countryValidation
+            )
         {
             _customerService = customerService;
             _countryValidation = countryValidation;
+            
         }
 
         public int CustomerId { get; set; }
@@ -68,7 +72,7 @@ namespace ViewModels.Pages.Customers
         }
         public IActionResult OnPost()
         {
-            var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);
+            var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);           
             if (DateOnly.TryParse(BirthDateInput, out var parsedDate))
             {
                 BirthDate = parsedDate;
@@ -82,23 +86,25 @@ namespace ViewModels.Pages.Customers
 
             if (ModelState.IsValid)
             {
-                var custData = _customerService.GetCustomerData();
+                var custDTO = _customerService.GetCustomerDTO();
 
-                custData.CustomerFirstName = FirstName;
-                custData.CustomerLastName = LastName;
-                custData.CustomerEmail = Email;
-                custData.CustomerCity = City;
-                custData.CustomerAddress = Address;
-                custData.CustomerBirthDate = BirthDate;
-                custData.CustomerCountry = Country.ToString();
-                custData.CustomerCountryCode = CountryCode.ToString();
-                custData.CustomerGender = Gender;
-                custData.CustomerPhone = PhoneNumber;
-                custData.CustomerPhoneCode = PhoneCode == null ? null : ((int)PhoneCode.Value).ToString();
-                custData.CustomerPostalCode = PostalCode;
-                custData.SocialSecurityNumber = SSN;
+                custDTO.CustomerFirstName = FirstName;
+                custDTO.CustomerLastName = LastName;
+                custDTO.CustomerEmail = Email;
+                custDTO.CustomerCity = City;
+                custDTO.CustomerAddress = Address;
+                custDTO.CustomerBirthDate = BirthDate;
+                custDTO.CustomerCountry = Country.ToString();
+                custDTO.CustomerCountryCode = CountryCode.ToString();
+                custDTO.CustomerGender = Gender;
+                custDTO.CustomerPhone = PhoneNumber;
+                custDTO.CustomerPhoneCode = PhoneCode == null ? null : ((int)PhoneCode.Value).ToString();
+                custDTO.CustomerPostalCode = PostalCode;
+                custDTO.SocialSecurityNumber = SSN;
 
-                _customerService.CreateNewCustomer(custData);
+
+
+                _customerService.CreateNewCustomer(custDTO);
                 return RedirectToPage("Customer");
             };
             PhoneCodes = _customerService.FillPhoneCodes();
