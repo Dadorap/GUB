@@ -40,6 +40,7 @@ namespace ViewModels
             builder.Services.AddTransient<ITransactionDetailService, TransactionDetailService>();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
             builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+            builder.Services.AddResponseCaching();
 
 
 
@@ -71,6 +72,7 @@ namespace ViewModels
             app.MapStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();
+            app.UseResponseCaching();
 
             app.Run();
         }
