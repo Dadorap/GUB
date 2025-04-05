@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(BankAppDataContext))]
-    [Migration("20250305155949_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20250405210906_ReplaceGenderWithEnumn")]
+    partial class ReplaceGenderWithEnumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace DataAccessLayer.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .UseCollation("SQL_Latin1_General_CP1_CI_AS")
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "9.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -133,13 +133,18 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GenderEnum")
+                        .HasColumnType("int");
 
                     b.Property<string>("Givenname")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("NationalId")
                         .HasMaxLength(20)

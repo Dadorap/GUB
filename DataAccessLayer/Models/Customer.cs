@@ -6,8 +6,8 @@ namespace DataAccessLayer.Models;
 public partial class Customer
 {
     public int CustomerId { get; set; }
-    public Gender Gender { get; set; } = Gender.Choose;
-
+    public GenderEnum GenderEnum { get; set; } = GenderEnum.Choose;
+    public string Gender { get; set; }
     public string Givenname { get; set; } = null!;
 
     public string Surname { get; set; } = null!;

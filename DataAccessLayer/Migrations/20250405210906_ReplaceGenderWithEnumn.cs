@@ -6,11 +6,30 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class ReplaceGenderWithEnumn : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<int>(
+        name: "GenderEnum",
+        table: "Customers",
+        type: "int",
+        nullable: false,
+        defaultValue: 1); // Or 0 if you have a "Choose" value
+
+            migrationBuilder.Sql(@"
+        UPDATE Customers
+        SET GenderEnum = CASE 
+            WHEN LOWER(Gender) = 'female' THEN 1
+            WHEN LOWER(Gender) = 'male' THEN 2
+            ELSE 1 -- Default/fallback
+        END
+    ");
+
+
+
+
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
@@ -51,9 +70,11 @@ namespace DataAccessLayer.Migrations
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
+           
 
+           
 
-
+            
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
@@ -161,7 +182,7 @@ namespace DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-
+            
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -201,13 +222,31 @@ namespace DataAccessLayer.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-
+            
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+
+            migrationBuilder.AddColumn<string>(
+        name: "Gender",
+        table: "Customers",
+        type: "nvarchar(max)",
+        nullable: false,
+        defaultValue: "");
+
+            // Migrate enum values back to string
+            migrationBuilder.Sql(@"
+        UPDATE Customers
+        SET Gender = CASE 
+            WHEN GenderEnum = 1 THEN 'Female'
+            WHEN GenderEnum = 2 THEN 'Male'
+            ELSE 'Unknown'
+        END
+    ");
+
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -223,7 +262,7 @@ namespace DataAccessLayer.Migrations
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
 
-
+           
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

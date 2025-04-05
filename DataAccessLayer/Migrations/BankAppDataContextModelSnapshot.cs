@@ -128,7 +128,11 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("Gender")
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GenderEnum")
                         .HasColumnType("int");
 
                     b.Property<string>("Givenname")

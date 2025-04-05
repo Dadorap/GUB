@@ -9,7 +9,7 @@
         public string CustomerAddress { get; set; }
         public string CustomerCity { get; set; }
         public string CustomerCountry { get; set; }
-        public Gender CustomerGender { get; set; }
+        public GenderEnum CustomerGender { get; set; }
         public string CustomerCountryCode { get; set; }
         public DateOnly? CustomerBirthDate { get; set; }
         public string CustomerPhone { get; set; }

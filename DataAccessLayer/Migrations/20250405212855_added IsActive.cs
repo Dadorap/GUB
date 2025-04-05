@@ -5,24 +5,23 @@
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class ChangednameofcolumntoGender : Migration
+    public partial class addedIsActive : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "CustomerGender",
-                table: "Customers",
-                newName: "Gender");
+            migrationBuilder.AddColumn<bool>(
+            name: "IsActive",
+            table: "Customers",
+            type: "bit",
+            nullable: false,
+            defaultValue: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Gender",
-                table: "Customers",
-                newName: "CustomerGender");
+
         }
     }
 }

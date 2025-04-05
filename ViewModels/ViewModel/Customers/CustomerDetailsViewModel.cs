@@ -5,7 +5,7 @@ namespace ViewModels.ViewModel.Customers
     public class CustomerDetailsViewModel
     {
         public int CustomerId { get; set; }
-        public Gender CustomerGender { get; set; }
+        public GenderEnum CustomerGender { get; set; }
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
         public string CustomerAddress { get; set; }

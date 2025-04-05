@@ -43,7 +43,7 @@ namespace Services.BusinessLogic.Customers
                 CustomerFirstName = q.Givenname,
                 CustomerLastName = q.Surname,
                 SocialSecurityNumber = q.NationalId,
-                CustomerGender = q.Gender,
+                CustomerGender = q.GenderEnum,
                 CustomerBirthDate = q.Birthday.Value,
                 CustomerEmail = q.Emailaddress,
                 CustomerPhone = q.Telephonenumber,
@@ -139,7 +139,7 @@ namespace Services.BusinessLogic.Customers
 
             c.Givenname = custDto.CustomerFirstName;
             c.Surname = custDto.CustomerLastName;
-            c.Gender = custDto.CustomerGender;
+            c.GenderEnum = custDto.CustomerGender;
             c.Streetaddress = custDto.CustomerAddress;
             c.City = custDto.CustomerCity;
             c.Country = custDto.CustomerCountry;
@@ -157,7 +157,7 @@ namespace Services.BusinessLogic.Customers
 
         public List<SelectListItem> FillGenderList()
         {
-            var genderList = Enum.GetValues<Gender>()
+            var genderList = Enum.GetValues<GenderEnum>()
                 .Select(g => new SelectListItem()
                 {
                     Value = ToString(),
@@ -185,7 +185,7 @@ namespace Services.BusinessLogic.Customers
             {
                 Givenname = c.CustomerFirstName,
                 Surname = c.CustomerLastName,
-                Gender = c.CustomerGender,
+                GenderEnum = c.CustomerGender,
                 Streetaddress = c.CustomerAddress,
                 Zipcode = c.CustomerPostalCode,
                 CountryCode = c.CustomerCountryCode,

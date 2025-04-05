@@ -73,7 +73,7 @@ public partial class BankAppDataContext : IdentityDbContext
             entity.Property(e => e.Country).HasMaxLength(100);
             entity.Property(e => e.CountryCode).HasMaxLength(2);
             entity.Property(e => e.Emailaddress).HasMaxLength(100);
-            entity.Property(e => e.Gender);
+            entity.Property(e => e.GenderEnum);
             entity.Property(e => e.Givenname).HasMaxLength(100);
             entity.Property(e => e.NationalId).HasMaxLength(20);
             entity.Property(e => e.Streetaddress).HasMaxLength(100);

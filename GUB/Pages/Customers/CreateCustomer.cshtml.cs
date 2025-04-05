@@ -60,7 +60,7 @@ namespace ViewModels.Pages.Customers
         public DateOnly? BirthDate { get; set; } = null;
         [Required]
         [Range(1, 99, ErrorMessage = "Choose a valid gender!")]
-        public Gender Gender { get; set; }
+        public GenderEnum Gender { get; set; }
         public List<SelectListItem> Genders { get; set; }
         public PhoneCode? PhoneCode { get; set; } = null;
         public List<SelectListItem> PhoneCodes { get; set; }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(BankAppDataContext))]
-    [Migration("20250405183741_added new IsActive to customer table")]
-    partial class addednewIsActivetocustomertable
+    [Migration("20250405212855_added IsActive")]
+    partial class addedIsActive
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,7 +131,11 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("Gender")
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GenderEnum")
                         .HasColumnType("int");
 
                     b.Property<string>("Givenname")

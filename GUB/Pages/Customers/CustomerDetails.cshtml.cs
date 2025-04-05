@@ -28,7 +28,7 @@ namespace ViewModels.Pages.Customers
         public string CountryCode { get; set; }
         public string SSN { get; set; } 
         public DateOnly? BirthDate { get; set; }
-        public Gender Gender { get; set; }
+        public GenderEnum Gender { get; set; }
         public decimal TotalBalance { get; set; }
         public List<AccountBalanceViewModel> Account { get; set; }
         
