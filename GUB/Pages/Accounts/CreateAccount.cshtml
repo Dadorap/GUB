@@ -27,7 +27,6 @@
                                         <div class="media-body text-left">
                                             <label asp-for="CustomerId" class="d-block">Customer ID</label>
                                             <input asp-for="CustomerId" class="form-control w-75 border" value="@Model.CustomerId" disabled>
-                                            <span class="field-validation-error text-danger" asp-validation-for="CustomerId"></span> 
                                         </div>
                                         <div class="align-self-center">
                                             <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
@@ -45,12 +44,12 @@
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
-                                            <label asp-for="Type" class="d-block"></label>
-                                            <select asp-for="Type" asp-items="Html.GetEnumSelectList<TypeEnum>()" class="form-controll rounded-5 w-75"></select>
-                                            <span class="field-validation-error text-danger" asp-validation-for="Type"></span>
+                                            <label asp-for="Type" class="d-block">Type</label>
+                                            <input type="hidden" asp-for="Type" value="OWNER" />
+                                            <input asp-for="Type" class="form-control w-75 border" value="@Model.Type" disabled>
                                         </div>
                                         <div class="align-self-center">
-                                            <i class="fa-solid fa-calendar-check text-success fa-3x float-right"></i>
+                                            <i class="fa-solid fa-user-tie text-success fa-3x float-right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +72,7 @@
                                             <span class="field-validation-error text-danger" asp-validation-for="Frequency"></span>
                                         </div>
                                         <div class="align-self-center">
-                                            <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
+                                            <i class="fa-solid fa-repeat text-muted fa-3x float-left"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -88,12 +87,12 @@
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
-                                            @* <label asp-for="PhoneNumber" class="d-block">Phone Number</label> *@
-                                            @* <input asp-for="PhoneNumber" class="form-control w-75 border" value="@Model.PhoneNumber"> *@
-                                            @* <span class="field-validation-error text-danger" asp-validation-for="PhoneNumber"></span> *@
+                                            <label asp-for="Balance" class="d-block">Balance</label>
+                                            <input asp-for="Balance" class="form-control w-75 border" value="@Model.Balance">
+                                            <span class="field-validation-error text-danger" asp-validation-for="Balance"></span>
                                         </div>
                                         <div class="align-self-center">
-                                            <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
+                                            <i class="fa-solid fa-sack-dollar text-green fa-3x float-left"></i>
                                         </div>
                                     </div>
                                 </div>

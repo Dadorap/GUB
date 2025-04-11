@@ -181,11 +181,13 @@ namespace Services.BusinessLogic.AccountManagement
             Created = acc.Created,
             Balance = acc.Balance,
             };
+
             _bankAppDataContext.Accounts.Add(newAcc);
            await _bankAppDataContext.SaveChangesAsync();
 
             var newDisp = new Disposition()
             {
+                AccountId = newAcc.AccountId,
                 CustomerId = acc.CustomerId,
                 Type = acc.Type,
             };
