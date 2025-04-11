@@ -175,25 +175,33 @@ namespace Services.BusinessLogic.AccountManagement
 
         public  async Task CreateAccount(AccountDTO acc)
         {
-            var newAcc = new Account()
+            try
             {
-            Frequency = acc.Frequency,
-            Created = acc.Created,
-            Balance = acc.Balance,
-            };
+                var newAcc = new Account()
+                {
+                    Frequency = acc.Frequency,
+                    Created = acc.Created, 
+                    Balance = acc.Balance,
+                };
 
-            _bankAppDataContext.Accounts.Add(newAcc);
-           await _bankAppDataContext.SaveChangesAsync();
+                _bankAppDataContext.Accounts.Add(newAcc);
+                await _bankAppDataContext.SaveChangesAsync();
 
-            var newDisp = new Disposition()
+                var newDisp = new Disposition()
+                {
+                    AccountId = newAcc.AccountId,
+                    CustomerId = acc.CustomerId,
+                    Type = acc.Type,
+                };
+
+                _bankAppDataContext.Dispositions.Add(newDisp);
+                await _bankAppDataContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
             {
-                AccountId = newAcc.AccountId,
-                CustomerId = acc.CustomerId,
-                Type = acc.Type,
-            };
-
-            _bankAppDataContext.Dispositions.Add(newDisp);
-            await _bankAppDataContext.SaveChangesAsync();
+                Console.WriteLine("❌ ERROR CREATING ACCOUNT: " + ex.Message);
+                throw;
+            }
         }
 
 

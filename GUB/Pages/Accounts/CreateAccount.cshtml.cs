@@ -1,3 +1,4 @@
+using DataAccessLayer.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -30,20 +31,22 @@ namespace GUB.Pages.Accounts
             Frequencies = _accountService.FillFrequency();
         }
 
-        public IActionResult OnPost(int id)
+        public  async Task<IActionResult> OnPost(int id)
         {
             CustomerId = id;
-            var accDto = _accountService.GetAccountDTO();
 
             if (ModelState.IsValid) 
             {
-                accDto.Balance = Balance;
-                accDto.Type = Type;
-                accDto.Created = DateOnly.FromDateTime(DateTime.Now);
-                accDto.CustomerId = CustomerId;
-                accDto.Frequency = Frequency.ToString();
+                var accDto = new AccountDTO
+                {
+                    Balance = Balance,
+                    Type = Type,
+                    Created = DateOnly.FromDateTime(DateTime.Now),
+                    CustomerId = id,
+                    Frequency = Frequency.ToString()
+                };
 
-                _accountService.CreateAccount(accDto);
+                await _accountService.CreateAccount(accDto);
                 return RedirectToPage("/Customers/CustomerDetails", new { id = CustomerId });
             }
 

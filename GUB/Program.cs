@@ -29,11 +29,11 @@ namespace ViewModels
             builder.Services.AddRazorPages();
 
             builder.Services.AddTransient<DataInitializer>();
+            builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<ICustomerService, CustomerService>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
             builder.Services.AddTransient<ICountryCardData, CountryCardData>();
             builder.Services.AddTransient<ZenQuotesService>();
-            builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<ICountryValidation, CountryValidation>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
             builder.Services.AddTransient<ITopTenService, TopTenService>();
