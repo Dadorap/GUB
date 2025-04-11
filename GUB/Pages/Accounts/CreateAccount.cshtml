@@ -1,0 +1,114 @@
+﻿@page
+@model GUB.Pages.Accounts.CreateAccountModel
+@{
+}
+<div class="grey-bg container-fluid">
+    <form method="post">
+        <section id="minimal-statistics" class="ml-3 mr-3">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-uppercase border-bottom">Create Account</h2>
+                </div>
+            </div>
+            <div class="container d-flex flex-column justify-content-center align-content-center w-100">
+
+                <div>
+                    <a class="btn btn-success m-4 float-right" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
+                </div>
+                @* row 2 *@
+                <div class="row w-100">
+
+                    @* firstName *@
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            @* <label asp-for="FirstName" class="d-block">First Name</label> *@
+                                            @* <input asp-for="FirstName" class="form-control w-75 border" value="@Model.FirstName"> *@
+                                            @* <span class="field-validation-error text-danger" asp-validation-for="FirstName"></span> *@
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* lastName *@
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            @* <label asp-for="LastName" class="d-block">Last Name</label> *@
+                                            @* <input asp-for="LastName" class="form-control w-75 border" value="@Model.LastName"> *@
+                                            @* <span class="field-validation-error text-danger" asp-validation-for="LastName"></span> *@
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* row 2 *@
+                <div class="row w-100">
+
+                    @* Emial *@
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            @* <label asp-for="Email" class="d-block">Email</label> *@
+                                            @* <input asp-for="Email" class="form-control w-75 border" value="@Model.Email"> *@
+                                            @* <span class="field-validation-error text-danger" asp-validation-for="Email"></span> *@
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* phone number *@
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            @* <label asp-for="PhoneNumber" class="d-block">Phone Number</label> *@
+                                            @* <input asp-for="PhoneNumber" class="form-control w-75 border" value="@Model.PhoneNumber"> *@
+                                            @* <span class="field-validation-error text-danger" asp-validation-for="PhoneNumber"></span> *@
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="fa-solid fa-mobile-screen-button text-primary fa-3x float-left"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Save</button>
+            </div>
+        </section>
+    </form>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
