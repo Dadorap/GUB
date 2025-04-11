@@ -5,7 +5,7 @@ namespace Services.BusinessLogic.AccountManagement;
 
 public interface IAccountService
 {
-    void CreateAccount(AccountDTO acc);
+     Task CreateAccount(AccountDTO acc);
     AccountDTO GetAccountDTO();
     List<AccountBalanceDTO> GetAccounts();
     AccountBalanceDTO GetAccount(int accountId);

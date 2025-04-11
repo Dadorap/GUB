@@ -148,16 +148,25 @@ namespace Services.BusinessLogic.AccountManagement
             return acc;
         }
 
-        public void CreateAccount(AccountDTO acc)
+        public  async Task CreateAccount(AccountDTO acc)
         {
-            var newAcc = new Account();
-
-            newAcc.Frequency = acc.Frequency;
-            newAcc.Created = acc.Created;
-            newAcc.Balance = acc.Balance;
-
+            var newAcc = new Account()
+            {
+            Frequency = acc.Frequency,
+            Created = acc.Created,
+            Balance = acc.Balance,
+            };
             _bankAppDataContext.Accounts.Add(newAcc);
-            _bankAppDataContext.SaveChanges();
+           await _bankAppDataContext.SaveChangesAsync();
+
+            var newDisp = new Disposition()
+            {
+                CustomerId = acc.CustomerId,
+                Type = acc.Type,
+            };
+
+            _bankAppDataContext.Dispositions.Add(newDisp);
+            await _bankAppDataContext.SaveChangesAsync();
         }
 
 

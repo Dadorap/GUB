@@ -65,7 +65,7 @@ public enum RespCode
     InvalidDate,
     InvalidCountry
 }
-namespace DataAccessLayer
+namespace DataAccessLayer.Enums
 {
     internal class Enums
     {
