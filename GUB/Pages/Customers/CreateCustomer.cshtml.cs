@@ -19,13 +19,13 @@ namespace ViewModels.Pages.Customers
         private readonly ICustomerService _customerService;
         private readonly ICountryValidation _countryValidation;
 
-        public CreateCustomerModel(ICustomerService customerService, 
+        public CreateCustomerModel(ICustomerService customerService,
             ICountryValidation countryValidation
             )
         {
             _customerService = customerService;
             _countryValidation = countryValidation;
-            
+
         }
 
         public int CustomerId { get; set; }
@@ -72,7 +72,7 @@ namespace ViewModels.Pages.Customers
         }
         public IActionResult OnPost()
         {
-            var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);           
+            var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);
             if (DateOnly.TryParse(BirthDateInput, out var parsedDate))
             {
                 BirthDate = parsedDate;

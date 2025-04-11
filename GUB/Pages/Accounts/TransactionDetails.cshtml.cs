@@ -40,10 +40,6 @@ namespace ViewModels.Pages.Accounts
                         }).ToList();
             AccountId = id;
 
-
-            var allTrans = _transacitonDetailService.GetTransactionDetails(id);
-
-
         }
 
         public IActionResult OnGetShowMore(int id, int pageNo)

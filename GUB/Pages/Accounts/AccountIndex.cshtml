@@ -197,8 +197,6 @@
                                                         @* @for (int i = 1; i <= Model.PageCount ; i++) *@
                                                         @for (int i = 1; i <= (Model.PageCount > 15 ? 14 : Model.PageCount) ; i++)
                                                         {
-
-
                                                             <a class="btn @(Model.CurrentPage == i ? "btn-success" : "btn-secondary")"
                                                                asp-page="/Accounts/AccountIndex"
                                                                asp-route-q="@Model.Q"

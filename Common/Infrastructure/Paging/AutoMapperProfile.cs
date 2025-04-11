@@ -9,8 +9,6 @@ namespace ViewModels.Infrastructure.Paging
     {
         public AutoMapperProfile()
         {
-            // Källa => Mål
-            // CreateEmployeeViewModel => Employee
             CreateMap<TransactionDTO, TransactionDetailsViewModel>()
                 .ReverseMap();            
             CreateMap<TopTenDTO, TopTenViewModel>()
