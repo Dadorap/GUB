@@ -18,16 +18,16 @@
                 @* row 2 *@
                 <div class="row w-100">
 
-                    @* firstName *@
+                    @* Customer id *@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
-                                            @* <label asp-for="FirstName" class="d-block">First Name</label> *@
-                                            @* <input asp-for="FirstName" class="form-control w-75 border" value="@Model.FirstName"> *@
-                                            @* <span class="field-validation-error text-danger" asp-validation-for="FirstName"></span> *@
+                                            <label asp-for="CustomerId" class="d-block">Customer ID</label>
+                                            <input asp-for="CustomerId" class="form-control w-75 border" value="@Model.CustomerId" disabled>
+                                            <span class="field-validation-error text-danger" asp-validation-for="CustomerId"></span> 
                                         </div>
                                         <div class="align-self-center">
                                             <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
@@ -38,19 +38,19 @@
                         </div>
                     </div>
 
-                    @* lastName *@
+                    @* Type *@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
-                                            @* <label asp-for="LastName" class="d-block">Last Name</label> *@
-                                            @* <input asp-for="LastName" class="form-control w-75 border" value="@Model.LastName"> *@
-                                            @* <span class="field-validation-error text-danger" asp-validation-for="LastName"></span> *@
+                                            <label asp-for="Type" class="d-block"></label>
+                                            <select asp-for="Type" asp-items="Html.GetEnumSelectList<TypeEnum>()" class="form-controll rounded-5 w-75"></select>
+                                            <span class="field-validation-error text-danger" asp-validation-for="Type"></span>
                                         </div>
                                         <div class="align-self-center">
-                                            <i class="fa-solid fa-user  text-success fa-3x float-right"></i>
+                                            <i class="fa-solid fa-calendar-check text-success fa-3x float-right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -61,16 +61,16 @@
                 @* row 2 *@
                 <div class="row w-100">
 
-                    @* Emial *@
+                    @* Frequency *@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
-                                            @* <label asp-for="Email" class="d-block">Email</label> *@
-                                            @* <input asp-for="Email" class="form-control w-75 border" value="@Model.Email"> *@
-                                            @* <span class="field-validation-error text-danger" asp-validation-for="Email"></span> *@
+                                            <label asp-for="Frequency" class="d-block"></label>
+                                            <select asp-for="Frequency" asp-items="Html.GetEnumSelectList<Frequency>()" class="form-controll rounded-5 w-75"></select>
+                                            <span class="field-validation-error text-danger" asp-validation-for="Frequency"></span>
                                         </div>
                                         <div class="align-self-center">
                                             <i class="fa-solid fa-envelope text-muted fa-3x float-left"></i>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    @* phone number *@
+                    @* Balance *@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-content">
@@ -100,6 +100,8 @@
                             </div>
                         </div>
                     </div>
+
+
 
                 </div>
                 <button class="btn btn-success p-3 fw-bolder fs-4" type="submit">Save</button>

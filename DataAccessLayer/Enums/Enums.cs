@@ -45,14 +45,7 @@ public enum PhoneCode
     Norway = 47,
     Finland = 358
 }
-public enum Frequency
-{
-    Choose,
-    Monthly,
-    Weekly,
-    [Display(Name = "After-Transaction")]
-    AfterTransaction,
-}
+
 
 
 

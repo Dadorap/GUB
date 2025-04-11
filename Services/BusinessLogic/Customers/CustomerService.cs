@@ -173,8 +173,8 @@ namespace Services.BusinessLogic.Customers
                     .Cast<PhoneCode>()
                     .Select(pc => new SelectListItem
                     {
-                        Text = pc.ToString(), // Display "Denmark"
-                        Value = ((int)pc).ToString() // Value will be "45"
+                        Text = pc.ToString(), 
+                        Value = ((int)pc).ToString()
                     })
                     .ToList();
         }

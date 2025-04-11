@@ -2,6 +2,7 @@
 using DataAccessLayer.Models;
 using ViewModels.Infrastructure.Paging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace Services.BusinessLogic.AccountManagement
@@ -146,6 +147,30 @@ namespace Services.BusinessLogic.AccountManagement
         {
             var acc = new AccountDTO();
             return acc;
+        }
+
+        public List<SelectListItem> FillFrequency()
+        {
+            return Enum.GetValues(typeof(Frequency))
+                    .Cast<Frequency>()
+                    .Select(pc => new SelectListItem
+                    {
+                        Text = pc.ToString(),
+                        Value = ((int)pc).ToString()
+                    })
+                    .ToList();
+        }        
+        
+        public List<SelectListItem> FillType()
+        {
+            return Enum.GetValues(typeof(TypeEnum))
+                    .Cast<TypeEnum>()
+                    .Select(pc => new SelectListItem
+                    {
+                        Text = pc.ToString(),
+                        Value = ((int)pc).ToString()
+                    })
+                    .ToList();
         }
 
         public  async Task CreateAccount(AccountDTO acc)
