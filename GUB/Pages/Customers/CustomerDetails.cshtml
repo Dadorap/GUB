@@ -185,7 +185,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row d-flex">
             @* accounts *@
             <div class="col-xl-6 col-md-12">
                 <div class="card overflow-hidden">
@@ -200,11 +200,14 @@
                                         <span>@acc.AccountId</span>
                                     </div>
                                     <div class="media-body d-flex flex-column align-items-start justify-content-evenly">
-                                        <a asp-page="/Customers/Deposit" asp-route-id="@acc.AccountId" class="text-success text-decoration-none">
+                                        <a asp-page="/Transaction/Deposit" asp-route-id="@acc.AccountId" class="text-success text-decoration-none">
                                             <i class="fa-solid fa-circle-plus"></i> Deposit
                                         </a>
-                                        <a asp-page="/Customers/Withdraw" asp-route-id="@acc.AccountId" class="text-danger text-decoration-none">
+                                        <a asp-page="/Transaction/Withdraw" asp-route-id="@acc.AccountId" class="text-danger text-decoration-none">
                                             <i class="fa-solid fa-circle-minus"></i> Withdraw
+                                        </a>
+                                        <a asp-page="/Transaction/Withdraw" asp-route-id="@acc.AccountId" class="text-primary text-decoration-none mb-2">
+                                            <i class="fa-solid fa-repeat"></i> Transfer
                                         </a>
                                     </div>
 
@@ -219,7 +222,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-6 col-md-12">
+            <div class="col-xl-6 col-md-12 align-self-end">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body cleartfix">

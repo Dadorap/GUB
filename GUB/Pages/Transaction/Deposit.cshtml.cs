@@ -1,31 +1,29 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Identity.Client;
 using Services.BusinessLogic.AccountManagement;
 using System.ComponentModel.DataAnnotations;
 
-namespace ViewModels.Pages.Customers
+namespace GUB.Pages.Transaction
 {
     [BindProperties]
     [Authorize(Roles = "Cashier")]
 
-    public class WithdrawModel : PageModel
+    public class DepositModel : PageModel
     {
-
         private readonly IAccountService _accountService;
 
-        public WithdrawModel(IAccountService accountService)
+        public DepositModel(IAccountService accountService)
         {
             _accountService = accountService;
         }
 
         public int AccountNumber { get; set; }
         public decimal Balance { get; set; }
-        public DateTime WithdrawDate { get; set; }
+        public DateTime DepositDate { get; set; }
         public int CustomerId { get; set; }
-
-        [Required]
-        [Range(100, 10000)]
+        [Range(typeof(decimal), "100", "10000", ErrorMessage = "Amount must be between 100 and 10000.")]
         public decimal Amount { get; set; }
 
         [Required(ErrorMessage = "You forgot to write a comment!")]
@@ -40,14 +38,13 @@ namespace ViewModels.Pages.Customers
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
-            WithdrawDate = acc.TransactionDate;
-            CustomerId = acc.CustomerId;
+            DepositDate = acc.TransactionDate;
 
         }
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Transaction(id, Amount, WithdrawDate, "withdraw");
+            var resp = _accountService.Transaction(id, Amount, DepositDate, "deposit");
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
@@ -55,14 +52,9 @@ namespace ViewModels.Pages.Customers
 
 
             if (resp == RespCode.InvalidDate)
-            {               
-                ModelState.AddModelError(
-                "WithdrawDate", "Cannot Deposit money in the past!");
-            }
-            if (resp == RespCode.BalanceTooLow)
             {
                 ModelState.AddModelError(
-                    "Amount", "You cannot Withdraw money you don't own!");
+                "DepositDate", "Cannot Deposit money in the past!");
             }
             if (resp == RespCode.IncorrectAmount)
             {
@@ -74,10 +66,9 @@ namespace ViewModels.Pages.Customers
             {
                 if (resp == RespCode.OK)
                 {
-                    return RedirectToPage("CustomerDetails", new { id = CustomerId });
+                    return RedirectToPage("/Customers/CustomerDetails", new { id = CustomerId });
                 }
             }
-            
             return Page();
         }
     }
