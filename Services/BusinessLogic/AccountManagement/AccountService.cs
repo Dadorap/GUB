@@ -25,11 +25,11 @@ namespace Services.BusinessLogic.AccountManagement
             }).ToList();
         }
 
-        public RespCode Transaction(int id, decimal amount, DateTime withdrawDate, string transaction)
+        public RespCode Transaction(int id, decimal amount, DateTime date, string transaction)
         {
             var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
 
-            if (withdrawDate < DateTime.Now)
+            if (date.Date < DateTime.Now.Date)
             {
                 return RespCode.InvalidDate;
             }

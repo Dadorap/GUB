@@ -2,3 +2,78 @@
 @model GUB.Pages.Transaction.TransferModel
 @{
 }
+
+<div class="deposit-img min-vh-100">
+
+
+    <div class="col-md-6 offset-md-3">
+        <span class="anchor" id="formPayment"></span>
+        <hr class="my-5">
+
+        <!-- form card cc payment -->
+        <div class="card card-outline-secondary">
+
+            <div class="card-body">
+                <h3 class="text-center">Transfer</h3>
+                <hr class="border border-dark">
+
+                <form class="form" role="form" autocomplete="on" method="post">
+                    <div class="form-group">
+                        <label for="cc_name">Account Balance</label>
+                        <input type="text" class="form-control border" value="@Model.Balance" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cc_name">From Account Number</label>
+                        <input type="text" class="form-control border" value="@Model.AccountNumber" readonly>
+                    </div>                    
+                    <div class="form-group">
+                        <label for="cc_name">To Account Number</label>
+                        <input type="text" class="form-control border" value="@Model.AccountNumber">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DepositDate">Date</label>
+                        <input asp-for="DepositDate" class="form-control border" value="@Model.DepositDate">
+                        <span class="field-validation-error text-danger" asp-validation-for="DepositDate"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Comment">Comment</label>
+                        <input class="form-control border" asp-for="Comment">
+                        <span class="text-danger" asp-validation-for="Comment"></span>
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col-md-12" asp-for="Amount">Amount</label>
+                    </div>
+                    <div class="form-inline">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-money-bill"></i>
+                                </span>
+                            </div>
+                            <input asp-for="Amount" class="form-control text-right" id="exampleInputAmount" placeholder="39">
+                            <div class="input-group-append"><span class="input-group-text"></span></div>
+                        </div>
+                        <div class="text-danger">
+                            <span class="field-validation-error" asp-validation-for="Amount"></span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <button type="reset" class="btn btn-default btn-lg btn-block border-dark">Reset</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-success btn-lg btn-block">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
