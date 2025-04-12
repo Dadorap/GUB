@@ -15,6 +15,9 @@ namespace GUB.Pages.Transaction
             _accountService = accountService;
         }
         public int AccountNumber { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Account number must be at least 1.")]
+        public int ToAccountNumber { get; set; }
+
         public decimal Balance { get; set; }
         public DateTime DepositDate { get; set; }
         public int CustomerId { get; set; }
@@ -38,7 +41,8 @@ namespace GUB.Pages.Transaction
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Transaction(id, Amount, DepositDate, "deposit");
+            var resp = _accountService.Transfer(ToAccountNumber, id, Amount, DepositDate, "deposit");
+           
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
@@ -50,6 +54,11 @@ namespace GUB.Pages.Transaction
                 ModelState.AddModelError(
                 "DepositDate", "Cannot Deposit money in the past!");
             }
+            if (resp == RespCode.InvalidAccountNumber)
+            {
+                ModelState.AddModelError("ToAccountNumber", "Account number does not exist!");
+            }
+
             if (resp == RespCode.IncorrectAmount)
             {
                 ModelState.AddModelError(

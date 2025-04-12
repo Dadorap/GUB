@@ -204,6 +204,42 @@ namespace Services.BusinessLogic.AccountManagement
             }
         }
 
+        public RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date, string transaction)
+        {
+            var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
+            var toAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == accountNumber);
 
+            if (date.Date < DateTime.Now.Date)
+            {
+                return RespCode.InvalidDate;
+            }
+            if (transaction.ToLower() == "withdraw")
+            {
+                if (acc.Balance < amount)
+                {
+                    return RespCode.BalanceTooLow;
+                }
+                acc.Balance -= amount;
+            }
+            if (amount < 100 && amount > 10000)
+            {
+                return RespCode.IncorrectAmount;
+            }
+            if (toAcc == null)
+            {
+                return RespCode.InvalidAccountNumber;
+            }
+
+
+            else if (transaction.ToLower() == "deposit")
+            {
+                acc.Balance += amount;
+
+            }
+
+            _bankAppDataContext.Update(acc);
+            _bankAppDataContext.SaveChanges();
+            return RespCode.OK;
+        }
     }
 }

@@ -56,7 +56,8 @@ public enum RespCode
     IncorrectAmount,
     InvalidMessage,
     InvalidDate,
-    InvalidCountry
+    InvalidCountry,
+    InvalidAccountNumber
 }
 namespace DataAccessLayer.Enums
 {
