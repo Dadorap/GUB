@@ -40,7 +40,7 @@ namespace Services.BusinessLogic.AccountManagement
                     return RespCode.BalanceTooLow;
                 }
             }
-            if (amount < 100 && amount > 10000)
+            if (amount < 100 || amount > 10000)
             {
                 return RespCode.IncorrectAmount;
             }
@@ -159,8 +159,8 @@ namespace Services.BusinessLogic.AccountManagement
                         Value = ((int)pc).ToString()
                     })
                     .ToList();
-        }        
-        
+        }
+
         public List<SelectListItem> FillType()
         {
             return Enum.GetValues(typeof(TypeEnum))
@@ -173,14 +173,14 @@ namespace Services.BusinessLogic.AccountManagement
                     .ToList();
         }
 
-        public  async Task CreateAccount(AccountDTO acc)
+        public async Task CreateAccount(AccountDTO acc)
         {
             try
             {
                 var newAcc = new Account()
                 {
                     Frequency = acc.Frequency,
-                    Created = acc.Created, 
+                    Created = acc.Created,
                     Balance = acc.Balance,
                 };
 
@@ -204,42 +204,29 @@ namespace Services.BusinessLogic.AccountManagement
             }
         }
 
-        public RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date, string transaction)
+        public RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date)
         {
-            var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
+            if (date.Date < DateTime.Now.Date)
+                return RespCode.InvalidDate;
+
+            if (amount < 100 || amount > 10000)
+                return RespCode.IncorrectAmount;
+
+            var fromAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == id);
             var toAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == accountNumber);
 
-            if (date.Date < DateTime.Now.Date)
-            {
-                return RespCode.InvalidDate;
-            }
-            if (transaction.ToLower() == "withdraw")
-            {
-                if (acc.Balance < amount)
-                {
-                    return RespCode.BalanceTooLow;
-                }
-                acc.Balance -= amount;
-            }
-            if (amount < 100 && amount > 10000)
-            {
-                return RespCode.IncorrectAmount;
-            }
-            if (toAcc == null)
-            {
+            if (fromAcc == null || toAcc == null)
                 return RespCode.InvalidAccountNumber;
-            }
 
+            if (fromAcc.Balance < amount)
+                return RespCode.BalanceTooLow;
 
-            else if (transaction.ToLower() == "deposit")
-            {
-                acc.Balance += amount;
+            fromAcc.Balance -= amount;
+            toAcc.Balance += amount;
 
-            }
-
-            _bankAppDataContext.Update(acc);
             _bankAppDataContext.SaveChanges();
             return RespCode.OK;
         }
+
     }
 }

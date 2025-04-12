@@ -41,7 +41,7 @@ namespace GUB.Pages.Transaction
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Transfer(ToAccountNumber, id, Amount, DepositDate, "deposit");
+            var resp = _accountService.Transfer(ToAccountNumber, id, Amount, DepositDate);
            
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
@@ -58,7 +58,11 @@ namespace GUB.Pages.Transaction
             {
                 ModelState.AddModelError("ToAccountNumber", "Account number does not exist!");
             }
-
+            if (resp == RespCode.BalanceTooLow)
+            {
+                ModelState.AddModelError(
+                    "Amount", "You cannot Send money you don't own!");
+            }
             if (resp == RespCode.IncorrectAmount)
             {
                 ModelState.AddModelError(
