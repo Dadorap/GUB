@@ -14,12 +14,13 @@ namespace GUB.Pages.Transaction
         {
             _accountService = accountService;
         }
+
         public int AccountNumber { get; set; }
         [Range(1, int.MaxValue, ErrorMessage = "Account number must be at least 1.")]
         public int ToAccountNumber { get; set; }
 
         public decimal Balance { get; set; }
-        public DateTime DepositDate { get; set; }
+        public DateTime TransferDate { get; set; }
         public int CustomerId { get; set; }
         [Range(typeof(decimal), "100", "10000", ErrorMessage = "Amount must be between 100 and 10000.")]
         public decimal Amount { get; set; }
@@ -36,12 +37,12 @@ namespace GUB.Pages.Transaction
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
-            DepositDate = acc.TransactionDate;
+            TransferDate = acc.TransactionDate;
         }
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Transfer(ToAccountNumber, id, Amount, DepositDate);
+            var resp = _accountService.Transfer(ToAccountNumber, id, Amount, TransferDate);
            
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
