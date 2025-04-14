@@ -228,5 +228,9 @@ namespace Services.BusinessLogic.AccountManagement
             return RespCode.OK;
         }
 
+        public Task RemoveAccount(AccountDTO acc)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -11,7 +11,12 @@
                     <h2 class="text-uppercase border-bottom">Customer Details Update</h2>
                 </div>
                 <div>
-                    <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
+                    <a class="btn btn-success float-right m-4"
+                       asp-area=""
+                       asp-page="/Customers/CustomerDetails"
+                       asp-route-id="@Model.CustomerId">
+                        &lArr; Back
+                    </a>
                 </div>
             </div>
             @* row 1 *@
