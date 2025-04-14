@@ -16,7 +16,7 @@ namespace DataAccessLayer.Migrations
         table: "Customers",
         type: "int",
         nullable: false,
-        defaultValue: 1); // Or 0 if you have a "Choose" value
+        defaultValue: 0);
 
             migrationBuilder.Sql(@"
         UPDATE Customers
@@ -28,7 +28,12 @@ namespace DataAccessLayer.Migrations
     ");
 
 
-
+            migrationBuilder.AddColumn<bool>(
+            name: "IsActive",
+            table: "Accounts",
+            type: "bit",
+            nullable: false,
+            defaultValue: true);
 
 
             migrationBuilder.CreateTable(
@@ -70,11 +75,11 @@ namespace DataAccessLayer.Migrations
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
-           
 
-           
 
-            
+
+
+
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
@@ -182,7 +187,7 @@ namespace DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            
+
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -222,7 +227,7 @@ namespace DataAccessLayer.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-            
+
         }
 
         /// <inheritdoc />
@@ -262,7 +267,7 @@ namespace DataAccessLayer.Migrations
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
 
-           
+
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

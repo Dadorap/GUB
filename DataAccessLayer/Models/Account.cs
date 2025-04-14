@@ -12,6 +12,7 @@ public partial class Account
     public DateOnly Created { get; set; }
 
     public decimal Balance { get; set; }
+    public bool IsActive { get; set; } = true;
 
     public virtual ICollection<Disposition> Dispositions { get; set; } = new List<Disposition>();
 
