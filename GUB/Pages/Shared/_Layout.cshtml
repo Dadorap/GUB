@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.RazorPages
+@{
+    var currentPage = (ViewContext.ActionDescriptor as PageActionDescriptor)?.ViewEnginePath;
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -77,9 +83,7 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a asp-area="" asp-page="/Index" class="active">Home<br></a></li>
-                    <li><a asp-area="" asp-page="/Test" class="active">Test<br></a></li>
-
+                    <li><a asp-area="" asp-page="/Index" class="@(currentPage == "/Index" ? "active" : "")">Home<br></a></li>
                     <!--  <li class="dropdown">
                                  <a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -89,17 +93,23 @@
                     @if (User.IsInRole("Cashier"))
                     {
                         <li>
-                            <a class="nav-link text-dark" asp-page="/Customers/Customer">Customers</a>
+                            <a class="nav-link @(currentPage == "/Customers/Customer" ? "active" : "")"
+                               asp-page="/Customers/Customer">
+                                Customers
+                            </a>
                         </li>
+
+
+
                         <li>
-                            <a class="nav-link text-dark" asp-page="/Accounts/AccountIndex">Accounts</a>
+                            <a asp-page="/Accounts/AccountIndex" class="nav-link @(currentPage == "/Accounts/AccountIndex" ? "active" : "")">Accounts</a>
                         </li>
 
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <li>
-                            <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            <a class=" @(currentPage == "/Account/Register" ? "active" : "")" asp-area="Identity" asp-page="/Account/Register">Register</a>
 
                         </li>
                     }
