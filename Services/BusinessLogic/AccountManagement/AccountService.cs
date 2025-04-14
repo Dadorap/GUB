@@ -224,5 +224,12 @@ namespace Services.BusinessLogic.AccountManagement
         {
             
         }
+
+        public bool HasMultipleAccounts(int id)
+        {
+            return _bankAppDataContext.Dispositions
+                .Count(d => d.CustomerId == id) > 1;
+        }
+
     }
 }

@@ -28,6 +28,17 @@ namespace GUB.Pages.Accounts
         {
             CustomerId = id;
             Balance = balance;
+            var hasAcc = _accountService.HasMultipleAccounts(id);
+
+            if (balance > 0)
+            {
+                ModelState.AddModelError("Balance", "You cannot remove an account with a positive balance.");
+            }
+            else if (!hasAcc)
+            {
+                ModelState.AddModelError("Balance", "You cannot remove your only account.");
+            }
+
 
 
             if (ModelState.IsValid)
@@ -38,7 +49,6 @@ namespace GUB.Pages.Accounts
                     CustomerId = id,
                 };
 
-                await _accountService.CreateAccount(accDto);
                 return RedirectToPage("/Customers/CustomerDetails", new { id = CustomerId });
             }
 

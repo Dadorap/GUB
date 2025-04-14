@@ -27,6 +27,16 @@ namespace DataAccessLayer.Migrations
         END
     ");
 
+            migrationBuilder.Sql(@"
+        IF EXISTS (
+            SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS 
+            WHERE TABLE_NAME = 'Customers' AND COLUMN_NAME = 'Gender'
+        )
+        BEGIN
+            ALTER TABLE Customers DROP COLUMN Gender
+        END
+    ");
+
 
             migrationBuilder.AddColumn<bool>(
             name: "IsActive",
@@ -235,13 +245,12 @@ namespace DataAccessLayer.Migrations
         {
 
             migrationBuilder.AddColumn<string>(
-        name: "Gender",
-        table: "Customers",
-        type: "nvarchar(max)",
-        nullable: false,
-        defaultValue: "");
+                    name: "Gender",
+                    table: "Customers",
+                    type: "nvarchar(max)",
+                    nullable: true);
 
-            // Migrate enum values back to string
+            // Convert enum values back to strings
             migrationBuilder.Sql(@"
         UPDATE Customers
         SET Gender = CASE 
@@ -250,6 +259,11 @@ namespace DataAccessLayer.Migrations
             ELSE 'Unknown'
         END
     ");
+
+            // Remove GenderEnum column
+            migrationBuilder.DropColumn(
+                name: "GenderEnum",
+                table: "Customers");
 
 
             migrationBuilder.DropTable(
