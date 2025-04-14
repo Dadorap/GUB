@@ -90,11 +90,10 @@
                     {
                         <li>
                             <a class="nav-link text-dark" asp-page="/Customers/Customer">Customers</a>
-                        </li>                        
+                        </li>
                         <li>
                             <a class="nav-link text-dark" asp-page="/Accounts/AccountIndex">Accounts</a>
                         </li>
-                        <li></li>
 
                     }
                     @if (User.IsInRole("Admin"))
@@ -105,6 +104,16 @@
                         </li>
                     }
 
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <partial name="_LoginPartial" />
+                    }
+                    else
+                    {
+
+                        <a class="btn btn-success d-inline-block px-4 py-2 rounded-pill text-white" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+                        
+                    }
 
 
 
@@ -114,16 +123,6 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            @if (User.Identity.IsAuthenticated)
-            {
-                <!-- Show login partial when user is logged in -->
-                <partial name="_LoginPartial" />
-            }
-            else
-            {
-                <!-- Show Sign In button when user is not logged in -->
-                <a class="btn-getstarted" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
-            }
 
         </div>
     </header>
