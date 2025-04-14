@@ -174,9 +174,7 @@ namespace Services.BusinessLogic.AccountManagement
         }
 
         public async Task CreateAccount(AccountDTO acc)
-        {
-            try
-            {
+        {         
                 var newAcc = new Account()
                 {
                     Frequency = acc.Frequency,
@@ -195,13 +193,7 @@ namespace Services.BusinessLogic.AccountManagement
                 };
 
                 _bankAppDataContext.Dispositions.Add(newDisp);
-                await _bankAppDataContext.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("❌ ERROR CREATING ACCOUNT: " + ex.Message);
-                throw;
-            }
+                await _bankAppDataContext.SaveChangesAsync();            
         }
 
         public RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date)
@@ -228,9 +220,9 @@ namespace Services.BusinessLogic.AccountManagement
             return RespCode.OK;
         }
 
-        public Task RemoveAccount(AccountDTO acc)
+        public void RemoveAccount(int id)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

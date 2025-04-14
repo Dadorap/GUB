@@ -13,7 +13,12 @@
             <div class="container d-flex flex-column justify-content-center align-content-center w-100">
 
                 <div>
-                    <a class="btn btn-success m-4 float-right" asp-area="" asp-page="/Customers/Customer">&lArr; Back </a>
+                    <a class="btn btn-success float-right m-4"
+                       asp-area=""
+                       asp-page="/Customers/CustomerDetails"
+                       asp-route-id="@Model.CustomerId">
+                        &lArr; Back
+                    </a>
                 </div>
                 @* row 2 *@
                 <div class="row w-100">

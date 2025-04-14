@@ -7,7 +7,7 @@ namespace Services.BusinessLogic.AccountManagement;
 public interface IAccountService
 {
      Task CreateAccount(AccountDTO acc);
-     Task RemoveAccount(AccountDTO acc);
+     void RemoveAccount(int id);
     AccountDTO GetAccountDTO();
     List<AccountBalanceDTO> GetAccounts();
     AccountBalanceDTO GetAccount(int accountId);

@@ -39,6 +39,7 @@ namespace GUB.Pages.Transaction
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
             DepositDate = acc.TransactionDate;
+            CustomerId = acc.CustomerId;
 
         }
 

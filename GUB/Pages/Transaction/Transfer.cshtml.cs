@@ -38,6 +38,7 @@ namespace GUB.Pages.Transaction
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
             TransferDate = acc.TransactionDate;
+            CustomerId = acc.CustomerId;
         }
 
         public IActionResult OnPost(int id)
