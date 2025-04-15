@@ -32,7 +32,7 @@ namespace Services.BusinessLogic.Customers
         {
             var q = _bankAppDataContext.Customers
                 .Include(c => c.Dispositions)
-                .ThenInclude(d => d.Account)
+                .ThenInclude(d => d.Account).Where(acc => acc.IsActive)
                 .First(q => q.CustomerId == customerId);
 
 
@@ -61,7 +61,8 @@ namespace Services.BusinessLogic.Customers
                            .Select(d => new AccountBalanceDTO
                            {
                                AccountId = d.Account.AccountId,
-                               Balance = d.Account.Balance
+                               Balance = d.Account.Balance,
+                               IsActive = d.Account.IsActive
                            })
             .ToList() ?? new()
             };

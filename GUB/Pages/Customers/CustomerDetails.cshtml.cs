@@ -53,7 +53,9 @@ namespace ViewModels.Pages.Customers
             BirthDate = c.CustomerBirthDate;
             Gender = c.CustomerGender;
             TotalBalance = c.TotalBalance;
-            Account = c.Accounts.Select(a => new AccountBalanceViewModel
+            Account = c.Accounts
+                .Where(a => a.IsActive == true)
+                .Select(a => new AccountBalanceViewModel
             {
                 AccountId = a.AccountId,
                 Balance = a.Balance,

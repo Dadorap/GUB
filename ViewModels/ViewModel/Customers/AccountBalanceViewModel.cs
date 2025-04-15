@@ -6,5 +6,7 @@
         public decimal Balance { get; set; }
         public DateTime DepositDate { get; set; }
         public int CustomerId { get; set; }
+        public bool IsActive { get; set; } 
+
     }
 }

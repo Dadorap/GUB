@@ -12,5 +12,7 @@ namespace DataAccessLayer.DTOs
         public decimal Balance { get; set; }
         public DateTime TransactionDate { get; set; }
         public int CustomerId { get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

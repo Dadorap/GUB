@@ -222,7 +222,9 @@ namespace Services.BusinessLogic.AccountManagement
 
         public void RemoveAccount(int id)
         {
-            
+            var acc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == id);
+            acc.IsActive = false;
+            _bankAppDataContext.SaveChanges();
         }
 
         public bool HasMultipleAccounts(int id)

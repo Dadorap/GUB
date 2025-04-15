@@ -16,18 +16,21 @@ namespace GUB.Pages.Accounts
             _accountService = accountService;
         }
         public int CustomerId { get; set; }
+        public int AccountId { get; set; }
         public decimal Balance { get; set; }
 
-        public void OnGet(int id, decimal balance)
+        public void OnGet(int id, decimal balance, int accountId)
         {
             CustomerId = id;
             Balance = balance;
+            AccountId = accountId;
         }
 
-        public async Task<IActionResult> OnPost(int id, decimal balance)
+        public async Task<IActionResult> OnPost(int id, decimal balance, int accountId)
         {
             CustomerId = id;
             Balance = balance;
+            AccountId = accountId;
             var hasAcc = _accountService.HasMultipleAccounts(id);
 
             if (balance > 0)
@@ -43,12 +46,8 @@ namespace GUB.Pages.Accounts
 
             if (ModelState.IsValid)
             {
-                var accDto = new AccountDTO
-                {
-                    Balance = Balance,
-                    CustomerId = id,
-                };
 
+                _accountService.RemoveAccount(AccountId);
                 return RedirectToPage("/Customers/CustomerDetails", new { id = CustomerId });
             }
 
