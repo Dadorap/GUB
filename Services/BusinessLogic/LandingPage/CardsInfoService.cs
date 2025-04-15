@@ -17,10 +17,11 @@ public class CardsInfoService : ICardsInfoService
     public List<CountryDTO> GetCountryList(string country)
     {
         var query = _bankAppDataContext.Customers
-    .Include(c => c.Dispositions)
-        .ThenInclude(d => d.Account)
-        .Where(c => c.Country == country)
-        .AsQueryable();
+            .Where(c => c.IsActive == true && c.Country == country)
+            .Include(c => c.Dispositions)
+            .ThenInclude(d => d.Account)
+            .AsQueryable();
+
 
         return query.GroupBy(c => c.Country).Select(c => new CountryDTO
         {
@@ -33,12 +34,11 @@ public class CardsInfoService : ICardsInfoService
             Balance = c.Sum(s => s.Dispositions.Sum(d => d.Account.Balance)),
 
             Accounts = c.SelectMany(c => c.Dispositions)
+                .Where(d => d.Account.IsActive == true)
                 .Select(d => d.AccountId)
                 .Distinct()
                 .Count()
-                
+
         }).ToList();
-
-
     }
 }

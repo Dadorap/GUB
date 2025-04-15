@@ -120,7 +120,9 @@ namespace Services.BusinessLogic.Customers
 
 
 
-            var dtoQuery = query.Select(s => new CustomerDTO
+            var dtoQuery = query
+                .Where(c => c.IsActive == true)
+                .Select(s => new CustomerDTO
             {
                 Id = s.CustomerId,
                 CustomerFirstName = s.Givenname,
@@ -128,7 +130,8 @@ namespace Services.BusinessLogic.Customers
                 CustomerCountry = s.Country,
                 CustomerCity = s.City,
                 SocialSecurityNumber = s.NationalId,
-                CustomerAddress = s.Streetaddress
+                CustomerAddress = s.Streetaddress,
+                IsActive = s.IsActive,
             });
             return dtoQuery.GetPaged(page, pageSize);
 
