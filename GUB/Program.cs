@@ -8,6 +8,7 @@ using Services.BusinessLogic.AccountManagement;
 using Services.BusinessLogic.Validations;
 using System.Reflection;
 using ViewModels.Infrastructure.Paging;
+using System.Globalization;
 
 namespace ViewModels
 {
@@ -16,6 +17,10 @@ namespace ViewModels
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var cultureInfo = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
