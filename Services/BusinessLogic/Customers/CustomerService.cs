@@ -123,16 +123,16 @@ namespace Services.BusinessLogic.Customers
             var dtoQuery = query
                 .Where(c => c.IsActive == true)
                 .Select(s => new CustomerDTO
-            {
-                Id = s.CustomerId,
-                CustomerFirstName = s.Givenname,
-                CustomerLastName = s.Surname,
-                CustomerCountry = s.Country,
-                CustomerCity = s.City,
-                SocialSecurityNumber = s.NationalId,
-                CustomerAddress = s.Streetaddress,
-                IsActive = s.IsActive,
-            });
+                {
+                    Id = s.CustomerId,
+                    CustomerFirstName = s.Givenname,
+                    CustomerLastName = s.Surname,
+                    CustomerCountry = s.Country,
+                    CustomerCity = s.City,
+                    SocialSecurityNumber = s.NationalId,
+                    CustomerAddress = s.Streetaddress,
+                    IsActive = s.IsActive,
+                });
             return dtoQuery.GetPaged(page, pageSize);
 
         }
@@ -177,7 +177,7 @@ namespace Services.BusinessLogic.Customers
                     .Cast<PhoneCode>()
                     .Select(pc => new SelectListItem
                     {
-                        Text = pc.ToString(), 
+                        Text = pc.ToString(),
                         Value = ((int)pc).ToString()
                     })
                     .ToList();
@@ -222,14 +222,20 @@ namespace Services.BusinessLogic.Customers
             newAccount.Dispositions.Add(disposition);
 
             _bankAppDataContext.Customers.Add(newCustomer);
-            _bankAppDataContext.SaveChanges();                       
+            _bankAppDataContext.SaveChanges();
         }
 
-       public CustomerDTO GetCustomerDTO()
+        public CustomerDTO GetCustomerDTO()
         {
-            var customer = new CustomerDTO();  
+            var customer = new CustomerDTO();
             return customer;
         }
-    
+
+        public void RemoveCustomer(int id)
+        {
+            var csutomer = _bankAppDataContext.Customers.FirstOrDefault(a => a.CustomerId == id);
+            csutomer.IsActive = false;
+            _bankAppDataContext.SaveChanges();
+        }
     }
 }

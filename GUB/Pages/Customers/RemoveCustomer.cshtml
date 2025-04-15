@@ -1,5 +1,5 @@
 ﻿@page
-@model GUB.Pages.Accounts.RemoveAccountModel
+@model GUB.Pages.Customers.RemoveCustomerModel
 @{
 }
 <div class="grey-bg container-fluid">
@@ -19,10 +19,12 @@
                        asp-route-id="@Model.CustomerId">
                         &lArr; Back
                     </a>
+                    <div class="d-flex justify-content-center align-content-center">
+                        <span class="field-validation-error text-danger fw-bold fs-5 m-4" asp-validation-for="RemoveValidation"></span>                       
+                    </div>
                 </div>
                 @* row 2 *@
                 <div class="row w-100">
-
                     @* Customer id *@
                     <div class="col-6">
                         <div class="card">
@@ -45,19 +47,21 @@
                         </div>
                     </div>
 
-                    @* Balance *@
+                    @* customer full name *@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
-                                            <label asp-for="Balance" class="d-block">Balance</label>
-                                            <input asp-for="Balance" class="form-control w-75 border" value="@Model.Balance" readonly>
-                                            <span class="field-validation-error text-danger" asp-validation-for="Balance"></span>
+                                            <label asp-for="FullName"
+                                                   class="d-block">Full Name</label>
+                                            <input asp-for="FullName" 
+                                            class="form-control w-75 border" 
+                                            value="@Model.FullName" readonly>
                                         </div>
                                         <div class="align-self-center">
-                                            <i class="fa-solid fa-sack-dollar text-green fa-3x float-left"></i>
+                                            <i class="fa-solid fa-user text-success fa-3x float-right"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -65,10 +69,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <button class="btn btn-danger p-3 fw-bolder fs-4" type="submit">Remove</button>
             </div>
         </section>

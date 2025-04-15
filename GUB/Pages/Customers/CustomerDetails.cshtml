@@ -10,10 +10,27 @@
                 <h2 class="text-uppercase border-bottom">Customer Details</h2>
             </div>
             <div>
-                <a class="btn btn-success float-right m-4" asp-area="" asp-page="/Customers/Customer" >&lArr; Back </a>
-                <a class="btn btn-success float-left m-4" asp-area="" asp-route-id="@Model.CustomerId" asp-page="/Customers/UpdateCustomer">
-                    <i class="fa-solid fa-pencil text-light"></i> EDIT
+                <a class="btn btn-success float-right m-4"
+                   asp-area=""
+                   asp-page="/Customers/Customer">
+                    &lArr; Back
                 </a>
+
+                <div class="m-4 d-flex flex-wrap gap-3">
+                    <a class="btn btn-success fw-bold float-left"
+                       asp-area=""
+                       asp-route-id="@Model.CustomerId"
+                       asp-page="/Customers/UpdateCustomer">
+                        <i class="fa-solid fa-pencil text-light"></i> EDIT
+                    </a>
+                    <a class="btn btn-danger fw-bold float-left "
+                       asp-area=""
+                       asp-route-id="@Model.CustomerId"
+                       asp-route-balance="@Model.TotalBalance"
+                       asp-page="/Customers/RemoveCustomer">
+                        <i class="fa-solid fa-pencil"></i> Delete
+                    </a>
+                </div>
             </div>
         </div>
         @* row 1 *@
@@ -95,26 +112,6 @@
         </div>
         @* row 2 *@
         <div class="row">
-            @* SSN *@
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="media d-flex">
-                                <div class="media-body text-left">
-                                    <h3 class="danger">Social Security Number</h3>
-                                    <span>@Model.SSN</span>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fa-solid fa-id-card text-primary fa-3x"></i>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             @* country/city *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
@@ -136,6 +133,27 @@
                     </div>
                 </div>
             </div>
+            @* SSN *@
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="danger">Social Security Number</h3>
+                                    <span>@Model.SSN</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-id-card text-primary fa-3x"></i>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             @* birth date *@
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
@@ -179,7 +197,10 @@
         <div class="row">
             <div class="col-12 mt-3 mb-1">
                 <h2 class="text-uppercase border-bottom">Accounts & Balance</h2>
-                <a class="btn btn-success float-left m-4" asp-area="" asp-route-id="@Model.CustomerId" asp-page="/Accounts/CreateAccount">
+                <a class="btn btn-success fw-bold float-left m-4"
+                   asp-area=""
+                   asp-route-id="@Model.CustomerId"
+                   asp-page="/Accounts/CreateAccount">
                     <i class="fa-solid fa-pencil text-light"></i> Create
                 </a>
             </div>
@@ -198,7 +219,7 @@
                                     <div>
                                         <h5 class="mb-1">Account Number</h5>
                                         <div>@acc.AccountId</div>
-                                        <a class="btn btn-danger"
+                                        <a class="btn btn-danger fw-bold"
                                            asp-area=""
                                            asp-route-id="@Model.CustomerId"
                                            asp-route-balance="@acc.Balance"
@@ -211,13 +232,19 @@
 
                                     <!-- Actions -->
                                     <div class="d-flex flex-column">
-                                        <a asp-page="/Transaction/Deposit" asp-route-id="@acc.AccountId" class="text-success text-decoration-none mb-1">
+                                        <a asp-page="/Transaction/Deposit"
+                                           asp-route-id="@acc.AccountId"
+                                           class="text-success text-decoration-none mb-1">
                                             <i class="fa-solid fa-circle-plus"></i> Deposit
                                         </a>
-                                        <a asp-page="/Transaction/Withdraw" asp-route-id="@acc.AccountId" class="text-danger text-decoration-none mb-1">
+                                        <a asp-page="/Transaction/Withdraw"
+                                           asp-route-id="@acc.AccountId"
+                                           class="text-danger text-decoration-none mb-1">
                                             <i class="fa-solid fa-circle-minus"></i> Withdraw
                                         </a>
-                                        <a asp-page="/Transaction/Transfer" asp-route-id="@acc.AccountId" class="text-primary text-decoration-none">
+                                        <a asp-page="/Transaction/Transfer"
+                                           asp-route-id="@acc.AccountId"
+                                           class="text-primary text-decoration-none">
                                             <i class="fa-solid fa-repeat"></i> Transfer
                                         </a>
                                     </div>
