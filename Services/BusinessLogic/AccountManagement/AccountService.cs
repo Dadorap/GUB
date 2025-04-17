@@ -56,7 +56,9 @@ namespace Services.BusinessLogic.AccountManagement
                 .Include(c => c.Dispositions)
                     .ThenInclude(a => a.Account)
                 .Where(c => c.IsActive)
-                .SelectMany(d => d.Dispositions.Select(c => new AccountsDTO
+                .SelectMany(d => d.Dispositions
+                .Where(a => a.Account.IsActive)
+                .Select(c => new AccountsDTO
                 {
                     AccountId = c.Account.AccountId,
                     CustomerId = c.CustomerId,
