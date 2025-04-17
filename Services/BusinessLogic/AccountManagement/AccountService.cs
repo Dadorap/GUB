@@ -52,9 +52,10 @@ namespace Services.BusinessLogic.AccountManagement
         {
 
             var pageSize = 50;
-            var query = _bankAppDataContext.Customers
+            var query = _bankAppDataContext.Customers                
                 .Include(c => c.Dispositions)
-                .ThenInclude(a => a.Account)
+                    .ThenInclude(a => a.Account)
+                .Where(c => c.IsActive)
                 .SelectMany(d => d.Dispositions.Select(c => new AccountsDTO
                 {
                     AccountId = c.Account.AccountId,
@@ -138,26 +139,26 @@ namespace Services.BusinessLogic.AccountManagement
         }
 
         public async Task CreateAccount(AccountDTO acc)
-        {         
-                var newAcc = new Account()
-                {
-                    Frequency = acc.Frequency,
-                    Created = acc.Created,
-                    Balance = acc.Balance,
-                };
+        {
+            var newAcc = new Account()
+            {
+                Frequency = acc.Frequency,
+                Created = acc.Created,
+                Balance = acc.Balance,
+            };
 
-                _bankAppDataContext.Accounts.Add(newAcc);
-                await _bankAppDataContext.SaveChangesAsync();
+            _bankAppDataContext.Accounts.Add(newAcc);
+            await _bankAppDataContext.SaveChangesAsync();
 
-                var newDisp = new Disposition()
-                {
-                    AccountId = newAcc.AccountId,
-                    CustomerId = acc.CustomerId,
-                    Type = acc.Type,
-                };
+            var newDisp = new Disposition()
+            {
+                AccountId = newAcc.AccountId,
+                CustomerId = acc.CustomerId,
+                Type = acc.Type,
+            };
 
-                _bankAppDataContext.Dispositions.Add(newDisp);
-                await _bankAppDataContext.SaveChangesAsync();            
+            _bankAppDataContext.Dispositions.Add(newDisp);
+            await _bankAppDataContext.SaveChangesAsync();
         }
         public void RemoveAccount(int id)
         {

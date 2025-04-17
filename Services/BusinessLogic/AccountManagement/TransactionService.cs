@@ -2,6 +2,7 @@
 using DataAccessLayer.Models;
 using Microsoft.Data.SqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Services.BusinessLogic.AccountManagement;
 
@@ -19,7 +20,7 @@ public class TransactionService : ITransactionService
         var trans = _bankAppDataContext.Transactions
              .Where(t => t.AccountId == id)
              .AsQueryable();
-        
+
 
         var accTrans = trans.Select(s => new TransactionDTO()
         {
@@ -33,7 +34,7 @@ public class TransactionService : ITransactionService
             Symbol = s.Symbol,
             Bank = s.Bank,
             Account = s.Account,
-        }).OrderByDescending(d => d.Date)
+        }).OrderByDescending(d => d.TransactionId)
         .ToList();
 
 
@@ -41,40 +42,71 @@ public class TransactionService : ITransactionService
         return accTrans;
     }
 
-    public async Task<RespCode> Transaction(int id, decimal amount, DateTime date, string transaction)
+    public async Task<RespCode> Transaction(int id, decimal amount, DateTime date, string transaction, string comment)
     {
         var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
-        var transType = transaction.ToLower();
+        decimal totalBalance;
 
         if (date.Date < DateTime.Now.Date)
         {
             return RespCode.InvalidDate;
         }
-        if (transType == "withdraw")
+
+        if (transaction == "withdraw")
         {
             if (acc.Balance < amount)
             {
                 return RespCode.BalanceTooLow;
             }
         }
+
         if (amount < 100 || amount > 10000)
         {
             return RespCode.IncorrectAmount;
         }
 
-        if (transType == "withdraw")
+        Transaction newTrans;
+
+        if (transaction == "withdraw")
         {
             acc.Balance -= amount;
-           await _bankAppDataContext.SaveChangesAsync();
+            totalBalance = acc.Balance;
+            newTrans = new Transaction()
+            {
+                AccountId = id,
+                Amount = amount,
+                Balance = totalBalance,
+                Date = DateOnly.FromDateTime(date),
+                Type = "Debit",
+                Operation = "Withdrawal in Cash",
+                Symbol = comment
+            };
         }
-        else if (transType == "deposit")
+        else 
         {
             acc.Balance += amount;
-            await _bankAppDataContext.SaveChangesAsync();
+            totalBalance = acc.Balance;
+            newTrans = new Transaction()
+            {
+                AccountId = id,
+                Amount = amount,
+                Balance = totalBalance,
+                Date = DateOnly.FromDateTime(date),
+                Type = "Credit",
+                Operation = "Credit in Cash",
+                Symbol = comment
+            };
         }
+
+
+        _bankAppDataContext.Transactions.Add(newTrans);
+        await _bankAppDataContext.SaveChangesAsync();
 
         return RespCode.OK;
     }
+
+
+
 
     public RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date)
     {
