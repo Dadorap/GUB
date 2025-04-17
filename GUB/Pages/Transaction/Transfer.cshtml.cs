@@ -9,10 +9,12 @@ namespace GUB.Pages.Transaction
     public class TransferModel : PageModel
     {
         private readonly IAccountService _accountService;
+        private readonly ITransactionService _transactionService;
 
-        public TransferModel(IAccountService accountService)
+        public TransferModel(IAccountService accountService, ITransactionService transactionService)
         {
             _accountService = accountService;
+            _transactionService = transactionService;
         }
 
         public int AccountNumber { get; set; }
@@ -43,7 +45,7 @@ namespace GUB.Pages.Transaction
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Transfer(ToAccountNumber, id, Amount, TransferDate);
+            var resp = _transactionService.Transfer(ToAccountNumber, id, Amount, TransferDate);
            
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;

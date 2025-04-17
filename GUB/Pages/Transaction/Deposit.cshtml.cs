@@ -13,10 +13,12 @@ namespace GUB.Pages.Transaction
     public class DepositModel : PageModel
     {
         private readonly IAccountService _accountService;
+        private readonly  ITransactionService _transactionService;
 
-        public DepositModel(IAccountService accountService)
+        public DepositModel(IAccountService accountService, ITransactionService transactionService)
         {
             _accountService = accountService;
+            _transactionService = transactionService;
         }
 
         public int AccountNumber { get; set; }
@@ -45,7 +47,7 @@ namespace GUB.Pages.Transaction
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Transaction(id, Amount, DepositDate, "deposit");
+            var resp = _transactionService.Transaction(id, Amount, DepositDate, "deposit");
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;

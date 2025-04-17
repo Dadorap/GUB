@@ -42,7 +42,7 @@ namespace ViewModels
             builder.Services.AddTransient<ICountryValidation, CountryValidation>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
             builder.Services.AddTransient<ITopTenService, TopTenService>();
-            builder.Services.AddTransient<ITransactionDetailService, TransactionDetailService>();
+            builder.Services.AddTransient<ITransactionService, TransactionService>();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
             builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
             builder.Services.AddResponseCaching();

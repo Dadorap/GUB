@@ -13,10 +13,12 @@ namespace GUB.Pages.Transaction
     {
 
         private readonly IAccountService _accountService;
+        private readonly ITransactionService _transactionService ;
 
-        public WithdrawModel(IAccountService accountService)
+        public WithdrawModel(IAccountService accountService, ITransactionService transactionService)
         {
             _accountService = accountService;
+            _transactionService = transactionService;
         }
 
         public int AccountNumber { get; set; }
@@ -47,7 +49,7 @@ namespace GUB.Pages.Transaction
 
         public IActionResult OnPost(int id)
         {
-            var resp = _accountService.Transaction(id, Amount, WithdrawDate, "withdraw");
+            var resp = _transactionService.Transaction(id, Amount, WithdrawDate, "withdraw");
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;

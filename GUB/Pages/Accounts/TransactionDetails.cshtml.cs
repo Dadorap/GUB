@@ -13,12 +13,12 @@ namespace ViewModels.Pages.Accounts
     public class TransactionDetailsModel : PageModel
     {
         private readonly ZenQuotesService _zenQuotesService;
-        private readonly ITransactionDetailService _transacitonDetailService;
+        private readonly ITransactionService _transacitonDetailService;
         private readonly IMapper _mapper;
 
         public TransactionDetailsModel(
             ZenQuotesService zenQuotesService,
-            ITransactionDetailService transacitonDetailService,
+            ITransactionService transacitonDetailService,
             IMapper mapper)
         {
             _zenQuotesService = zenQuotesService;

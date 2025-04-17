@@ -25,42 +25,6 @@ namespace Services.BusinessLogic.AccountManagement
             }).ToList();
         }
 
-        public RespCode Transaction(int id, decimal amount, DateTime date, string transaction)
-        {
-            var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
-
-            if (date.Date < DateTime.Now.Date)
-            {
-                return RespCode.InvalidDate;
-            }
-            if (transaction.ToLower() == "withdraw")
-            {
-                if (acc.Balance < amount)
-                {
-                    return RespCode.BalanceTooLow;
-                }
-            }
-            if (amount < 100 || amount > 10000)
-            {
-                return RespCode.IncorrectAmount;
-            }
-
-            if (transaction.ToLower() == "withdraw")
-            {
-                acc.Balance -= amount;
-            }
-            else if (transaction.ToLower() == "deposit")
-            {
-                acc.Balance += amount;
-
-            }
-
-            _bankAppDataContext.Update(acc);
-            _bankAppDataContext.SaveChanges();
-            return RespCode.OK;
-        }
-
-
         public AccountBalanceDTO GetAccount(int accountId)
         {
             var acc = _bankAppDataContext.Customers
@@ -195,31 +159,6 @@ namespace Services.BusinessLogic.AccountManagement
                 _bankAppDataContext.Dispositions.Add(newDisp);
                 await _bankAppDataContext.SaveChangesAsync();            
         }
-
-        public RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date)
-        {
-            if (date.Date < DateTime.Now.Date)
-                return RespCode.InvalidDate;
-
-            if (amount < 100 || amount > 10000)
-                return RespCode.IncorrectAmount;
-
-            var fromAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == id);
-            var toAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == accountNumber);
-
-            if (fromAcc == null || toAcc == null)
-                return RespCode.InvalidAccountNumber;
-
-            if (fromAcc.Balance < amount)
-                return RespCode.BalanceTooLow;
-
-            fromAcc.Balance -= amount;
-            toAcc.Balance += amount;
-
-            _bankAppDataContext.SaveChanges();
-            return RespCode.OK;
-        }
-
         public void RemoveAccount(int id)
         {
             var acc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == id);
