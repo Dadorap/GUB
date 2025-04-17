@@ -45,7 +45,7 @@ namespace GUB.Pages.Transaction
 
         public IActionResult OnPost(int id)
         {
-            var resp = _transactionService.Transfer(ToAccountNumber, id, Amount, TransferDate);
+            var resp = _transactionService.Transfer(ToAccountNumber, id, Amount, TransferDate, Comment);
            
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;

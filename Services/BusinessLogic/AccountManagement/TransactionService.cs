@@ -108,7 +108,7 @@ public class TransactionService : ITransactionService
 
 
 
-    public RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date)
+    public RespCode Transfer(int toAccountId, int fromAccountId, decimal amount, DateTime date, string comment)
     {
         if (date.Date < DateTime.Now.Date)
             return RespCode.InvalidDate;
@@ -116,8 +116,8 @@ public class TransactionService : ITransactionService
         if (amount < 100 || amount > 10000)
             return RespCode.IncorrectAmount;
 
-        var fromAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == id);
-        var toAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == accountNumber);
+        var fromAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == fromAccountId);
+        var toAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == toAccountId);
 
         if (fromAcc == null || toAcc == null)
             return RespCode.InvalidAccountNumber;
@@ -126,9 +126,34 @@ public class TransactionService : ITransactionService
             return RespCode.BalanceTooLow;
 
         fromAcc.Balance -= amount;
+        var fromTransaction = new Transaction()
+        {
+            AccountId = fromAccountId,
+            Amount =  amount,
+            Balance = fromAcc.Balance,
+            Date = DateOnly.FromDateTime(date),
+            Type = "Debit",
+            Operation = "Transfer to another account",
+            Symbol = comment
+        };
+
         toAcc.Balance += amount;
+        var toTransaction = new Transaction()
+        {
+            AccountId = toAccountId,
+            Amount = amount,
+            Balance = toAcc.Balance,
+            Date = DateOnly.FromDateTime(date),
+            Type = "Credit",
+            Operation = "Transfer from another account",
+            Symbol = comment
+        };
+
+        _bankAppDataContext.Transactions.Add(fromTransaction);
+        _bankAppDataContext.Transactions.Add(toTransaction);
 
         _bankAppDataContext.SaveChanges();
         return RespCode.OK;
     }
+
 }
