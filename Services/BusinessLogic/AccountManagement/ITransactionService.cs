@@ -5,6 +5,6 @@ namespace Services.BusinessLogic.AccountManagement;
 public interface ITransactionService
 {
     List<TransactionDTO> GetTransactionDetails(int id);
-    RespCode Transaction(int id, decimal amount, DateTime date, string transaction);
+    Task<RespCode> Transaction(int id, decimal amount, DateTime date, string transaction);
     RespCode Transfer(int accountNumber, int id, decimal amount, DateTime date);
 }

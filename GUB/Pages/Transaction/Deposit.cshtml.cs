@@ -45,9 +45,9 @@ namespace GUB.Pages.Transaction
 
         }
 
-        public IActionResult OnPost(int id)
+        public async Task<IActionResult> OnPost(int id)
         {
-            var resp = _transactionService.Transaction(id, Amount, DepositDate, "deposit");
+            var resp = await _transactionService.Transaction(id, Amount, DepositDate, "deposit");
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;

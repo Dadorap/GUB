@@ -41,15 +41,16 @@ public class TransactionService : ITransactionService
         return accTrans;
     }
 
-    public RespCode Transaction(int id, decimal amount, DateTime date, string transaction)
+    public async Task<RespCode> Transaction(int id, decimal amount, DateTime date, string transaction)
     {
         var acc = _bankAppDataContext.Accounts.First(a => a.AccountId == id);
+        var transType = transaction.ToLower();
 
         if (date.Date < DateTime.Now.Date)
         {
             return RespCode.InvalidDate;
         }
-        if (transaction.ToLower() == "withdraw")
+        if (transType == "withdraw")
         {
             if (acc.Balance < amount)
             {
@@ -61,18 +62,17 @@ public class TransactionService : ITransactionService
             return RespCode.IncorrectAmount;
         }
 
-        if (transaction.ToLower() == "withdraw")
+        if (transType == "withdraw")
         {
             acc.Balance -= amount;
+           await _bankAppDataContext.SaveChangesAsync();
         }
-        else if (transaction.ToLower() == "deposit")
+        else if (transType == "deposit")
         {
             acc.Balance += amount;
-
+            await _bankAppDataContext.SaveChangesAsync();
         }
 
-        _bankAppDataContext.Update(acc);
-        _bankAppDataContext.SaveChanges();
         return RespCode.OK;
     }
 
