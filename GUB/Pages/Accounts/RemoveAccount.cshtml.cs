@@ -18,6 +18,8 @@ namespace GUB.Pages.Accounts
         public int CustomerId { get; set; }
         public int AccountId { get; set; }
         public decimal Balance { get; set; }
+        public string RemoveValidation { get; set; }
+        
 
         public void OnGet(int id, decimal balance, int accountId)
         {
@@ -39,7 +41,7 @@ namespace GUB.Pages.Accounts
             }
             else if (!hasAcc)
             {
-                ModelState.AddModelError("Balance", "You cannot remove your only account.");
+                ModelState.AddModelError("RemoveValidation", "You cannot remove your only account.");
             }
 
 

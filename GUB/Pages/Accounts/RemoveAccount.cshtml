@@ -19,6 +19,9 @@
                        asp-route-id="@Model.CustomerId">
                         &lArr; Back
                     </a>
+                    <div class="d-flex justify-content-center align-content-center">
+                        <span class="field-validation-error text-danger fw-bold fs-5 m-4" asp-validation-for="RemoveValidation"></span>
+                    </div>
                 </div>
                 @* row 2 *@
                 <div class="row w-100">
