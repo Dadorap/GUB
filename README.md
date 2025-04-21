@@ -55,3 +55,33 @@ BankApp is a complete web application for managing customers and users in a bank
 
 ## 📁 Project Structure
 
+GUB.sln                                # Solution file
+
+├── GUB/                               # 🖥️ Main Razor Pages Web App
+│   ├── Areas/                         # Identity pages (Login, Register, etc.)
+│   ├── forms/                         # Extra UI components/forms
+│   ├── Pages/                         # Razor Pages (Customers, Users, etc.)
+│   ├── wwwroot/                       # Static files (CSS, JS, images)
+│   ├── appsettings.json              # Config file (Azure SQL connection)
+│   └── Program.cs                    # App startup (ASP.NET Core)
+
+├── Common/                            # 🔧 Shared cross-cutting infrastructure
+│   └── Infrastructure/               # Helpers, utilities, constants, etc.
+
+├── DataAccessLayer/                   # 🗄️ Entity Framework Core + DB models
+│   ├── Models/                       # Account, Customer, Transaction entities
+│   ├── Enums/                        # Gender, CountryCode, etc.
+│   ├── DTOs/                         # View-safe data transfer objects
+│   └── Migrations/                   # EF Core migration history
+
+├── Services/                          # 💼 Business Logic + APIs
+│   ├── API/                          # Service interfaces
+│   └── BusinessLogic/                # Service implementations (e.g. UserService)
+
+├── ViewModels/                        # 📊 View-focused models
+│   └── ViewModel/                    # CustomerViewModel, UserViewModel, etc.
+
+├── MoneyLaundering/                   # 🕵️ Console app for suspicious transaction scanning
+│   ├── Reports/                      # Output .txt reports by country
+│   └── Program.cs                    # Console app logic (grouping, writing reports)
+
