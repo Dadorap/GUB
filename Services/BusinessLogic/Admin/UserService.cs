@@ -1,6 +1,9 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +13,8 @@ using ViewModels.Infrastructure.Paging;
 
 namespace Services.BusinessLogic.Admin
 {
+    [Authorize(Roles = "Admin")]
+    [BindProperties]
     public class UserService : IUserService
     {
         private readonly BankAppDataContext _bankAppDataContext;
@@ -22,10 +27,23 @@ namespace Services.BusinessLogic.Admin
         }
 
 
-        public void GetUser(int id)
+        public async Task<UserDTO?> GetUser(string id)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return null;
+
+            var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault();
+
+            return new UserDTO
+            {
+                UserId = user.Id,
+                LoginName = user.Email,
+                Role = role
+            };
         }
+
 
         public List<IdentityUser> Users { get; set; }
         public List<UserDTO> UsersWithRoles { get; set; }
@@ -49,7 +67,7 @@ namespace Services.BusinessLogic.Admin
             {
                 UserId = u.Id,
                 LoginName = u.Email,
-                Role = "" 
+                Role = ""
             });
 
             var paged = projectedQuery.GetPaged(page, pageSize);
@@ -64,5 +82,17 @@ namespace Services.BusinessLogic.Admin
             return paged;
         }
 
+        public List<SelectListItem> FillRoles()
+        {
+            var roleList = Enum.GetValues<Role>()
+                .Select(g => new SelectListItem()
+                {
+                    Value = ToString(),
+                    Text = ToString(),
+                }).ToList();
+
+            return roleList;
+
+        }
     }
 }

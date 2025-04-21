@@ -10,7 +10,7 @@ using ViewModels.ViewModel.ZenQuotes;
 namespace GUB.Pages.Users
 {
     [Authorize(Roles = "Admin")]
-
+    [BindProperties]
     public class IndexModel : PageModel
     {
         private readonly IUserService _userService;
