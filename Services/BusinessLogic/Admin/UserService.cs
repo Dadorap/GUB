@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ViewModels.Infrastructure.Paging;
 
@@ -94,5 +95,36 @@ namespace Services.BusinessLogic.Admin
             return roleList;
 
         }
+
+        public async Task UpdateUser(UserDTO user)
+        {
+            var identityUser = await _userManager.FindByIdAsync(user.UserId);
+            if (identityUser == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            identityUser.Email = user.LoginName;
+            identityUser.UserName = user.LoginName;
+
+            identityUser.NormalizedUserName = user.LoginName.ToUpper();
+            identityUser.NormalizedEmail = user.LoginName.ToUpper();
+
+            await _userManager.UpdateAsync(identityUser);
+
+            var currentRoles = await _userManager.GetRolesAsync(identityUser);
+            if (currentRoles.Any())
+            {
+                await _userManager.RemoveFromRolesAsync(identityUser, currentRoles);
+            }
+
+            await _userManager.AddToRoleAsync(identityUser, user.Role);
+        }
+
+        public bool IsEmailRegex(string loginName)
+        {
+            return Regex.IsMatch(loginName, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
     }
 }

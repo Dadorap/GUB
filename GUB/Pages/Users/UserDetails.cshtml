@@ -13,6 +13,7 @@
                 <div>
                     <h3 class="float-left m-4">
                        User ID: @Model.UserId
+                        <input type="hidden" asp-for="UserId" />
                     </h3>
                     <a class="btn btn-success float-right m-4"
                        asp-area=""
@@ -56,8 +57,10 @@
                 
             </div>
 
-            <button class="btn btn-success p-3 fw-bold mt-4" type="submit">Update</button>
-            <button class="btn btn-danger p-3 fw-bold mt-4 ml-4" type="submit">Delete</button>
+            <button type="submit" asp-route-id="@Model.UserId" asp-page-handler="Update" class="btn btn-success">Update</button>
+            <button type="submit" asp-route-id="@Model.UserId" asp-page-handler="Delete" class="btn btn-danger ml-2">Delete</button>
+
+
         </section>
     </form>
 </div>

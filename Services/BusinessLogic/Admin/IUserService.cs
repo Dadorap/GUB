@@ -9,5 +9,7 @@ namespace Services.BusinessLogic.Admin
         PagedResult<UserDTO> GetUsers(string sortColumn, string sortOrder, int page, string q);
         List<SelectListItem> FillRoles();
         Task<UserDTO> GetUser(string id);
+        Task UpdateUser(UserDTO user);
+        bool IsEmailRegex(string loginName);
     }
 }
