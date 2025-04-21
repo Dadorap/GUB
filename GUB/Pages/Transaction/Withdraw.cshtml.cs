@@ -37,23 +37,23 @@ namespace GUB.Pages.Transaction
 
 
 
-        public void OnGet(int id)
+        public void OnGet(int id, int customerId)
         {
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
             WithdrawDate = acc.TransactionDate;
-            CustomerId = acc.CustomerId;
+            CustomerId = customerId;
 
         }
 
-        public async Task<IActionResult> OnPost(int id)
+        public async Task<IActionResult> OnPost(int id, int customerId)
         {
             var resp = await _transactionService.Transaction(id, Amount, WithdrawDate, "withdraw", Comment);
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
-            CustomerId = acc.CustomerId;
+            CustomerId = customerId;
 
 
             if (resp == RespCode.InvalidDate)

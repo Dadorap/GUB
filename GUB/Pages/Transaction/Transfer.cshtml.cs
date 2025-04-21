@@ -34,23 +34,23 @@ namespace GUB.Pages.Transaction
 
 
 
-        public void OnGet(int id)
+        public void OnGet(int id, int customerId)
         {
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
             TransferDate = acc.TransactionDate;
-            CustomerId = acc.CustomerId;
+            CustomerId = customerId;
         }
 
-        public IActionResult OnPost(int id)
+        public IActionResult OnPost(int id, int customerId)
         {
             var resp = _transactionService.Transfer(ToAccountNumber, id, Amount, TransferDate, Comment);
            
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
-            CustomerId = acc.CustomerId;
+            CustomerId = customerId;
 
 
             if (resp == RespCode.InvalidDate)

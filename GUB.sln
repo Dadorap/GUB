@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{01D8CAA9-DAC4-4C54-B232-25347647B8A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyLaundering", "MoneyLaundering\MoneyLaundering.csproj", "{E4E17C6D-659B-428A-8F7B-CDD76F843BDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{01D8CAA9-DAC4-4C54-B232-25347647B8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01D8CAA9-DAC4-4C54-B232-25347647B8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01D8CAA9-DAC4-4C54-B232-25347647B8A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E17C6D-659B-428A-8F7B-CDD76F843BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E17C6D-659B-428A-8F7B-CDD76F843BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E17C6D-659B-428A-8F7B-CDD76F843BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E17C6D-659B-428A-8F7B-CDD76F843BDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

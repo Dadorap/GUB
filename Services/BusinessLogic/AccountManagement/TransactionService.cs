@@ -60,7 +60,7 @@ public class TransactionService : ITransactionService
             }
         }
 
-        if (amount < 100 || amount > 10000)
+        if (amount < 100 || amount > 20000)
         {
             return RespCode.IncorrectAmount;
         }

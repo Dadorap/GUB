@@ -234,16 +234,19 @@
                                     <div class="d-flex flex-column">
                                         <a asp-page="/Transaction/Deposit"
                                            asp-route-id="@acc.AccountId"
+                                           asp-route-customerId="@Model.CustomerId"
                                            class="text-success text-decoration-none mb-1">
                                             <i class="fa-solid fa-circle-plus"></i> Deposit
                                         </a>
                                         <a asp-page="/Transaction/Withdraw"
                                            asp-route-id="@acc.AccountId"
+                                           asp-route-customerId="@Model.CustomerId"
                                            class="text-danger text-decoration-none mb-1">
                                             <i class="fa-solid fa-circle-minus"></i> Withdraw
                                         </a>
                                         <a asp-page="/Transaction/Transfer"
                                            asp-route-id="@acc.AccountId"
+                                           asp-route-customerId="@Model.CustomerId"
                                            class="text-primary text-decoration-none">
                                             <i class="fa-solid fa-repeat"></i> Transfer
                                         </a>

@@ -1,3 +1,4 @@
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -25,7 +26,7 @@ namespace GUB.Pages.Transaction
         public decimal Balance { get; set; }
         public DateTime DepositDate { get; set; }
         public int CustomerId { get; set; }
-        [Range(typeof(decimal), "100", "10000", ErrorMessage = "Amount must be between 100 and 10000.")]
+        [Range(typeof(decimal), "100", "20000", ErrorMessage = "Amount must be between 100 and 20000.")]
         public decimal Amount { get; set; }
 
         [Required(ErrorMessage = "You forgot to write a comment!")]
@@ -35,23 +36,23 @@ namespace GUB.Pages.Transaction
 
 
 
-        public void OnGet(int id)
+        public void OnGet(int id, int customerId)
         {
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
             DepositDate = DateTime.Now;
-            CustomerId = acc.CustomerId;
+            CustomerId = customerId;
 
         }
 
-        public async Task<IActionResult> OnPost(int id)
+        public async Task<IActionResult> OnPost(int id, int customerId)
         {
             var resp = await _transactionService.Transaction(id, Amount, DepositDate, "deposit", Comment);
             var acc = _accountService.GetAccount(id);
             AccountNumber = acc.AccountId;
             Balance = acc.Balance;
-            CustomerId = acc.CustomerId;
+            CustomerId = customerId;
 
 
             if (resp == RespCode.InvalidDate)
@@ -62,7 +63,7 @@ namespace GUB.Pages.Transaction
             if (resp == RespCode.IncorrectAmount)
             {
                 ModelState.AddModelError(
-                    "Amount", "Amount must be between 100 and 10,000.");
+                    "Amount", "Amount must be between 100 and 20,000.");
             }
 
             if (ModelState.IsValid)

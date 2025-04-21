@@ -25,27 +25,26 @@ namespace Services.BusinessLogic.AccountManagement
             }).ToList();
         }
 
-        public AccountBalanceDTO GetAccount(int accountId)
+        public AccountBalanceDTO? GetAccount(int accountId)
         {
-            var acc = _bankAppDataContext.Customers
-                            .Include(c => c.Dispositions)
-                            .ThenInclude(d => d.Account)
-                            .FirstOrDefault(c => c.Dispositions.Any(d => d.AccountId == accountId));
+            var disposition = _bankAppDataContext.Dispositions
+                .Include(d => d.Account)
+                .FirstOrDefault(d => d.AccountId == accountId);
 
-            var customer = acc.Dispositions.First(d => d.AccountId == accountId);
+            if (disposition == null)
+                return null;
 
-
-
-            var date = DateTime.Now.AddHours(1);
-            var accDto = new AccountBalanceDTO
+            var accountDto = new AccountBalanceDTO
             {
-                AccountId = customer.AccountId,
-                Balance = customer.Account.Balance,
-                TransactionDate = date,
-                CustomerId = acc.CustomerId
+                AccountId = disposition.AccountId,
+                Balance = disposition.Account.Balance,
+                TransactionDate = DateTime.Now, 
+                CustomerId = disposition.CustomerId
             };
-            return accDto;
+
+            return accountDto;
         }
+
 
 
         public PagedResult<AccountsDTO> GetAccounts(string sortColumn, string sortOrder, int page, string q)
