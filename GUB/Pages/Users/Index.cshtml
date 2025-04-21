@@ -1,5 +1,5 @@
 ﻿@page
-@model GUB.Pages.Users.UserTableModel
+@model GUB.Pages.Users.IndexModel
 @{
 }
 <section class="p-0">
@@ -114,7 +114,7 @@
                                                         <td>@c.UserId</td>
                                                         <td>@c.LoginName</td>
                                                         <td>@c.Role</td>
-                                                        <td><a asp-page="/Customers/CustomerDetails" asp-route-id="@c.UserId" class="btn btn-primary">View</a></td>
+                                                        <td><a asp-page="/Users/UserDetails" asp-route-id="@c.UserId" class="btn btn-primary">View</a></td>
                                                     </tr>
                                                 }
                                                 <tr>

@@ -11,11 +11,11 @@ namespace GUB.Pages.Users
 {
     [Authorize(Roles = "Admin")]
 
-    public class UserTableModel : PageModel
+    public class IndexModel : PageModel
     {
         private readonly IUserService _userService;
         private readonly ZenQuotesService _zenQuotesService;
-        public UserTableModel(IUserService userService, ZenQuotesService zenQuotesService)
+        public IndexModel(IUserService userService, ZenQuotesService zenQuotesService)
         {
             _userService = userService;
             _zenQuotesService = zenQuotesService;
