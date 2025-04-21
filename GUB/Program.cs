@@ -9,6 +9,7 @@ using Services.BusinessLogic.Validations;
 using System.Reflection;
 using ViewModels.Infrastructure.Paging;
 using System.Globalization;
+using Services.BusinessLogic.Admin;
 
 namespace ViewModels
 {
@@ -46,6 +47,7 @@ namespace ViewModels
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
             builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
             builder.Services.AddResponseCaching();
+            builder.Services.AddTransient<IUserService, UserService>();
 
 
 
