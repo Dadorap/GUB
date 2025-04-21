@@ -65,6 +65,7 @@ namespace ViewModels.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "User role")]
             public string UserRole { get; set; }
