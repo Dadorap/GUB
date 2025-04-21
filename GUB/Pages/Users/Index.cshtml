@@ -49,7 +49,7 @@
                     </div>
                     <div>
                         <h3 class="text-dark float-left">Page Numebr: @Model.CurrentPage of @Model.PageCount</h3>
-                        <a asp-page="/Customers/CreateCustomer" class="btn btn-success float-right pr-3 pl-3 pt-2 pb-2 fs-5 fw-bold">CREATE NEW</a>
+                        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-success float-right pr-3 pl-3 pt-2 pb-2 fs-5 fw-bold">CREATE NEW</a>
                     </div>
                 </div>
 
@@ -114,7 +114,7 @@
                                                         <td>@c.UserId</td>
                                                         <td>@c.LoginName</td>
                                                         <td>@c.Role</td>
-                                                        <td><a asp-page="/Users/UserDetails" asp-route-id="@c.UserId" class="btn btn-primary">Update</a></td>
+                                                        <td><a asp-page="/Users/UserDetails" asp-route-id="@c.UserId" class="btn btn-primary">Edit</a></td>
                                                     </tr>
                                                 }
                                                 <tr>

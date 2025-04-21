@@ -4,12 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using ViewModels.Infrastructure.Paging;
 
 namespace Services.BusinessLogic.Admin
@@ -124,6 +119,16 @@ namespace Services.BusinessLogic.Admin
         public bool IsEmailRegex(string loginName)
         {
             return Regex.IsMatch(loginName, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        public async Task RemoveUser(UserDTO user)
+        {
+            var identityUser = await _userManager.FindByIdAsync(user.UserId);
+
+            if (identityUser == null)
+                throw new Exception("User not found.");
+
+            await _userManager.DeleteAsync(identityUser);
         }
 
     }

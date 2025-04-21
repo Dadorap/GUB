@@ -66,9 +66,12 @@ namespace GUB.Pages.Users
 
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
-            // Delete logic
+            var user = await _userService.GetUser(id);
+            await _userService.RemoveUser(user);
+
             return RedirectToPage("Index");
         }
+
 
 
     }

@@ -10,6 +10,7 @@ namespace Services.BusinessLogic.Admin
         List<SelectListItem> FillRoles();
         Task<UserDTO> GetUser(string id);
         Task UpdateUser(UserDTO user);
+        Task RemoveUser(UserDTO user);
         bool IsEmailRegex(string loginName);
     }
 }
