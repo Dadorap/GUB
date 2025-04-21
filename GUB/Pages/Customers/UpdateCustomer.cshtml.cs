@@ -53,7 +53,7 @@ namespace ViewModels.Pages.Customers
         public string City { get; set; }
         [StringLength(50)]
         public string? SSN { get; set; } = null;
-
+        [Required(ErrorMessage = "Birth date is required")]
         [DataType(DataType.Date)]
         public DateOnly? BirthDate { get; set; } = null;
         [Range(1, 99, ErrorMessage = "Choose a valid gender!")]
