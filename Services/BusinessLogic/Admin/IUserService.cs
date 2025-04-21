@@ -1,8 +1,10 @@
-﻿namespace Services.BusinessLogic.Admin
+﻿using DataAccessLayer.DTOs;
+
+namespace Services.BusinessLogic.Admin
 {
     public interface IUserService
     {
-        void GetUsers();
+        Task<List<UserDTO>> GetUsers();
         void GetUser(int id);
     }
 }
