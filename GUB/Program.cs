@@ -33,6 +33,8 @@ namespace ViewModels
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BankAppDataContext>();
             builder.Services.AddRazorPages();
+      
+
 
             builder.Services.AddTransient<DataInitializer>();
             builder.Services.AddTransient<IAccountService, AccountService>();

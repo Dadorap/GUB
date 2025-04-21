@@ -11,8 +11,9 @@
                     <h2 class="text-uppercase border-bottom">User Details Update</h2>
                 </div>
                 <div>
+                    
                     <h3 class="float-left m-4">
-                       User ID: @Model.UserId
+                        User ID: @Model.UserId
                         <input type="hidden" asp-for="UserId" />
                     </h3>
                     <a class="btn btn-success float-right m-4"
@@ -20,7 +21,11 @@
                        asp-page="/Users/Index">
                         &lArr; Back
                     </a>
+
                 </div>
+                    <div class="d-flex align-content-center justify-content-center fw-bold m-3">
+                        <span class="text-danger" asp-validation-for="Modelstate"></span>
+                    </div>
             </div>
 
             <div class="row">
@@ -44,7 +49,7 @@
                             <div class="flex-grow-1 me-3">
                                 <label asp-for="Role" class="form-label">Role</label>
                                 <select asp-for="Role" asp-items="Html.GetEnumSelectList<Role>()" class="form-controll rounded-5 w-75">
-                                </select>                                
+                                </select>
                                 <span class="text-danger" asp-validation-for="Role"></span>
                             </div>
                             <i class="fa-solid fa-user-tag text-success fa-2x"></i>
@@ -54,7 +59,7 @@
 
 
 
-                
+
             </div>
 
             <button type="submit" asp-route-id="@Model.UserId" asp-page-handler="Update" class="btn btn-success">Update</button>

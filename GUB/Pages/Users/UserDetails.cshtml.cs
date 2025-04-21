@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,9 +17,14 @@ namespace GUB.Pages.Users
     public class UserDetailsModel : PageModel
     {
         private readonly IUserService _userService;
-        public UserDetailsModel(IUserService userService)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+
+        public UserDetailsModel(IUserService userService, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userService = userService;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         [Required]
         [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
@@ -28,6 +34,7 @@ namespace GUB.Pages.Users
         public Role Role { get; set; }
         public List<SelectListItem> Roles { get; set; }
         public string UserId { get; set; }
+        public string? Modelstate { get; set; }
 
 
         public async Task OnGet(string id)
@@ -67,11 +74,28 @@ namespace GUB.Pages.Users
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
             var user = await _userService.GetUser(id);
+            var currentUserId = _userManager.GetUserId(User);
+
+            if (user.Role == "Admin")
+            {
+                bool hasOtherAdmins = await _userService.HasAtLeastOneOtherAdminAsync(user.UserId);
+                if (!hasOtherAdmins)
+                {
+                    ModelState.AddModelError("Modelstate", "You cannot delete the last remaining admin.");
+                    return Page();
+                }
+            }
+
             await _userService.RemoveUser(user);
+
+            if (currentUserId == id)
+            {
+                await _signInManager.SignOutAsync();
+                return RedirectToPage("/Account/Login", new { area = "Identity" });
+            }
 
             return RedirectToPage("Index");
         }
-
 
 
     }

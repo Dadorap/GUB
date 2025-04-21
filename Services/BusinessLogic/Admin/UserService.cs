@@ -120,14 +120,16 @@ namespace Services.BusinessLogic.Admin
         {
             return Regex.IsMatch(loginName, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
         }
+        public async Task<bool> HasAtLeastOneOtherAdminAsync(string userIdToExclude)
+        {
+            var allAdmins = await _userManager.GetUsersInRoleAsync("Admin");
+
+            return allAdmins.Any(u => u.Id != userIdToExclude);
+        }
 
         public async Task RemoveUser(UserDTO user)
         {
             var identityUser = await _userManager.FindByIdAsync(user.UserId);
-
-            if (identityUser == null)
-                throw new Exception("User not found.");
-
             await _userManager.DeleteAsync(identityUser);
         }
 
