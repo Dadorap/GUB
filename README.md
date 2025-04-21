@@ -1,59 +1,73 @@
-# 💳 BankApp
+# 💳 BankApp – ASP.NET Core Banking System
 
-BankApp is a complete web application for managing customers and users in a banking environment. Built with **ASP.NET Core Razor Pages**, it features full CRUD functionality for both **Customers** and **Users**, role-based access with **ASP.NET Identity**, and is styled using **Bootstrap**. The project is connected to an **Azure SQL Database** and also includes a powerful **console application** to detect suspicious transactions.
-
----
-
-## 📦 Features
-
-### 🧍 Customer Management
-- Full CRUD operations
-- Search, sort, and paginated listing
-- Detailed customer views
-- Full profile with address, contact, and national ID
-- Account management (with balance, actions, and deletion)
-
-### 👤 User Management (Admins & Cashiers)
-- Full CRUD for Identity users
-- Role selection on creation (`Admin`, `Cashier`)
-- Edit user details and roles
-- Prevent deletion of the last Admin
-- Secure access via Identity with login/logout
-
-### 🕵️ Suspicious Transaction Detection Console App
-- Standalone console application included in the solution
-- Scans all transactions and identifies suspicious activity based on logic you define
-- Creates report files (`.txt`) grouped **per country**
-- Reports saved to a local folder: `/Reports`
-- Each file named after its country, e.g., `Sweden.txt`, `Germany.txt`
-
-### 🎨 UI / Styling
-- Designed using **Bootstrap 5**
-- Uses **4 different admin template layouts**
-- Fully responsive and clean design
-- Enhanced with **Font Awesome** icons
-
-### ☁️ Database
-- Connected to a live **Azure SQL Database**
-- Managed via **Entity Framework Core**
-- Includes all necessary Identity tables and banking schema
+**Live Demo (Azure Web App)**: https://yourbankapp.azurewebsites.net  
+**Private GitHub Repo**: https://github.com/Dadorap/GUB  
+👤 **Collaborator invited**: `RichardChalk`  
+📝 **F5-ready**: The project starts, migrates database (if needed), and runs error-free.
 
 ---
 
-## 🛠 Tech Stack
+## 📘 About the Project
 
-| Tech | Description |
-|------|-------------|
-| ASP.NET Core Razor Pages | Page-based web UI framework |
-| ASP.NET Identity | Secure user management and roles |
-| EF Core | ORM for Azure SQL |
-| Bootstrap 5 | Frontend CSS framework |
-| Console App (.NET) | Headless reporting tool |
-| Azure SQL | Cloud-hosted relational database |
+BankApp is a complete **internal banking system** built with **ASP.NET Core Razor Pages**. It is designed for **bank employees only (Cashiers and Admins)** to manage customers, accounts, transactions, and users in a secure and user-friendly way.
+
+The system is connected to a **Database First SQL schema** provided by the course. It features full role-based access via **ASP.NET Identity**, a responsive UI using **Bootstrap templates**, and a console app for detecting suspicious activity.
+
+> 🔒 **Note**: This system is not for customers. Only bank staff may log in.
 
 ---
 
-## 📁 Project Structure
+## 🔑 Seeded Users
+
+| Email                        | Password | Role     |
+|-----------------------------|----------|----------|
+| richard.chalk@admin.se      | Abc123#  | Admin    |
+| richard.chalk@cashier.se    | Abc123#  | Cashier  |
+
+These accounts are **automatically seeded** at application startup if they do not exist.
+
+---
+
+## 🚀 Features
+
+### 👤 User & Role Management (Admin)
+- Full CRUD for ASP.NET Identity users
+- Assign and modify roles (`Admin`, `Cashier`)
+- Prevent deletion of last Admin
+- Admin-only area secured with role-based access
+
+### 🧍 Customer & Account Management (Cashier)
+- Full CRUD for customers (name, address, contact, etc.)
+- Auto-generates customer number and default transaction account on creation
+- Displays customer profile with all accounts and **total balance**
+- Search customers by name or city with **pagination (50 per page)**
+- Account view shows transaction history per account (sorted descending)
+- AJAX-powered infinite scroll (20 transactions at a time)
+- Deposit, withdraw, and transfer between accounts (validated)
+- **Prevents overdrafts** and invalid actions
+- Both **server-side and client-side validation** (Data Annotations + HTML5)
+
+### 📈 Public Landing Page
+- Available **without login**
+- Displays:
+  - Total number of customers
+  - Number of accounts
+  - Sum of all balances **grouped by country**
+- Clicking a country leads to a **Top 10 richest customers** page (by total balance)
+- Response-cached per country for **1 minute** for performance
+
+### 🕵️ Suspicious Transaction Console App
+- Standalone `.NET console application`
+- Uses the same **Data Access Layer** as the main app (DRY)
+- Checks each transaction per user and country using:
+  1. Any transaction over 15,000 SEK
+  2. Total sum of transactions within 72h > 23,000 SEK
+- Saves `.txt` reports grouped by country to `/Reports/`
+- Only new suspicious transactions are included each run
+
+---
+
+## 🧱 Architecture & Structure
 
 GUB.sln                                # Solution file
 
