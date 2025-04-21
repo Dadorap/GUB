@@ -20,12 +20,11 @@ namespace MoneyLaundering
             var checker = new SuspiciousTransactionChecker(context);
             var writer = new ReportWriter();
 
-            //var countries = context.Customers
-            //    .Select(c => c.Country)
-            //    .Distinct()
-            //    .ToList();           
+            var countries = context.Customers
+                .Select(c => c.Country)
+                .Distinct()
+                .ToList();
 
-            var countries = new List<string>() { "finland" };
 
 
             foreach (var country in countries)
@@ -71,11 +70,11 @@ namespace MoneyLaundering
                 if (reportData.Any())
                 {
                     writer.WriteReport(country, reportData);
-                    Console.WriteLine($"✓ Report written for {country} with {reportData.Count} entries.");
+                    Console.WriteLine($"Report written for {country} with {reportData.Count} entries.");
                 }
                 else
                 {
-                    Console.WriteLine($"✕ No suspicious transactions found for {country}.");
+                    Console.WriteLine($"No suspicious transactions found for {country}.");
                 }
             }
 

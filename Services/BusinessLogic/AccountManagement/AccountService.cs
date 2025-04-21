@@ -174,5 +174,10 @@ namespace Services.BusinessLogic.AccountManagement
                 .Count(d => d.CustomerId == id) > 1;
         }
 
+        public bool IsOwner(int id)
+        {
+            var acc = _bankAppDataContext.Dispositions.First(a => a.AccountId == id).Type;
+            return acc == "OWNER" ? true : false;
+        }
     }
 }

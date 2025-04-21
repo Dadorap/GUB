@@ -34,7 +34,12 @@ namespace GUB.Pages.Accounts
             Balance = balance;
             AccountId = accountId;
             var hasAcc = _accountService.HasMultipleAccounts(id);
+            var owner = _accountService.IsOwner(id);
 
+            if (owner)
+            {
+                ModelState.AddModelError("RemoveValidation", "You are not the owner of the account.");
+            }
             if (balance > 0)
             {
                 ModelState.AddModelError("Balance", "You cannot remove an account with a positive balance.");
@@ -42,7 +47,7 @@ namespace GUB.Pages.Accounts
             else if (!hasAcc)
             {
                 ModelState.AddModelError("RemoveValidation", "You cannot remove your only account.");
-            }
+            } 
 
 
 

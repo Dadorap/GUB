@@ -24,7 +24,7 @@ namespace GUB.Pages.Transaction
         public decimal Balance { get; set; }
         public DateTime TransferDate { get; set; }
         public int CustomerId { get; set; }
-        [Range(typeof(decimal), "100", "10000", ErrorMessage = "Amount must be between 100 and 10000.")]
+        [Range(typeof(decimal), "100", "30000", ErrorMessage = "Amount must be between 100 and 30000.")]
         public decimal Amount { get; set; }
 
         [Required(ErrorMessage = "You forgot to write a comment!")]
@@ -70,7 +70,7 @@ namespace GUB.Pages.Transaction
             if (resp == RespCode.IncorrectAmount)
             {
                 ModelState.AddModelError(
-                    "Amount", "Amount must be between 100 and 10,000.");
+                    "Amount", "Amount must be between 100 and 30,000.");
             }
 
             if (ModelState.IsValid)

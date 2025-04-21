@@ -113,7 +113,7 @@ public class TransactionService : ITransactionService
         if (date.Date < DateTime.Now.Date)
             return RespCode.InvalidDate;
 
-        if (amount < 100 || amount > 10000)
+        if (amount < 100 || amount > 30000)
             return RespCode.IncorrectAmount;
 
         var fromAcc = _bankAppDataContext.Accounts.FirstOrDefault(a => a.AccountId == fromAccountId);
