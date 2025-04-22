@@ -21,7 +21,7 @@ namespace GUB.Pages.Accounts
         [Range(1, 99, ErrorMessage = "Choose a valid Frequency!")]
         public Frequency Frequency { get; set; }
         public List<SelectListItem> Frequencies { get; set; }
-        [Range(typeof(decimal), "100", "10000", ErrorMessage = "Amount must be between 100 and 10000.")]
+        [Range(typeof(decimal), "0", "10000", ErrorMessage = "Amount must be between 0 and 10000.")]
         public decimal Balance { get; set; }
         public string Type { get; set; } = "OWNER";
 

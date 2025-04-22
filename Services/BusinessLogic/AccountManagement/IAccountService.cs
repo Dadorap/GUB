@@ -15,5 +15,5 @@ public interface IAccountService
     PagedResult<AccountsDTO> GetAccounts(string sortColumn, string sortOrder, int page, string q);
     List<SelectListItem> FillFrequency();
     List<SelectListItem> FillType();
-    bool IsOwner(int id);
+    bool IsOwner(int customerId, int accountId);
 }

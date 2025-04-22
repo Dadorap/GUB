@@ -34,9 +34,9 @@ namespace GUB.Pages.Accounts
             Balance = balance;
             AccountId = accountId;
             var hasAcc = _accountService.HasMultipleAccounts(id);
-            var owner = _accountService.IsOwner(id);
+            var owner = _accountService.IsOwner(id, accountId);
 
-            if (owner)
+            if (!owner)
             {
                 ModelState.AddModelError("RemoveValidation", "You are not the owner of the account.");
             }
