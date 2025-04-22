@@ -7,6 +7,7 @@ using Services.BusinessLogic.Admin;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Diagnostics.Metrics;
 using ViewModels.API;
 
 namespace GUB.Pages.Users
@@ -44,6 +45,10 @@ namespace GUB.Pages.Users
             var user = await _userService.GetUser(id);
             UserId = id;
             LoginName = user.LoginName;
+            if (Enum.TryParse<Role>(user.Role, out var role))
+            {
+                Role = role;
+            }
         }
         public async Task<IActionResult> OnPostUpdateAsync(string id)
         {
