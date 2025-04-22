@@ -152,6 +152,7 @@ namespace Services.BusinessLogic.Customers
             c.Birthday = custDto.CustomerBirthDate;
             c.NationalId = custDto.SocialSecurityNumber;
             c.Telephonenumber = custDto.CustomerPhone;
+            c.Telephonecountrycode = custDto.CustomerPhoneCode;
             c.Emailaddress = custDto.CustomerEmail;
 
             _bankAppDataContext.Update(c);
@@ -161,7 +162,7 @@ namespace Services.BusinessLogic.Customers
 
         public List<SelectListItem> FillGenderList()
         {
-            var genderList = Enum.GetValues<GenderEnum>()
+            var genderList = Enum.GetValues<Gender>()
                 .Select(g => new SelectListItem()
                 {
                     Value = ToString(),

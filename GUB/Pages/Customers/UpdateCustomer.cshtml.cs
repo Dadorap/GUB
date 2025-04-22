@@ -57,7 +57,7 @@ namespace ViewModels.Pages.Customers
         [DataType(DataType.Date)]
         public DateOnly? BirthDate { get; set; } = null;
         [Range(1, 99, ErrorMessage = "Choose a valid gender!")]
-        public GenderEnum Gender { get; set; }
+        public Gender Gender { get; set; }
         public List<SelectListItem> Genders { get; set; }
         public PhoneCode? PhoneCode { get; set; } = null;
         public List<SelectListItem> PhoneCodes { get; set; }
@@ -78,8 +78,8 @@ namespace ViewModels.Pages.Customers
             if (Enum.TryParse<PhoneCode>(c.CustomerPhoneCode, out var phoneCode))
             {
                 PhoneCode = phoneCode;
-            }
-
+            }            
+            
             CustomerId = c.CustomerId;
             FirstName = c.CustomerFirstName;
             LastName = c.CustomerLastName;
@@ -90,6 +90,7 @@ namespace ViewModels.Pages.Customers
             City = c.CustomerCity;
             SSN = c.SocialSecurityNumber;
             BirthDate = c.CustomerBirthDate;
+            Gender = c.CustomerGender;
 
 
             Genders = _customerService.FillGenderList();
@@ -114,7 +115,7 @@ namespace ViewModels.Pages.Customers
                 UpdatedCustomer.CustomerFirstName = FirstName;
                 UpdatedCustomer.CustomerLastName = LastName;
                 UpdatedCustomer.CustomerEmail = Email;
-                UpdatedCustomer.CustomerPhoneCode = PhoneCode.ToString();
+                UpdatedCustomer.CustomerPhoneCode = ((int)PhoneCode.Value).ToString();
                 UpdatedCustomer.CustomerCountryCode = CountryCode.ToString();
                 UpdatedCustomer.CustomerCity = City;
                 UpdatedCustomer.CustomerAddress = Address;
