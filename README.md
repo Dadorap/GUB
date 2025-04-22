@@ -19,10 +19,10 @@ The system is connected to a **Database First SQL schema** provided by the cours
 
 ## 🔑 Seeded Users
 
-| Email                        | Password | Role     |
-|-----------------------------|----------|----------|
-| richard.chalk@admin.se      | Abc123#  | Admin    |
-| richard.chalk@cashier.se    | Abc123#  | Cashier  |
+| Email                                     Password    | Role     |
+|-----------------------------------------|-------------|----------|
+| richard.chalk@systementor.se            | Hejsan123#  | Admin    |
+| richard.chalk@customer.systementor.se   | Hejsan123#  | Cashier  |
 
 These accounts are **automatically seeded** at application startup if they do not exist.
 
