@@ -100,6 +100,7 @@ namespace ViewModels.Pages.Customers
         public IActionResult OnPost(int id)
         {
             var resp = _countryValidation.ValidateCountryCodeAndName(CountryCode, Country);
+            CustomerId = id;
 
             if (resp == RespCode.InvalidCountry)
             {

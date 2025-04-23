@@ -22,8 +22,8 @@ namespace DataAccessLayer.Migrations
             migrationBuilder.Sql(@"
         UPDATE Customers
         SET GenderEnum = CASE 
-            WHEN LOWER(Gender) = 'female' THEN 1
-            WHEN LOWER(Gender) = 'male' THEN 2
+            WHEN LOWER(Gender) = 'female' THEN 2
+            WHEN LOWER(Gender) = 'male' THEN 1
             ELSE 1
         END
     ");

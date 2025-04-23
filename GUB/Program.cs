@@ -10,6 +10,7 @@ using ViewModels.Infrastructure.Paging;
 using System.Globalization;
 using Services.BusinessLogic.Admin;
 using DataAccessLayer.Data;
+using Services.BusinessLogic.About;
 
 namespace ViewModels
 {
@@ -41,6 +42,7 @@ namespace ViewModels
             builder.Services.AddTransient<ICustomerService, CustomerService>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();
             builder.Services.AddTransient<ICountryCardData, CountryCardData>();
+            builder.Services.AddTransient<IAboutService, AboutService>();
             builder.Services.AddTransient<ZenQuotesService>();
             builder.Services.AddTransient<ICountryValidation, CountryValidation>();
             builder.Services.AddTransient<ICardsInfoService, CardsInfoService>();

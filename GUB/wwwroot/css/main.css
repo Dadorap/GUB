@@ -1910,6 +1910,10 @@ input.form-control {
     color: black !important;
     background-color: white !important;
 }
+textarea.form-control {
+    color: black !important;
+    background-color: white !important;
+}
 input.form-control::placeholder {
         color: gray !important;
         opacity: 1 !important; /* Ensure placeholder is fully visible */
