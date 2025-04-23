@@ -10,21 +10,20 @@ namespace DataAccessLayer.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            // Drop the check constraint first
             migrationBuilder.Sql(@"
-        IF EXISTS (
-            SELECT * FROM sys.check_constraints 
-            WHERE name = 'CK_Customers'
-        )
-        ALTER TABLE Customers DROP CONSTRAINT CK_Customers
-    ");
+                IF EXISTS (
+                    SELECT * FROM sys.check_constraints 
+                    WHERE name = 'CK_Customers'
+                )
+                BEGIN
+                    ALTER TABLE Customers DROP CONSTRAINT CK_Customers
+                END
+            ");
 
-            // Now drop the Gender column
             migrationBuilder.DropColumn(
                 name: "Gender",
                 table: "Customers");
         }
-
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -35,6 +34,7 @@ namespace DataAccessLayer.Migrations
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
+
         }
     }
 }
