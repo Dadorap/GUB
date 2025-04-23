@@ -5,9 +5,12 @@ using ViewModels.ViewModel.ZenQuotes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ViewModels.Pages.Accounts
 {
+    [Authorize(Roles = "Cashier")]
+
     public class AccountIndexModel : PageModel
     {
         private readonly ZenQuotesService _zenQuotesService;

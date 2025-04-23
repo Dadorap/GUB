@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ViewModels.Pages.Accounts
 {
+    [Authorize(Roles = "Cashier")]
+
     public class TransactionDetailsModel : PageModel
     {
         private readonly ZenQuotesService _zenQuotesService;

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.AccountManagement;
@@ -6,6 +7,8 @@ using System.ComponentModel.DataAnnotations;
 namespace GUB.Pages.Transaction
 {
     [BindProperties]
+    [Authorize(Roles = "Cashier")]
+
     public class TransferModel : PageModel
     {
         private readonly IAccountService _accountService;

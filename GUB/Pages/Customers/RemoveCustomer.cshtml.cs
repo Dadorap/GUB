@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client;
@@ -6,6 +7,9 @@ using Services.BusinessLogic.Customers;
 
 namespace GUB.Pages.Customers
 {
+
+    [Authorize(Roles = "Cashier")]
+
     public class RemoveCustomerModel : PageModel
     {
         private readonly IAccountService _accountService;

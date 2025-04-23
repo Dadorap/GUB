@@ -1,4 +1,5 @@
 using DataAccessLayer.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,6 +8,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GUB.Pages.Accounts
 {
+    [Authorize(Roles = "Cashier")]
+
     public class RemoveAccountModel : PageModel
     {
         private readonly IAccountService _accountService;
