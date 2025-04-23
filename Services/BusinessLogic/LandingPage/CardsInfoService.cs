@@ -23,22 +23,24 @@ public class CardsInfoService : ICardsInfoService
             .AsQueryable();
 
 
-        return query.GroupBy(c => c.Country).Select(c => new CountryDTO
-        {
-            Country = c.Key,
+        return query.GroupBy(c => c.Country)
+            .Select(c => new CountryDTO
+            {
+                Country = c.Key,
 
-            Customers = c.Select(c => c.CustomerId)
-                .Distinct()
-                .Count(),
+                Customers = c.Select(c => c.CustomerId)
+                         .Distinct()
+                         .Count(),
 
-            Balance = c.Sum(s => s.Dispositions.Sum(d => d.Account.Balance)),
+                Balance = c.Sum(s => s.Dispositions.Sum(d => d.Account.Balance)),
 
-            Accounts = c.SelectMany(c => c.Dispositions)
-                .Where(d => d.Account.IsActive == true)
-                .Select(d => d.AccountId)
-                .Distinct()
-                .Count()
+                Accounts = c.SelectMany(c => c.Dispositions)
+                        .Where(d => d.Type == "OWNER" && d.Account.IsActive)
+                        .Select(d => d.AccountId)
+                        .Distinct()
+                        .Count()
 
-        }).ToList();
+
+            }).ToList();
     }
 }
