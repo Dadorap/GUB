@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+﻿using DataAccessLayer.Data;
+using DataAccessLayer.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Services.BusinessLogic.LandingPage;
@@ -26,8 +26,8 @@ public class TopTenService : ITopTenService
         return topTenDTO.Select(s => new TopTenDTO()
         {
             AccoutId = s.Dispositions.Select(s => s.AccountId).First(),
-            Name = s.Givenname + " " + s.Surname,
-            SSN = s.NationalId,
+            FirstName = s.Givenname,
+            LastName = s.Surname,
             Balance = s.Dispositions.Select(s => s.Account.Balance).First()
             
         }).ToList();

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccessLayer.Models
+namespace DataAccessLayer.Data
 {
     public class DataInitializer
     {

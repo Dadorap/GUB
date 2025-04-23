@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.Data;
+using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessLogic.MoneyLaundering;
 

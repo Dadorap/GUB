@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+﻿using DataAccessLayer.Data;
+using DataAccessLayer.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

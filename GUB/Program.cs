@@ -1,4 +1,3 @@
-using DataAccessLayer.Models;
 using ViewModels.API;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +9,7 @@ using System.Reflection;
 using ViewModels.Infrastructure.Paging;
 using System.Globalization;
 using Services.BusinessLogic.Admin;
+using DataAccessLayer.Data;
 
 namespace ViewModels
 {

@@ -3,6 +3,7 @@ using DataAccessLayer.Models;
 using ViewModels.Infrastructure.Paging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using DataAccessLayer.Data;
 
 
 namespace Services.BusinessLogic.AccountManagement

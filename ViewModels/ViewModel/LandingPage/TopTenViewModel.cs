@@ -9,8 +9,8 @@ namespace ViewModels.ViewModel.LandingPage
     public class TopTenViewModel
     {
         public int AccoutId { get; set; }
-        public string? SSN { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public decimal Balance { get; set; }
     }
 }

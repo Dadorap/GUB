@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+﻿using DataAccessLayer.Data;
+using DataAccessLayer.DTOs;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 

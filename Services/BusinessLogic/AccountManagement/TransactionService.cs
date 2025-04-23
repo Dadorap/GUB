@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.DTOs;
+﻿using DataAccessLayer.Data;
+using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
 using Microsoft.Data.SqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
