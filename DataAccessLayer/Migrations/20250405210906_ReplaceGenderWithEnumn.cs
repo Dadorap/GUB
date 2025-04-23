@@ -18,24 +18,19 @@ namespace DataAccessLayer.Migrations
         nullable: false,
         defaultValue: 0);
 
+            // 2. Migrera gamla Gender-data till GenderEnum
             migrationBuilder.Sql(@"
         UPDATE Customers
         SET GenderEnum = CASE 
             WHEN LOWER(Gender) = 'female' THEN 1
             WHEN LOWER(Gender) = 'male' THEN 2
-            ELSE 1 -- Default/fallback
+            ELSE 1
         END
     ");
 
-            migrationBuilder.Sql(@"
-        IF EXISTS (
-            SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS 
-            WHERE TABLE_NAME = 'Customers' AND COLUMN_NAME = 'Gender'
-        )
-        BEGIN
-            ALTER TABLE Customers DROP COLUMN Gender
-        END
-    ");
+
+
+
 
 
             migrationBuilder.AddColumn<bool>(
