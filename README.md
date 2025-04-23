@@ -2,9 +2,6 @@
 
 **Live Demo (Azure Web App)**: https://greaterbank-d5aefkezfec5d5be.swedencentral-01.azurewebsites.net/ 
 **Private GitHub Repo**: https://github.com/Dadorap/GUB  
-👤 **Collaborator invited**: `RichardChalk`  
-📝 **F5-ready**: The project starts, migrates database (if needed), and runs error-free.
-
 ---
 
 ## 📘 About the Project
