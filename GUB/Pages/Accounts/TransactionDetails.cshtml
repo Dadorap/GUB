@@ -145,7 +145,7 @@
                     <td>${element.date}</td>
                     <td>${element.type}</td>
                     <td>${element.operation}</td>
-                    <td>${element.type == "Debit" ? `-${element.amount}` : element.amount}</td>
+                    <td>${element.type == "Debit" ? (element.amount > 0 ? `-${element.amount}` : element.amount) : element.amount}</td>
                     <td>${element.balance}</td>
                     <td>${element.symbol}</td>
                     <td>${element.account}</td>
