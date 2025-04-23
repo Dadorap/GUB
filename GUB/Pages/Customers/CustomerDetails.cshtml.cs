@@ -1,8 +1,8 @@
-using ViewModels.ViewModel.Customers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.BusinessLogic.Customers;
+using ViewModels.ViewModel.Accounts;
 
 namespace ViewModels.Pages.Customers
 {

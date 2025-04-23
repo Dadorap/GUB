@@ -1,4 +1,4 @@
-﻿namespace ViewModels.ViewModel.Customers
+﻿namespace ViewModels.ViewModel.Accounts
 {
     public class AccountBalanceViewModel
     {
@@ -6,7 +6,7 @@
         public decimal Balance { get; set; }
         public DateTime DepositDate { get; set; }
         public int CustomerId { get; set; }
-        public bool IsActive { get; set; } 
+        public bool IsActive { get; set; }
 
     }
 }
